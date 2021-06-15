@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>BASE DEV</title>
+  
+  <subtitle>筑基 · 体系 · 实践 · 分享</subtitle>
+  <link href="http://www.basedev.cn/atom.xml" rel="self"/>
+  
+  <link href="http://www.basedev.cn/"/>
+  <updated>2020-05-04T09:33:24.103Z</updated>
+  <id>http://www.basedev.cn/</id>
+  
+  <author>
+    <name>Jay</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://www.basedev.cn/2020/05/04/hello-world/"/>
+    <id>http://www.basedev.cn/2020/05/04/hello-world/</id>
+    <published>2020-05-04T08:32:57.519Z</published>
+    <updated>2020-05-04T09:33:24.103Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="Hello" scheme="http://www.basedev.cn/categories/Hello/"/>
+    
+    
+    <category term="H" scheme="http://www.basedev.cn/tags/H/"/>
+    
+    <category term="W" scheme="http://www.basedev.cn/tags/W/"/>
+    
+  </entry>
+  
+</feed>
