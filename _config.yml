@@ -3,8 +3,8 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: BASE DEV
-subtitle: 筑基 · 体系 · 实践 · 分享
+title: 王学杰   #Jay|BASE DEV
+subtitle: 晓之以理，动之以码
 description: '筑基、体系、实践、分享'
 keywords: "筑基、体系、实践、分享"
 author: Jay
@@ -14,7 +14,7 @@ language: zh-CN
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url:  http://www.basedev.cn
-root: /home/git/projects/blog/
+root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
@@ -140,10 +140,11 @@ theme: hexo-theme-matery
 # Deployment 部署
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type: git
+- type: git
   repo: git@www.basedev.cn:/home/git/repos/blog.git
-  # repo: https://github.com/Jay-Droid/Jay-Droid.github.io.git
-  branch: master
+
+- type: git
+  repo: https://github.com/jaydroid1024/jaydroid1024.github.io.git
 
 
 # yilia 主题新加的配置参数
