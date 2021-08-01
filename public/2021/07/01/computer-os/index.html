@@ -1,0 +1,2964 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="筑基系列-操作系统基础知识小抄版, 筑基、体系、实践、分享">
+    <meta name="description" content="筑基、体系、实践、分享">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N498NKZS3G"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'G-N498NKZS3G');
+</script>
+
+
+    <title>筑基系列-操作系统基础知识小抄版 | 王学杰</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 4.2.1">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="王学杰" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">王学杰</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>主页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">王学杰</div>
+        <div class="logo-desc">
+            
+            筑基、体系、实践、分享
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			主页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/jaydroid1024" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/jaydroid1024" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">筑基系列-操作系统基础知识小抄版</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/">
+                                <span class="chip bg-color">计算机基础</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                <span class="chip bg-color">操作系统</span>
+                            </a>
+                        
+                            <a href="/tags/Linux/">
+                                <span class="chip bg-color">Linux</span>
+                            </a>
+                        
+                            <a href="/tags/%E8%BF%9B%E7%A8%8B/">
+                                <span class="chip bg-color">进程</span>
+                            </a>
+                        
+                            <a href="/tags/%E7%BA%BF%E7%A8%8B/">
+                                <span class="chip bg-color">线程</span>
+                            </a>
+                        
+                            <a href="/tags/%E4%BD%9C%E4%B8%9A%E7%AE%A1%E7%90%86/">
+                                <span class="chip bg-color">作业管理</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/">
+                                <span class="chip bg-color">文件管理</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" class="post-category">
+                                计算机
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2021-07-01
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2021-08-01
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    11.1k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    38 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p><img src="https://raw.githubusercontent.com/jaydroid1024/jay_image_repo/main/img/post_banner_jay.png" alt=""></p>
+<h1 id="筑基系列-操作系统基础知识小抄版"><a href="#筑基系列-操作系统基础知识小抄版" class="headerlink" title="筑基系列-操作系统基础知识小抄版"></a>筑基系列-操作系统基础知识小抄版</h1><blockquote>
+<p>计算机基础知识筑基三部曲：</p>
+<ul>
+<li><p><strong><a href="https://juejin.cn/post/6991367806772052004" target="_blank" rel="noopener">第一部：筑基系列-计算机基础知识小抄版</a></strong></p>
+<ul>
+<li>包括发展史、CPU、总线、存储器、指令系统、控制器、运算器、位运算等</li>
+</ul>
+</li>
+<li><p><strong><a href="https://juejin.cn/post/6991385109509193764" target="_blank" rel="noopener">第二部：筑基系列-操作系统基础知识小抄版</a></strong></p>
+<ul>
+<li>包括进程与线程同步管理、作业管理、存储管理、虚拟内存、Linux、文件管理等</li>
+</ul>
+</li>
+<li><p><strong><a href="https://juejin.cn/post/6991397445251334151" target="_blank" rel="noopener">第三部：筑基系列-计算机网络基础知识小抄版</a></strong></p>
+<ul>
+<li>包括OSI七层模型各层详解、IP协议、TCP\IP协议、Http协议、DNS协议等</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
+<li><a href="#1.操作系统概览">1.操作系统概览</a><ul>
+<li><a href="#11-什么是操作系统">1.1 什么是操作系统</a></li>
+<li><a href="#12-为什么需要操作系统">1.2 为什么需要操作系统</a></li>
+<li><a href="#13-操作系统的基本功能">1.3 操作系统的基本功能</a></li>
+<li><a href="#14-操作系统相关概念">1.4 操作系统相关概念</a></li>
+</ul>
+</li>
+<li><a href="#2.进程管理">2.进程管理</a><ul>
+<li><a href="#21-进程概述">2.1 进程概述</a></li>
+<li><a href="#22-进程管理五状态模型">2.2 进程管理五状态模型</a></li>
+<li><a href="#23-进程同步">2.3 进程同步</a></li>
+<li><a href="#24-linux的进程管理">2.4 Linux的进程管理</a></li>
+</ul>
+</li>
+<li><a href="#3.作业管理">3.作业管理</a><ul>
+<li><a href="#31-进程调度">3.1 进程调度</a></li>
+<li><a href="#32-死锁">3.2 死锁</a></li>
+</ul>
+</li>
+<li><a href="#4.存储管理">4.存储管理</a><ul>
+<li><a href="#41-计算机进行存储管理的必要性">4.1 计算机进行存储管理的必要性</a></li>
+<li><a href="#42-内存的分配过程">4.2 内存的分配过程</a></li>
+<li><a href="#43-内存的回收过程">4.3 内存的回收过程</a></li>
+<li><a href="#44-进程的存储管理">4.4 进程的存储管理</a></li>
+<li><a href="#45-虚拟内存">4.5 虚拟内存</a></li>
+<li><a href="#46-linux的存储管理">4.6 Linux的存储管理</a></li>
+</ul>
+</li>
+<li><a href="#5.文件管理">5.文件管理</a><ul>
+<li><a href="#51-操作系统的文件管理">5.1 操作系统的文件管理</a></li>
+<li><a href="#52-linux文件的基本操作">5.2 Linux文件的基本操作</a></li>
+</ul>
+</li>
+<li><a href="#6设备管理">6.设备管理</a></li>
+<li><a href="#7.实践">7.实践</a><ul>
+<li><a href="#71-线程同步实践">7.1 线程同步实践</a></li>
+<li><a href="#72-进程同步实践">7.2 进程同步实践</a></li>
+</ul>
+</li>
+<li><a href="#8关于我">8.关于我</a></li>
+<li><a href="#9参考">9.参考</a></li>
+</ul>
+<h2 id="1-操作系统概览"><a href="#1-操作系统概览" class="headerlink" title="1 操作系统概览"></a>1 操作系统概览</h2><h3 id="1-1-什么是操作系统"><a href="#1-1-什么是操作系统" class="headerlink" title="1.1 什么是操作系统"></a>1.1 什么是操作系统</h3><ul>
+<li>管理配置内存、决定资源供需顺序、控制输入输出设备等</li>
+<li>操作系统是管理计算机硬件和软件资源的计算机程序</li>
+<li>操作系统提供让用户和系统交互的操作界面</li>
+<li>从手机到超级计算机，操作系统可简单也可复杂</li>
+<li>操作系统的种类是多种多样的，不局限于计算机</li>
+<li>在不同的设备上，操作系统可向用户呈现多种操作手段</li>
+<li>Android，IOS，HarmonyOS</li>
+<li>Windows ，Linux ，MacOS</li>
+<li>总结：管理硬件、提供用户交互的软件系统</li>
+</ul>
+<h3 id="1-2-为什么需要操作系统"><a href="#1-2-为什么需要操作系统" class="headerlink" title="1.2 为什么需要操作系统"></a>1.2 为什么需要操作系统</h3><ul>
+<li>我们不可能直接操作计算机硬件</li>
+<li>设备种类繁多复杂，需要统一界面</li>
+<li>设备种类繁多复杂，需要统一界面</li>
+</ul>
+<h3 id="1-3-操作系统的基本功能"><a href="#1-3-操作系统的基本功能" class="headerlink" title="1.3 操作系统的基本功能"></a>1.3 操作系统的基本功能</h3><ul>
+<li>操作系统统一管理着计算机资源<ul>
+<li>处理器资源</li>
+<li>IO设备资源</li>
+<li>存储器资源</li>
+<li>文件资源</li>
+</ul>
+</li>
+<li>操作系统实现了对计算机资源的抽象<ul>
+<li>IO设备管理软件，提供读写接口</li>
+<li>用户无需面向硬件接口编程</li>
+<li>文件管理软件，提供操作文件接口</li>
+</ul>
+</li>
+<li>操作系统提供了用户与计算机之间的接口<ul>
+<li>命令形式</li>
+<li>图像窗口形式</li>
+<li>系统调用形式</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-4-操作系统相关概念"><a href="#1-4-操作系统相关概念" class="headerlink" title="1.4 操作系统相关概念"></a>1.4 操作系统相关概念</h3><ul>
+<li>并发性/并行性<ul>
+<li>多道程序设计<ul>
+<li>多道程序设计是指在计算机内存中同时存放多个程序</li>
+<li>多道程序在计算机的管理程序之下相互穿插运行</li>
+</ul>
+</li>
+<li>并行是指两个或多个事件可以在同一个时刻发生</li>
+<li>并发是指两个或多个事件可以在同一个时间间隔发生</li>
+</ul>
+</li>
+<li>共享性<ul>
+<li>共享性表现为操作系统中的资源可供多个并发的程序共同使用</li>
+<li>这种共同使用的形式称之为资源共享</li>
+<li>多个程序可以同时使用主存资源</li>
+<li>资源共享根据属性可分为两种方式<ul>
+<li>互斥共享形式 <ul>
+<li>当资源被程序A占用时，其他想使用的话只能等待</li>
+<li>只有进程A使用完以后，其他进程才可以使用该资源</li>
+<li>打印机</li>
+</ul>
+</li>
+<li>同时访问形式<ul>
+<li>某种资源在一段时间内并发地被多个程序访问</li>
+<li>这种“同时”是宏观的，从宏观去看该资源可以被同时访问</li>
+<li>向磁盘写数据</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>虚拟性<ul>
+<li>虚拟性表现为把一个物理实体转变为若干个逻辑实体</li>
+<li>物理实体是真实存在的，逻辑实体是虚拟的</li>
+<li>虚拟的技术主要有时分复用技术和空分复用技术</li>
+<li>时分复用技术<ul>
+<li>资源在时间上进行复用，不同程序并发使用</li>
+<li>多道程序分时使用计算机的硬件资源</li>
+<li>提高资源的利用率</li>
+<li>虚拟处理器技术 <ul>
+<li>借助多道程序设计技术</li>
+<li>为每个程序建立进程</li>
+<li>多个程序分时复用处理器</li>
+</ul>
+</li>
+<li>虚拟设备技术<ul>
+<li>物理设备虚拟为多个逻辑设备</li>
+<li>每个程序占用一个逻辑设备</li>
+<li>多个程序通过逻辑设备并发访问</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>空分复用技术<ul>
+<li>空分复用技术用来实现虚拟磁盘、虚拟内存等</li>
+<li>提高资源的利用率，提升编程效率</li>
+<li>虚拟磁盘技术 <ul>
+<li>物理磁盘虚拟为逻辑磁盘</li>
+<li>C、 D、 E等逻辑盘</li>
+<li>使用起来更加安全、方便</li>
+</ul>
+</li>
+<li>虚拟内存技术<ul>
+<li>在逻辑上扩大程序的存储容量</li>
+<li>使用比实际内存更大的容量</li>
+<li>大大提升编程效率</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>异步性<ul>
+<li>在多道程序环境下，允许多个进程并发执行</li>
+<li>进程在使用资源时可能需要等待或放弃</li>
+<li>进程的执行并不是一气呵成的，而是以走走停停的形式推进</li>
+<li>进程以不可预知的速度向前推进</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-进程管理"><a href="#2-进程管理" class="headerlink" title="2.进程管理"></a>2.进程管理</h2><h3 id="2-1-进程概述"><a href="#2-1-进程概述" class="headerlink" title="2.1 进程概述"></a>2.1 进程概述</h3><ul>
+<li><p>为什么需要进程</p>
+<ul>
+<li>没有配置OS之前，资源属于当前运行的程序</li>
+<li>配置OS之后，引入多道程序设计的概念</li>
+<li>合理的隔离资源、运行环境，提升资源利用率</li>
+<li>进程是系统进行资源分配和调度的基本单位</li>
+<li>进程作为程序独立运行的载体保障程序正常执行</li>
+<li>进程的存在使得操作系统资源的利用率大幅提升</li>
+</ul>
+</li>
+<li><p>主存中的进程形态-进程控制块（PCB）</p>
+<ul>
+<li>用于描述和控制进程运行的通用数据结构</li>
+<li>记录进程当前状态和控制进程运行的全部信息</li>
+<li>PCB的使得进程是能够独立运行的基本单位</li>
+<li>PCB是操作系统进行调度经常会被读取的信息</li>
+<li>PCB是常驻内存的，存放在系统专门开辟的PCB区域内</li>
+<li>标识符<ul>
+<li>标识符唯一标记一个进程，用于区别其他进程</li>
+</ul>
+</li>
+<li>状态<ul>
+<li>标记进程的进程状态，如：运行态</li>
+</ul>
+</li>
+<li>优先级</li>
+<li>程序计数器<ul>
+<li>进程即将被执行的下一条指令的地址</li>
+</ul>
+</li>
+<li>内存指针<ul>
+<li>程序代码、进程数据相关指针</li>
+</ul>
+</li>
+<li>上下文数据<ul>
+<li>进程执行时处理器存储的数据</li>
+</ul>
+</li>
+<li>IO状态信息<ul>
+<li>被进程IO操作所占用的文件列表</li>
+</ul>
+</li>
+<li>记账信息<ul>
+<li>使用处理器时间、时钟数总和等</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>进程与线程</p>
+<ul>
+<li>关系<ul>
+<li>一个进程可以有一个或多个线程</li>
+<li>进程是系统进行资源分配和调度的基本单位</li>
+<li>线程是操作系统进行运行调度的最小单位</li>
+<li>包含在进程之中，是进程中实际运行工作的单位</li>
+<li>一个进程可以并发多个线程，每个线程执行不同的任务</li>
+<li>进程的线程共享进程资源</li>
+</ul>
+</li>
+<li>区别</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>进程</th>
+<th>线程</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>资源</td>
+<td>资源分配的基本单位</td>
+<td>不拥有资源</td>
+</tr>
+<tr>
+<td>调度</td>
+<td>独立调度的基本单位</td>
+<td>独立调度的最小单位</td>
+</tr>
+<tr>
+<td>系统开销</td>
+<td>进程系统开销大</td>
+<td>线程系统开销小</td>
+</tr>
+<tr>
+<td>通信</td>
+<td>进程IPC</td>
+<td>读写同一进程数据通信</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<h3 id="2-2-进程管理五状态模型"><a href="#2-2-进程管理五状态模型" class="headerlink" title="2.2 进程管理五状态模型"></a>2.2 进程管理五状态模型</h3><ul>
+<li>就绪状态<ul>
+<li>当进程被分配到除CPU以外所有必要的资源后</li>
+<li>只要再获得CPU的使用权，就可以立即运行</li>
+<li>其他资源都准备好、只差CPU资源的状态为就绪状态</li>
+<li>就绪队列：在一个系统中多个处于就绪状态的进程通常排成一个队列</li>
+</ul>
+</li>
+<li>阻塞状态<ul>
+<li>进程因某种原因如：其他设备未就绪而无法继续执行</li>
+<li>从而放弃CPU的状态称为阻塞状态</li>
+<li>阻塞队列</li>
+</ul>
+</li>
+<li>执行状态<ul>
+<li>进程获得CPU，其程序正在执行称为执行状态</li>
+<li>在单处理机中，在某个时刻只能有一个进程是处于执行状态</li>
+</ul>
+</li>
+<li>创建状态<ul>
+<li>分配PCB—&gt; 插入就绪队列</li>
+<li>创建进程时拥有PCB但其他资源尚未就绪的状态称为创建状态</li>
+<li>操作系统提供fork函数接口创建进程</li>
+</ul>
+</li>
+<li>终止状态<ul>
+<li>系统清理 —&gt;PCB归还</li>
+<li>进程结束由系统清理或者归还PCB的状态称为终止状态</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/jaydroid1024/jay_image_repo/main/img/20210801163657.jpg" alt=""></p>
+<h3 id="2-3-进程同步"><a href="#2-3-进程同步" class="headerlink" title="2.3 进程同步"></a>2.3 进程同步</h3><ul>
+<li><p>为什么需要进程间同步</p>
+<ul>
+<li><p>生产者-消费者问题</p>
+<ul>
+<li>生产者进程将生产的产品提供给消费者进程进行消费</li>
+<li>生产者进程和消费者进程可以并发执行</li>
+<li>在两者之间设置了一个具有n个缓冲区的缓冲池</li>
+<li>生产者将产品缓冲区中，消费者进程从缓冲区取走产品消费</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/jaydroid1024/jay_image_repo/main/img/20210801163907.jpg" alt=""></p>
+<ul>
+<li>单从生产者程序或消费者程序去看是没问题的</li>
+<li>单两者并发执行时就可能出差错</li>
+<li>临界资源：缓存区</li>
+</ul>
+</li>
+<li><p>哲学家进餐问题</p>
+<ul>
+<li>有五个哲学家，他们的生活方式是交替地进行思考和进餐</li>
+<li>哲学家们共同使用一张圆桌，分别坐在周围的五张椅子上</li>
+<li>在圆桌上有五个碗和五支筷子。平时哲学家们只进行思考，饥饿时则试图取靠近他们的左、右两支筷子</li>
+<li>只有两支筷子都被他拿到的时候才能进餐</li>
+<li>进餐完毕之后，放下左右筷子继续思考</li>
+<li>五个哲学家同时拿起左边筷子</li>
+<li>五个哲学家都等待右边筷子释放</li>
+<li>五个哲学家饿死</li>
+<li>临界资源：筷子</li>
+</ul>
+</li>
+<li><p>问题的根源</p>
+<ul>
+<li>根源问题是：彼此相互之间没有通信</li>
+<li>如果生产者通知消费者我已经完成一件生产</li>
+<li>哲学家向旁边哲学家说我要进餐了</li>
+</ul>
+</li>
+<li><p>进程同步的目的</p>
+<ul>
+<li>对竞争资源在多进程间进行使用次序的协调</li>
+<li>使得并发执行的多个进程之间可以有效使用资源和相互合作</li>
+</ul>
+</li>
+<li><p>临界资源</p>
+<ul>
+<li>临界资源指的是一些虽作为共享资源却又无法同时被多个线程共同访问的共享资源。</li>
+<li>当有进程在使用临界资源时，其他进程必须依据操作系统的同步机制等待占用进程释放该共享资源才可重新竞争使<br>用共享资源。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>进程间同步的原则</p>
+<ul>
+<li>空闲让进：资源无占用，允许使用</li>
+<li>忙则等待：资源有占用，请求进程等待</li>
+<li>有限等待：保证有限等待时间能够使用资源</li>
+<li>让权等待：等待时，进程需要让出CPU</li>
+</ul>
+</li>
+<li><p>进程间同步的方法</p>
+<ul>
+<li>消息队列</li>
+<li>共享存储</li>
+<li>信号量</li>
+</ul>
+</li>
+<li><p>线程同步</p>
+<ul>
+<li>进程的线程共享进程资源</li>
+<li>当多个线程并发使用进程资源时，也需要同步</li>
+<li>线程间同步的方法<ul>
+<li>互斥量</li>
+<li>读写锁</li>
+<li>自旋锁</li>
+<li>条件变量</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-4-Linux的进程管理"><a href="#2-4-Linux的进程管理" class="headerlink" title="2.4 Linux的进程管理"></a>2.4 Linux的进程管理</h3><ul>
+<li><p>进程的类型</p>
+<ul>
+<li>前台进程<ul>
+<li>前台进程就是具有终端，可以和用户交互的进程</li>
+</ul>
+</li>
+<li>后台进程<ul>
+<li>与前台进程相对，没有占用终端的就是后台进程</li>
+<li>后台程序基本上不和用户交互，优先级比前台进程低</li>
+<li>将需要执行的命令以“&amp;”符号结束</li>
+</ul>
+</li>
+<li>守护进程<ul>
+<li>守护(daemon)进程是特殊的后台进程</li>
+<li>很多守护进程在系统引导的时候启动，一直运行直到系统关闭</li>
+<li>Linux有很多典型的守护进程</li>
+<li>进程名字以“d”结尾的一般都是守护进程<ul>
+<li>crond</li>
+<li>httpd</li>
+<li>sshd</li>
+<li>mysqld</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>进程的标记</p>
+<ul>
+<li><p>进程ID</p>
+<ul>
+<li>进程ID是进程的唯一标记，每个进程拥有不同的ID</li>
+<li>进程ID表现为一个非负整数，最大值由操作系统限定</li>
+<li>top命令查看系统中的所有进程信息</li>
+<li>ID为0的进程为idle进程，是系统创建的第一个进程</li>
+<li>ID为1的进程为init进程，是0号进程的子进程，完成系统初始化</li>
+<li>Init进程是所有用户进程的祖先进程</li>
+</ul>
+</li>
+<li><p>进程的状态标记</p>
+<ul>
+<li>man ps 命令查看用户命令帮助文档</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>状态符号</th>
+<th>状态说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>R</td>
+<td>(TASK_RUNNING)，进程正处于运行状态</td>
+</tr>
+<tr>
+<td>S</td>
+<td>(TASK_INTERRUPTIBLE)，进程正处于睡眠状态</td>
+</tr>
+<tr>
+<td>D</td>
+<td>(TASK_UNINTERRUPTIBLE)，进程正在处于IO等待的睡眠状态</td>
+</tr>
+<tr>
+<td>T</td>
+<td>(TASK_STOPPED)，进程正处于暂停状态</td>
+</tr>
+<tr>
+<td>Z</td>
+<td>(TASK_DEAD or EXIT_ZOMBIE)，进程正处于退出状态，或僵尸进程</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>父子进程</p>
+<ul>
+<li>操作系统提供fork函数接口创建进程</li>
+<li>父子进程关系:进程A调用fork函数创建进程B,进程A就是进程B的父进程</li>
+<li>父子进程关系可以通过pstree命令查看</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>操作进程的相关命令</p>
+<ul>
+<li>ps命令<ul>
+<li>ps命令常用于显示当前进程的状态</li>
+<li>ps命令常配合aux参数或ef参数和grep命令检索特定进程</li>
+</ul>
+</li>
+<li>jobs<ul>
+<li>只有(SIGKILL 9)信号可以无条件终止进程，其他信号进程有权忽略</li>
+</ul>
+</li>
+<li>nohup<ul>
+<li>不挂断地运行命令</li>
+</ul>
+</li>
+<li>fg/bg命令<ul>
+<li>fg命令将一个后台命令调换至前台终端继续执行</li>
+<li>bg命令将一个后台暂停的命令变成继续执行</li>
+<li>ctrl+z将前台工作暂停</li>
+</ul>
+</li>
+<li>kill<ul>
+<li>kill命令发送指定信号给进程</li>
+<li>kill –l 可以查看操作系统支持的信号</li>
+<li>只有(SIGKILL 9)信号可以无条件终止进程，其他信号进程有权忽略</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-作业管理"><a href="#3-作业管理" class="headerlink" title="3.作业管理"></a>3.作业管理</h2><h3 id="3-1-进程调度"><a href="#3-1-进程调度" class="headerlink" title="3.1 进程调度"></a>3.1 进程调度</h3><ul>
+<li><p>进程调度是指计算机通过决策决定哪个就绪进程可以获得CPU使用权</p>
+</li>
+<li><p>保留旧进程的运行信息，请出旧进程（收拾包袱）</p>
+</li>
+<li><p>选择新进程，准备运行环境并分配CPU（新进驻）</p>
+</li>
+<li><p>调度机制</p>
+<ul>
+<li>就绪队列的委派机制<ul>
+<li>将就绪进程按照一定的方式排成队列，以便调度程序可以最快找到就绪进程</li>
+</ul>
+</li>
+<li>选择运行进程的委派机制<ul>
+<li>调度程序以一定的策略选择就绪进程，将CPU资源分配给它</li>
+</ul>
+</li>
+<li>新老进程的上下文切换机制<ul>
+<li>保存当前进程的上下文信息，装入被委派执行进程的运行上下文</li>
+<li>老进程的上下文存入主存</li>
+<li>新进程的上下文装载到高速缓存中</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>调度方式</p>
+<ul>
+<li>非抢占式的调度<ul>
+<li>处理器一旦分配给某个进程，就让该进程一直使用下去</li>
+<li>调度程序不以任何原因抢占正在被使用的处理器</li>
+<li>直到进程完成工作或因为IO阻塞才会让出处理器</li>
+</ul>
+</li>
+<li>抢占式的调度<ul>
+<li>允许调度程序以一定的策略暂停当前运行的进程</li>
+<li>保存好旧进程的上下文信息，分配处理器给新进程</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>抢占式调度</th>
+<th>抢占式调度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>系统开销</td>
+<td>频繁切换，开销大</td>
+<td>切换次数少，开销小</td>
+</tr>
+<tr>
+<td>公平性</td>
+<td>相对公平</td>
+<td>不公平</td>
+</tr>
+<tr>
+<td>应用</td>
+<td>通用系统</td>
+<td>专用系统</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>调度算法</p>
+<ul>
+<li>先来先服务调度算法<ul>
+<li>从就绪队列按照顺序从队列头开始调度</li>
+</ul>
+</li>
+<li>短进程优先调度算法<ul>
+<li>调度程序优先选择就绪队列中估计运行时间最短的进程</li>
+<li>短进程优先调度算法不利于长作业进程的执行</li>
+</ul>
+</li>
+<li>高优先权优先调度算法<ul>
+<li>进程附带优先权，调度程序优先选择权重高的进程</li>
+<li>高优先权优先调度算法使得紧迫的任务可以优先处理</li>
+<li>前台进程优先级高于后台进程</li>
+</ul>
+</li>
+<li>时间片轮转算法<ul>
+<li>按先来先服务的原则排列就绪进程</li>
+<li>每次从队列头部取出待执行进程，分配一个时间片执行</li>
+<li>是相对公平的调度算法，但不能保证及时响应用户</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-2-死锁"><a href="#3-2-死锁" class="headerlink" title="3.2 死锁"></a>3.2 死锁</h3><ul>
+<li><p>死锁是指两个或两个以上的进程在执行过程中，由于竞争资源或者由于彼此通信而造成的一种阻塞的现象，若无外力作用，它们都将无法推进下去。此时称系统处于死锁状态或系统产生了死锁，这些永远在互相等待的进程称为死锁进程。</p>
+</li>
+<li><p>死锁的产生</p>
+<ul>
+<li><p>基本原因</p>
+<ul>
+<li>竞争资源<ul>
+<li>共享资源数量不满足各个进程需求</li>
+<li>各个进程之间发生资源竞争导致死锁</li>
+</ul>
+</li>
+<li>进程调度顺序不当<ul>
+<li>调度顺序导致共享资源被多个进程互相持有无法释放，可以优先满足进程A的调度再调度B</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>必要条件</p>
+<ul>
+<li>互斥条件<ul>
+<li>进程对资源的使用是排他性的使用</li>
+<li>某资源只能由一个进程使用，其他进程需要使用只能等待</li>
+</ul>
+</li>
+<li>请求保持条件<ul>
+<li>进程至少保持一个资源，又提出新的资源请求</li>
+<li>新资源被占用，请求被阻塞</li>
+<li>被阻塞的进程不释放自己保持的资源</li>
+</ul>
+</li>
+<li>不可剥夺条件<ul>
+<li>进程获得的资源在未完成使用前不能被剥夺</li>
+<li>获得的资源只能由进程自身释放</li>
+</ul>
+</li>
+<li>环路等待条件<ul>
+<li>发生死锁时，必然存在进程-资源环形链</li>
+<li>P1(R1)-&gt; P2(R2)-&gt;P3(R3-&gt;)P4(R4) -&gt;P1(R1)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>死锁的处理</p>
+<ul>
+<li><p>预防死锁的方法-破坏必要条件</p>
+<ul>
+<li>摒弃请求保持条件<ul>
+<li>系统规定进程运行之前，一次性申请所有需要的资源</li>
+<li>进程在运行期间不会提出资源请求，从而摒弃请求保持条件</li>
+</ul>
+</li>
+<li>摒弃不可剥夺条件<ul>
+<li>当一个进程请求新的资源得不到满足时，必须释放占有的资源</li>
+<li>进程运行时占有的资源可以被释放，意味着可以被剥夺</li>
+</ul>
+</li>
+<li>摒弃环路等待条件<ul>
+<li>可用资源线性排序，申请必须按照需要递增申请</li>
+<li>线性申请不再形成环路，从而摒弃了环路等待条件，A B C D E</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>银行家算法</p>
+<ul>
+<li>是一个可操作的著名的避免死锁的算法</li>
+<li>以银行借贷系统分配策略为基础的算法</li>
+<li>客户申请的贷款是有限的，每次申请需声明最大资金量</li>
+<li>银行家在能够满足贷款时，都应该给用户贷款</li>
+<li>客户在使用贷款后，能够及时归还贷款用来满足其它客户</li>
+<li>已分配资源表 </li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">A</th>
+<th align="center">B</th>
+<th align="center">C</th>
+<th align="center">D</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">P1</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">4</td>
+</tr>
+<tr>
+<td align="center">P2</td>
+<td align="center">1</td>
+<td align="center">4</td>
+<td align="center">3</td>
+<td align="center">2</td>
+</tr>
+<tr>
+<td align="center">P3</td>
+<td align="center">1</td>
+<td align="center">3</td>
+<td align="center">5</td>
+<td align="center">4</td>
+</tr>
+<tr>
+<td align="center">P4</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+</tbody></table>
+<ul>
+<li>所需资源表</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">A</th>
+<th align="center">B</th>
+<th align="center">C</th>
+<th align="center">D</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">P1</td>
+<td align="center">0</td>
+<td align="center">6</td>
+<td align="center">5</td>
+<td align="center">6</td>
+</tr>
+<tr>
+<td align="center">P2</td>
+<td align="center">1</td>
+<td align="center">9</td>
+<td align="center">4</td>
+<td align="center">2</td>
+</tr>
+<tr>
+<td align="center">P3</td>
+<td align="center">1</td>
+<td align="center">3</td>
+<td align="center">5</td>
+<td align="center">6</td>
+</tr>
+<tr>
+<td align="center">P4</td>
+<td align="center">1</td>
+<td align="center">7</td>
+<td align="center">5</td>
+<td align="center">0</td>
+</tr>
+</tbody></table>
+<ul>
+<li>可分配资源表</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">A</th>
+<th align="center">B</th>
+<th align="center">C</th>
+<th align="center">D</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">-</td>
+<td align="center">1</td>
+<td align="center">5</td>
+<td align="center">2</td>
+<td align="center">0</td>
+</tr>
+</tbody></table>
+<ul>
+<li>还需分配资源表</li>
+<li>通过可分配资源表看它能够满足哪一个进程所需就把可分配资源给谁，不满足的就不执行知道有资源能够满足任何一个为止</li>
+<li>所以P2会先获得资源</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">A</th>
+<th align="center">B</th>
+<th align="center">C</th>
+<th align="center">D</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">P1</td>
+<td align="center">0</td>
+<td align="center">6</td>
+<td align="center">4</td>
+<td align="center">2</td>
+</tr>
+<tr>
+<td align="center">P2</td>
+<td align="center">0</td>
+<td align="center">5</td>
+<td align="center">1</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">P3</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">2</td>
+</tr>
+<tr>
+<td align="center">P4</td>
+<td align="center">0</td>
+<td align="center">7</td>
+<td align="center">5</td>
+<td align="center">0</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="4-存储管理"><a href="#4-存储管理" class="headerlink" title="4.存储管理"></a>4.存储管理</h2><h3 id="4-1-计算机进行存储管理的必要性"><a href="#4-1-计算机进行存储管理的必要性" class="headerlink" title="4.1 计算机进行存储管理的必要性"></a>4.1 计算机进行存储管理的必要性</h3><ul>
+<li>早期计算机编程并不需要过多的存储管理</li>
+<li>随着计算机和程序越来越复杂，存储管理成为必要</li>
+<li>确保计算机有足够的内存处理数据</li>
+<li>确保程序可以从可用内存中获取一部分内存使用</li>
+<li>确保程序可以归还使用后的内存以供其他程序使用</li>
+</ul>
+<h3 id="4-2-内存的分配过程"><a href="#4-2-内存的分配过程" class="headerlink" title="4.2 内存的分配过程"></a>4.2 内存的分配过程</h3><ul>
+<li><p>分配方法</p>
+</li>
+<li><p>单一连续分配</p>
+<ul>
+<li>单一连续分配是最简单的内存分配方式</li>
+<li>只能在单用户、单进程的操作系统中使用</li>
+<li>分为系统区，用户区</li>
+</ul>
+</li>
+<li><p>固定分区分配</p>
+<ul>
+<li>固定分区分配是支持多道程序的最简单存储分配方式</li>
+<li>内存空间被划分为若干固定大小的区域</li>
+<li>每个分区只提供给一个程序使用，互不干扰</li>
+</ul>
+</li>
+<li><p>动态分区分配（常用）</p>
+<ul>
+<li>根据进程实际需要，动态分配内存空间</li>
+<li>相关数据结构、分配算法</li>
+<li>动态分区空闲表数据结构，1：已使用，0：未使用</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>分区</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>标记</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody></table>
+<ul>
+<li>动态分区空闲链数据结构<ul>
+<li>采用双向链表将内存块链接起来，连续的空闲区可以合并在一个链表节点里</li>
+<li>节点需记录可存储的容量</li>
+</ul>
+</li>
+<li>动态分区分配算法<ul>
+<li>首次适应算法(FF算法)<ul>
+<li>分配内存时从开始顺序查找适合内存区</li>
+<li>若没有合适的空闲区，则该次分配失败</li>
+<li>每次从头部开始，使得头部地址空间不断被划分</li>
+<li>循环适应算法，每次分配不从头开始，从上一次结束的地方开始分配</li>
+</ul>
+</li>
+<li>最佳适应算法(BF算法)<ul>
+<li>最佳适应算法要求空闲区链表按照容量大小排序</li>
+<li>遍历空闲区链表找到最佳合适空闲区</li>
+</ul>
+</li>
+<li>快速适应算法(QF算法)<ul>
+<li>快速适应算法要求有多个空闲区链表</li>
+<li>每个空闲区链表存储一种容量的空闲区</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-3-内存的回收过程"><a href="#4-3-内存的回收过程" class="headerlink" title="4.3 内存的回收过程"></a>4.3 内存的回收过程</h3><ul>
+<li>存在回收内存的四种情况<ul>
+<li>回收区与空闲区链接在一起并且链接在后面<ul>
+<li>不需要新建空闲链表节点</li>
+<li>只需要把空闲区1的容量增大为空闲区即可</li>
+</ul>
+</li>
+<li>回收区与空闲区链接在一起并且链接在前面<ul>
+<li>将回收区与空闲区合并</li>
+<li>新的空闲区使用回收区的地址</li>
+</ul>
+</li>
+<li>回收区与空闲区链接在一起并且链接在中间<ul>
+<li>将空闲区1、空闲区2和回收区合并</li>
+<li>新的空闲区使用空闲区1的地址</li>
+</ul>
+</li>
+<li>未链接空闲区，单一的回收区<ul>
+<li>为回收区创建新的空闲节点</li>
+<li>插入到相应的空闲区链表中去</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-4-进程的存储管理"><a href="#4-4-进程的存储管理" class="headerlink" title="4.4 进程的存储管理"></a>4.4 进程的存储管理</h3><ul>
+<li><p>页式存储管理</p>
+<ul>
+<li>字块是相对物理设备的定义，页面则是相对逻辑空间的定义</li>
+<li>将进程逻辑空间等分成若干大小的页面</li>
+<li>相应的把物理内存空间分成与页面大小的物理块</li>
+<li>以页面为单位把进程空间装进物理内存中分散的物理块</li>
+<li>页面大小应该适中，过大难以分配，过小内存碎片过多</li>
+<li>页面大小通常是512B~8K</li>
+<li><strong>页表</strong>：记录进程逻辑空间与物理空间的映射，表示为 [页面编号，字块编号]</li>
+<li><strong>页地址</strong>：[地址，页内偏移]</li>
+<li><strong>问题</strong>：现代计算机系统中，可以支持非常大的逻辑地址空间（2^32~2^64），这样，页表就变得非常大，要占用非常大的内存空间，如，具有32位逻辑地址空间的分页系统，规定页面大小为4KB，则在每个进程页表中的页表项可达1M(2^20)个，如果每个页表项占用1Byte，故每个进程仅仅页表就要占用1MB的内存空间<ul>
+<li>2^32/2^12=2^20=1M个页表项</li>
+</ul>
+</li>
+<li><strong>多级页表</strong>：根页表的字块存的是子页表的地址，在运行时可以按需加载子页表</li>
+<li><strong>不足</strong>：有一段连续的逻辑分布在多个页面中，将大大降低执行效率</li>
+</ul>
+</li>
+<li><p>段式存储管理</p>
+<ul>
+<li>将进程逻辑空间划分成若干段（非等分）</li>
+<li>段的长度由连续逻辑的长度决定</li>
+<li>主函数MAIN、子程序段X、子函数Y等</li>
+<li><strong>段表</strong>：[段号 ,基址. 段长]</li>
+<li><strong>段地址</strong>：[段号, 段内偏移]</li>
+</ul>
+</li>
+<li><p>页式存储管理与段式存储管理的对比</p>
+<ul>
+<li>段式存储和页式存储都离散地管理了进程的逻辑空间</li>
+<li>页是物理单位，段是逻辑单位</li>
+<li>分页是为了合理利用空间，分段是满足用户要求</li>
+<li>页大小由硬件固定，段长度可动态变化</li>
+<li>页表信息是一维的，段表信息是二维的</li>
+</ul>
+</li>
+<li><p>段页式存储管理</p>
+<ul>
+<li>分页可以有效提高内存利用率（虽然说存在页内碎片）</li>
+<li>分段可以更好满足用户需求，因为逻辑可以通过用户来写</li>
+<li>两者结合，形成段页式存储管理</li>
+<li>先将逻辑空间按段式管理分成若干段</li>
+<li>再把段内空间按页式管理等分成若干页</li>
+<li><strong>段页地址</strong>：[段号, 段内页号. 页内地址]</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/jaydroid1024/jay_image_repo/main/img/20210801164213.jpg" alt=""></p>
+</li>
+</ul>
+<h3 id="4-5-虚拟内存"><a href="#4-5-虚拟内存" class="headerlink" title="4.5 虚拟内存"></a>4.5 虚拟内存</h3><ul>
+<li>虚拟内存概述<ul>
+<li>有些进程实际需要的内存很大，超过物理内存的容量</li>
+<li>多道程序设计，使得每个进程可用物理内存更加稀缺</li>
+<li>不可能无限增加物理内存，物理内存总有不够的时候</li>
+<li>虚拟内存是操作系统内存管理的关键技术</li>
+<li>使得多道程序运行和大程序运行成为现实</li>
+<li>把程序使用内存划分，将部分暂时不使用的内存放置在辅存</li>
+<li>虚拟内存实际是对物理内存的补充，速度接近于内存，成本接近于辅存</li>
+</ul>
+</li>
+<li>程序的局部性原理<ul>
+<li>局部性原理是指CPU访问存储器时，无论是存取指令还是存取数据，所访问的存储单元都趋于聚集在一个较小的连续区域中。</li>
+<li>程序运行时，无需全部装入内存，装载部分即可</li>
+<li>如果访问页不在内存，则发出缺页中断，发起页面置换</li>
+<li>从用户层面看，程序拥有很大的空间，即是虚拟内存</li>
+</ul>
+</li>
+<li>虚拟内存的置换</li>
+<li>替换策略发生在Cache-主存层次、主存-辅存层次<ul>
+<li>Cache-主存层次的替换策略主要是为了解决速度问题</li>
+<li>主存-辅存层次主要是为了解决容量问题</li>
+<li>置换时机<ul>
+<li>高速缓存的替换时机<ul>
+<li>缓存没有数据，需要从主存载入所需数据</li>
+</ul>
+</li>
+<li>主存页面的替换时机<ul>
+<li>主存缺页，需要从辅存载入页面数据</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>置换算法<ul>
+<li>先进先出算法(FIFO)<ul>
+<li>把主存看做是一个先进先出的队列</li>
+<li>优先替换最先进入队列的字块</li>
+</ul>
+</li>
+<li>最不经常使用算法(LFU)<ul>
+<li>优先淘汰最不经常使用的字块</li>
+<li>需要额外的空间记录字块的使用频率</li>
+</ul>
+</li>
+<li>最近最少使用算法(LRU)<ul>
+<li>优先淘汰一段时间内没有使用的字块</li>
+<li>如果正在使用的字块在缓存就将其移到表头，保证链表头部节点是最近使用的</li>
+<li>有多种实现方法，一般使用双向链表</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-6-Linux的存储管理"><a href="#4-6-Linux的存储管理" class="headerlink" title="4.6 Linux的存储管理"></a>4.6 Linux的存储管理</h3><ul>
+<li><p>页内碎片 </p>
+<ul>
+<li>内部碎片是已经被分配出去（能明确指出属于哪个进程）的内存空间大于请求所需的内存空间，不能被利用的内存空间就是内部碎片。</li>
+</ul>
+</li>
+<li><p>页外碎片</p>
+<ul>
+<li>外部碎片是指还没有分配出去（不属于任何进程），但是由于大小而无法分配给申请内存空间的新进程的内存空闲块。</li>
+</ul>
+</li>
+<li><p>Buddy内存管理算法</p>
+<ul>
+<li>Buddy算法是经典的内存管理算法</li>
+<li>算法基于计算机处理二进制的优势具有极高的效率</li>
+<li>算法主要是为了解决内存外碎片的问题</li>
+<li>实际是将内存外碎片问题 转移成内存内碎片问题</li>
+<li>努力让内存分配与相邻内存合并能快速进行</li>
+<li>内存分配原则<ul>
+<li>向上取整为2的幂大小</li>
+<li>70k→128k</li>
+<li>129k→256k</li>
+<li>666k→1024k</li>
+</ul>
+</li>
+<li>伙伴系统<ul>
+<li>“伙伴”指的是内存的“伙伴”</li>
+<li>一片连续内存的“伙伴”是相邻的另一片大小一样的连续内存</li>
+</ul>
+</li>
+<li>分配过程<ul>
+<li>创建一系列空闲块链表，每一种都是2的幂</li>
+<li>假设存储空间有1M大小，分配100k内存</li>
+<li>100k向上取2的幂=128k</li>
+<li>查询是否有128k空闲内存块？</li>
+<li>没有！查询是否有256k空闲内存块？</li>
+<li>没有！查询是否有512k空闲内存块？</li>
+<li>没有！查询是否有1M空闲内存块？</li>
+<li>有，摘下1M空闲内存块，分配出去</li>
+<li>拆下512k放在512k的空闲链表，其余的分配出去</li>
+<li>拆下256k放在256k的空闲链表，其余的分配出去</li>
+<li>拆下128k放在128k的空闲链表，其余的分配出去</li>
+<li>分配完毕</li>
+</ul>
+</li>
+<li>回收过程<ul>
+<li>判断刚才分配的内存伙伴在空闲链表上吗？</li>
+<li>在！移除伙伴，合并为256k空闲内存，判断</li>
+<li>在！移除伙伴，合并为512k空闲内存，判断</li>
+<li>在！移除伙伴，合并为1M空闲内存</li>
+<li>插入1M空闲链表，回收完成</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Linux交换空间</p>
+<ul>
+<li>交换空间(Swap)是磁盘的一个分区</li>
+<li>Linux物理内存满时，会把一些内存交换至Swap空间</li>
+<li>Swap空间是初始化系统时配置的</li>
+<li>top命令可以查看交换空间的分配情况</li>
+<li>主要用途：<ul>
+<li>冷启动内存依赖</li>
+<li>系统睡眠依赖</li>
+<li>大进程空间依赖</li>
+</ul>
+</li>
+<li>交换空间VS虚拟内存<ul>
+<li>Swap空间是操作系统概念</li>
+<li>Swap空间解决系统物理内存不足问题</li>
+<li>Swap空间存在于磁盘</li>
+<li>Swap空间与主存发生置换</li>
+<li>虚拟内存是进程概念</li>
+<li>虚拟内存解决进程物理内存不足问题</li>
+<li>虚拟内存存在于磁盘</li>
+<li>虚拟内存与主存发生置换</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="5-文件管理"><a href="#5-文件管理" class="headerlink" title="5.文件管理"></a>5.文件管理</h2><h3 id="5-1-操作系统的文件管理"><a href="#5-1-操作系统的文件管理" class="headerlink" title="5.1 操作系统的文件管理"></a>5.1 操作系统的文件管理</h3><ul>
+<li><p>文件的逻辑结构</p>
+<ul>
+<li>逻辑结构的文件类型<ul>
+<li>有结构文件<ul>
+<li>文本文件、 文档 、媒体文件</li>
+<li>文件内容由定长记录和可变长记录组成</li>
+<li>定长记录存储文件格式、文件描述等结构化数据项</li>
+<li>可变长记录存储文件具体内容</li>
+<li>例如：PNG文件标记–PNG数据块–文件结束标记</li>
+</ul>
+</li>
+<li>无结构文件<ul>
+<li>exe文件、 dll链接库文件、 so文件</li>
+<li>二进制文件 、链接库</li>
+<li>也称为流式文件</li>
+<li>文件内容长度以字节为单位</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>顺序文件<ul>
+<li>顺序文件是指按顺序存放在存储介质中的文件</li>
+<li>磁带的存储特性使得磁带文件只能存储顺序文件</li>
+<li>顺序文件是所有逻辑文件当中存储效率最高的</li>
+<li>顺序文件的增删改效率低</li>
+</ul>
+</li>
+<li>索引文件<ul>
+<li>可变长文件不适合使用顺序文件格式存储</li>
+<li>索引文件是为了解决可变长文件存储而发明的一种文件格式</li>
+<li>索引文件需要配合索引表完成存储的操作</li>
+<li>索引表：[键 ,逻辑地址]</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>辅存的存储空间分配</p>
+<ul>
+<li>辅存的分配方式<ul>
+<li>连续分配<ul>
+<li>顺序读取文件内容非常容易，速度很快</li>
+<li>对存储要求高，要求满足容量的连续存储空间</li>
+</ul>
+</li>
+<li>链接分配<ul>
+<li>链接分配可以将文件存储在离散的盘块中<br>需要额外的存储空间存储文件的盘块链接顺序</li>
+<li>隐式链接 <ul>
+<li>隐式分配的下一个链接指向存储在当前盘块内</li>
+<li>隐式分配适合顺序访问，随机访问效率很低</li>
+<li>可靠性差，任何一个链接出问题都影响整个文件</li>
+</ul>
+</li>
+<li>显式链接<ul>
+<li>FAT( File Allocation Table)  [物理块 ,下一盘块]</li>
+<li>不支持高效的直接存储（FAT记录项多）</li>
+<li>检索时FAT表占用较大的存储空间（需要将整个FAT加载到内存）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>索引分配<ul>
+<li>把文件的所有盘块集中存储（索引）</li>
+<li>读取某个文件时，将文件索引读取进内存即可</li>
+<li>每个文件拥有一个索引块，记录所有盘块信息</li>
+<li>索引分配方式支持直接访问盘块</li>
+<li>文件较大时，索引分配方式具有明显优势</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>辅存的存储空间管理</p>
+<ul>
+<li><p>空闲表</p>
+<ul>
+<li>[序号, 第一个空闲盘块号, 空闲盘块数]</li>
+<li>空闲盘区的分配与内存分配类似</li>
+<li>首次适应算法、循环适应算法等</li>
+<li>回收过程也与内存回收类似</li>
+</ul>
+</li>
+<li><p>空闲链表 </p>
+<ul>
+<li>空闲链表法把所有空闲盘区组成一个空闲链表</li>
+<li>每个链表节点存储空闲盘块和空闲的数目</li>
+</ul>
+</li>
+<li><p>位示图</p>
+<ul>
+<li>位示图维护成本很低</li>
+<li>位示图可以非常容易找到空闲盘块</li>
+<li>位示图使用0/1比特位，占用空间很小</li>
+<li>0：未使用，1：已使用</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">盘块/磁道</th>
+<th align="center">1</th>
+<th align="center">2</th>
+<th align="center">3</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">1</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+</li>
+<li><p>目录管理</p>
+<ul>
+<li>目录树：<ul>
+<li>任何文件或目录都只有唯一路径</li>
+</ul>
+</li>
+<li>文件描述信息<ul>
+<li>文件标识符 文件类型 文件权限 文件物理地址 文件长度 文件连接计数 文件存取时间 索引节点编号 文件状态 访问计数 链接指针</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="5-2-Linux文件的基本操作"><a href="#5-2-Linux文件的基本操作" class="headerlink" title="5.2 Linux文件的基本操作"></a>5.2 Linux文件的基本操作</h3><ul>
+<li><p>Linux目录</p>
+<ul>
+<li>Linux一切皆文件</li>
+<li>常用目录：/bin /etc /home /usr /opt /proc /dev /mnt /lib /var …</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>目录</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>/bin</td>
+<td>存放二进制可执行文件(ls,cat,mkdir等)，常用命令一般都在这里</td>
+</tr>
+<tr>
+<td>/etc</td>
+<td>存放系统管理和配置文件</td>
+</tr>
+<tr>
+<td>/home</td>
+<td>存放所有用户文件的根目录，是用户主目录的基点，比如用户user的主目录就是/home/user</td>
+</tr>
+<tr>
+<td>/usr</td>
+<td>用于存放系统应用程序，比较重要的目录/usr/local 本地系统管理员软件安装目录</td>
+</tr>
+<tr>
+<td>/opt</td>
+<td>额外安装的可选应用程序包所放置的位置</td>
+</tr>
+<tr>
+<td>/proc</td>
+<td>虚拟文件系统目录，是系统内存的映射。可直接访问这个目录来获取系统信息。</td>
+</tr>
+<tr>
+<td>/root</td>
+<td>超级用户（系统管理员）的主目录</td>
+</tr>
+<tr>
+<td>/sbin</td>
+<td>存放二进制可执行文件，只有root才能访问</td>
+</tr>
+<tr>
+<td>/dev</td>
+<td>用于存放设备文件</td>
+</tr>
+<tr>
+<td>/mnt</td>
+<td>系统管理员安装临时文件系统的安装点，系统提供这个目录是让用户临时挂载其他的文件系统。</td>
+</tr>
+<tr>
+<td>/boot</td>
+<td>存放用于系统引导时使用的各种文件</td>
+</tr>
+<tr>
+<td>/lib</td>
+<td>存放跟文件系统中的程序运行所需要的共享库及内核模块</td>
+</tr>
+<tr>
+<td>/var</td>
+<td>用于存放运行时需要改变数据的文件</td>
+</tr>
+</tbody></table>
+<ul>
+<li>相对路径：相对当前目录开始的目录</li>
+<li>绝对路径：相对根目录开始的目录</li>
+</ul>
+</li>
+<li><p>Linux文件常用操作</p>
+<ul>
+<li>创建：<ul>
+<li>touch file </li>
+<li>vim file2 创建并编辑file2</li>
+<li>mkdir dir1 创建文件夹dir1</li>
+</ul>
+</li>
+<li>删除<ul>
+<li>rm file </li>
+<li>rm -r dir1/ 递归删除文件夹dir1</li>
+</ul>
+</li>
+<li>读取<ul>
+<li>cat file2</li>
+</ul>
+</li>
+<li>写入<ul>
+<li>vim file2 创建并编辑file2</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>文件类型</p>
+<ul>
+<li>普通文件(-)</li>
+<li>目录文件(d) </li>
+<li>符号链接(l) </li>
+<li>设备文件(b、 c)</li>
+<li>套接字(s) </li>
+<li>FIFO(p)</li>
+</ul>
+</li>
+<li><p>Linux的文件系统</p>
+<ul>
+<li><p>文件系统概览</p>
+<ul>
+<li>FAT<ul>
+<li>FAT(File Allocation Table)</li>
+<li>FAT16、 FAT32等，微软Dos/Windows使用的文件系统</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>使用一张表保存盘块的信息</p>
+<ul>
+<li>NTFS</li>
+</ul>
+</li>
+<li><p>NTFS (New Technology File System)</p>
+<ul>
+<li>WindowsNT环境的文件系统</li>
+<li>NTFS对FAT进行了改进，取代了旧的文件系统<ul>
+<li>EXT2/3/4</li>
+</ul>
+</li>
+<li>EXT(Extended file system)：扩展文件系统</li>
+<li>Linux的文件系统</li>
+<li>EXT2/3/4 数字表示第几代</li>
+</ul>
+</li>
+<li><p>Ext文件系统</p>
+<ul>
+<li>Boot Sector：启动扇区，安装开机管理程序</li>
+</ul>
+</li>
+<li><p>Block Group：块组，存储数据的实际位置</p>
+<ul>
+<li><p>Boot Sector</p>
+</li>
+<li><p>Block Group</p>
+<ul>
+<li>SuperBlock<ul>
+<li>记录整个文件系统相关信息的地方</li>
+<li>Block和Inode的使用情况</li>
+<li>时间信息、控制信息等</li>
+</ul>
+</li>
+<li>Inode Bitmap<ul>
+<li>Inode的位示图</li>
+<li>记录已分配的Inode和未分配的Inode</li>
+</ul>
+</li>
+<li>Block Bitmap<ul>
+<li>功能与Inode bitmap类似</li>
+<li>记录Data block的使用情况</li>
+</ul>
+</li>
+<li>Inode Table<ul>
+<li>存放文件Inode的地方</li>
+<li>每一个文件（目录）都有一个Inode</li>
+<li>是每一个文件（目录）的索引节点</li>
+<li>Inode：<ul>
+<li>文件类型 文件权限 文件物理地址 文件长度 文件连接计数 文件存取时间 索引节点编号 文件状态 访问计数 链接指针 …</li>
+<li>文件名不是存放在Inode节点上的，而是存放在目录的Inode节点</li>
+<li>列出目录文件的时候无需加载文件的Inode</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Data Block<ul>
+<li>Data block是存放文件内容的地方</li>
+<li>每个block都有唯一的编号</li>
+<li>文件的block记录在文件的Inode上</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/008eGmZEly1gnhudx17c4j30ku0b9dhl.jpg" alt=""></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="6-设备管理"><a href="#6-设备管理" class="headerlink" title="6.设备管理"></a>6.设备管理</h2><ul>
+<li><p>广义的IO设备</p>
+<ul>
+<li>对CPU而言，凡是对CPU进行数据输入的都</li>
+<li>对CPU而言，凡是CPU进行数据输出的都是输出设备是输入设备</li>
+</ul>
+</li>
+<li><p>广义的IIO设备分类</p>
+<ul>
+<li>使用特性分类<ul>
+<li>存储设备： U盘 内存 磁盘 </li>
+<li>交互IO设备：键盘 显示器 鼠标</li>
+</ul>
+</li>
+<li>信息交换的单位<ul>
+<li>块设备 ：磁盘 SD卡 </li>
+<li>字符设备：打印机 Shell终端</li>
+</ul>
+</li>
+<li>设备共享属性<ul>
+<li>独占设备 </li>
+<li>共享设备 </li>
+<li>虚拟设备</li>
+</ul>
+</li>
+<li>传输速率<ul>
+<li>低速设备 </li>
+<li>中速设备 </li>
+<li>高速设备</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>IO设备的缓冲区</p>
+<ul>
+<li>背景：CPU与IO设备的速率不匹配</li>
+<li>减少CPU处理IO请求的频率</li>
+<li>提高CPU与IO设备之间的并行性</li>
+<li>专用缓冲区只适用于特定的IO进程</li>
+<li>当这样的IO进程比较多时，对内存的消耗也很大</li>
+<li>操作系统划出可供多个进程使用的公共缓冲区，称之为缓冲池</li>
+</ul>
+</li>
+<li><p>SPOOLing技术</p>
+<ul>
+<li>虚拟设备技术</li>
+<li>是关于慢速字符设备如何与计算机主机交换信息的一种技术</li>
+<li>利用高速共享设备将低速的独享设备模拟为高速的共享设备</li>
+<li>逻辑上，系统为每一个用户都分配了一台独立的高速独享设备</li>
+<li>SPOOLing技术把同步调用低速设备改为异步调用</li>
+<li>在输入、输出之间增加了排队转储环节（输入井、输出井）</li>
+<li>SPOOLing负责输入（出）井与低速设备之间的调度</li>
+<li>逻辑上，进程直接与高速设备交互，减少了进程的等待时间</li>
+</ul>
+</li>
+</ul>
+<h2 id="7-实践"><a href="#7-实践" class="headerlink" title="7.实践"></a>7.实践</h2><h3 id="7-1-线程同步实践"><a href="#7-1-线程同步实践" class="headerlink" title="7.1 线程同步实践"></a>7.1 线程同步实践</h3><ul>
+<li>互斥量<ul>
+<li>两个线程的指令交叉执行导致了同步问题</li>
+<li>互斥量可以保证先后执行</li>
+<li>原子性<ul>
+<li>这一系列操作要么全部执行完成，要么全部没有执行</li>
+<li>原子性是指一系列操作不可被中断的特性</li>
+<li>不存在部分执行部分未执行的情况 </li>
+</ul>
+</li>
+<li>互斥量（互斥锁），处于两态之一的变量：解锁和加锁</li>
+<li>互斥量是最简单的线程同步的方法</li>
+<li>两个状态可以保证资源访问的串行</li>
+<li>开发者可以直接使用API完成资源的加锁、解锁操作</li>
+<li>操作系统直接提供了互斥量的API<ul>
+<li>C 语言<ul>
+<li>pthread_mutex_lock</li>
+<li>pthread_mutex_t</li>
+<li>pthread_mutex_unlock</li>
+</ul>
+</li>
+<li>Java<ul>
+<li>synchronized</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>自旋锁<ul>
+<li>和互斥锁有什么不一样的？</li>
+<li>使用自旋锁的线程会反复检查锁变量是否可用</li>
+<li>自旋锁也是一种多线程同步的变量</li>
+<li>自旋锁不会让出CPU，是一种忙等待状态</li>
+<li>死循环等待锁被释放</li>
+<li>操作系统内部很多地方使用的是自旋锁</li>
+<li>自旋锁避免了进程或线程上下文切换的开销</li>
+<li>自旋锁不适合在单核CPU使用，因为自旋锁不会让出CPU</li>
+<li>api<ul>
+<li>pthread_spinlock_t</li>
+<li>pthread_ spinlock <em>lock</em></li>
+<li>pthread_ spinlock _unlock</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>读写锁<ul>
+<li>读取的时候并不会改变临界资源的值</li>
+<li>临界资源多读少写</li>
+<li>是否存在效率更高的同步方法？</li>
+<li>允许多个读者同时访问资源以提高读性能</li>
+<li>读写锁是一种特殊的自旋锁</li>
+<li>对于写操作则是互斥的</li>
+<li>API<ul>
+<li>pthread_rwlock_t</li>
+<li>pthread_rwlock_rdlock（读锁）</li>
+<li>pthread_rwlock_wrlock（写锁）</li>
+</ul>
+</li>
+<li>互斥量、自旋锁、读写锁 同步过程：等待解锁–加锁–【临界资源】–解锁</li>
+</ul>
+</li>
+<li>条件变量<ul>
+<li>条件变量允许线程睡眠，直到满足某种条件</li>
+<li>条件变量是一种相对复杂的线程同步方法</li>
+<li>当满足条件时，可以向该线程信号，通知唤醒</li>
+<li>生产者消费者问题<ul>
+<li>缓冲区满时，不允许生产者往缓冲区生产，生产者必须等待</li>
+<li>缓冲区小于等于0时，不允许消费者消费，消费者必须等待</li>
+<li>当生产者生产一个产品时，唤醒可能等待的消费者</li>
+<li>当消费者消费一个产品时，唤醒可能等待的生产者</li>
+</ul>
+</li>
+<li>API<ul>
+<li>pthread_cond_t,配合互斥量使用</li>
+<li>pthread_cond_wait(等待条件满足)</li>
+<li>pthread_cond_signal(等待被唤醒)</li>
+</ul>
+</li>
+<li>条件变量同步流程：等待解锁–加锁保护条件变量–等待条件满足被唤醒–【临界资源】–解锁</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>同步方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>互斥锁</td>
+<td>最简单的一种线程同步方法，会阻塞线程</td>
+</tr>
+<tr>
+<td>自旋锁</td>
+<td>避免切换的一种线程同步方法，属于“忙等待”，不让出CPU</td>
+</tr>
+<tr>
+<td>读写锁</td>
+<td>为“读多写少” 的资源设计的线程同步方法，可以显著提高性能</td>
+</tr>
+<tr>
+<td>条件变量</td>
+<td>相对复杂的一种线程同步方法，有更灵活的使用场景</td>
+</tr>
+</tbody></table>
+<h3 id="7-2-进程同步实践"><a href="#7-2-进程同步实践" class="headerlink" title="7.2 进程同步实践"></a>7.2 进程同步实践</h3><ul>
+<li><p>使用fork系统调用创建进程</p>
+<ul>
+<li>fork创建的进程初始化状态与父进程一样</li>
+<li>fork系统调用是用于创建进程的</li>
+<li>系统会为fork的进程分配新的资源</li>
+<li>fork会返回两次，分别返回子进程id和0</li>
+<li>fork系统调用无参数</li>
+<li>返回子进程id的是父进程，返回0的是子进程</li>
+</ul>
+</li>
+<li><p>共享内存</p>
+<ul>
+<li>进程的线程共享进程资源</li>
+<li>进程共享计算机资源</li>
+<li>在某种程度上，多进程是共同使用物理内存的</li>
+<li>由于操作系统的进程管理，进程间的内存空间是独立的</li>
+<li>进程默认是不能访问进程空间之外的内存空间的</li>
+<li>共享存储允许不相关的进程访问同一片物理内存</li>
+<li>共享内存是两个进程之间共享和传递数据最快的方式</li>
+<li>共享内存未提供同步机制，需要借助其他机制管理访问，比如通过一个Boolean的变量来控制是否可读可写</li>
+<li>共享内存是高性能后台开发中最常用的进程同步方式</li>
+<li>共享内存 使用流程<ul>
+<li>申请共享内存 </li>
+<li>连接到进程空间</li>
+<li>脱离进程空间 </li>
+<li>使用共享内存&amp;删除</li>
+</ul>
+</li>
+<li>代码实现</li>
+</ul>
+</li>
+<li><p>Unix域套接字</p>
+<ul>
+<li>域套接字是一种高级的进程间通信的方法</li>
+<li>Unix域套接字可以用于同一机器进程间通信</li>
+<li>套接字(socket)原是网络通信中使用的术语</li>
+<li>Unix系统提供的域套接字提供了网络套接字类似的功能</li>
+<li>Nginx、uWSGI</li>
+<li>服务端<ul>
+<li>创建套接字</li>
+<li>绑定(bind)套接字</li>
+<li>监听(listen)套接字</li>
+<li>接收&amp;处理信息</li>
+</ul>
+</li>
+<li>客户端<ul>
+<li>创建套接字</li>
+<li>连接套接字</li>
+<li>发送信息</li>
+</ul>
+</li>
+<li>代码实现</li>
+<li>提供了单机简单可靠的进程通信同步服务</li>
+<li>只能在单机使用，不能跨机器使用</li>
+</ul>
+</li>
+</ul>
+<h2 id="8-关于我"><a href="#8-关于我" class="headerlink" title="8.关于我"></a>8.关于我</h2><p>一个专注基础知识的十二线小码农，本着 <strong>基础，体系，实践，分享</strong> 的学习理念，在自我提升的同时分享自己的心得体会，不断完善，周而复始。</p>
+<p><a href="http://basedev.cn/" target="_blank" rel="noopener">个人网站 basedev.cn</a>  </p>
+<p><a href="https://github.com/jaydroid1024" target="_blank" rel="noopener">Github</a></p>
+<p>BaseDev系列只整理点到为止的知识纲领，不求甚解；欲知其所以然者还得回归书本且付诸实践</p>
+<h2 id="9-参考"><a href="#9-参考" class="headerlink" title="9.参考"></a>9.参考</h2><p><a href="https://kaiwu.lagou.com/course/courseInfo.htm?sid=20-h5Url-0&amp;courseId=478&amp;lagoufrom=noapp&amp;sharetype=wx_friend#/content" target="_blank" rel="noopener">重学操作系统 | 拉钩教育</a></p>
+<p><a href="https://coding.imooc.com/class/package/355.html" target="_blank" rel="noopener">编程必备基础 | 慕课网</a></p>
+
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Jay</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://www.basedev.cn/2021/07/01/computer-os/">http://www.basedev.cn/2021/07/01/computer-os/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">Jay</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/">
+                                    <span class="chip bg-color">计算机基础</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                    <span class="chip bg-color">操作系统</span>
+                                </a>
+                            
+                                <a href="/tags/Linux/">
+                                    <span class="chip bg-color">Linux</span>
+                                </a>
+                            
+                                <a href="/tags/%E8%BF%9B%E7%A8%8B/">
+                                    <span class="chip bg-color">进程</span>
+                                </a>
+                            
+                                <a href="/tags/%E7%BA%BF%E7%A8%8B/">
+                                    <span class="chip bg-color">线程</span>
+                                </a>
+                            
+                                <a href="/tags/%E4%BD%9C%E4%B8%9A%E7%AE%A1%E7%90%86/">
+                                    <span class="chip bg-color">作业管理</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/">
+                                    <span class="chip bg-color">文件管理</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="wechat,qq,qzone,weibo,twitter,facebook,google,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+        <link rel="stylesheet" href="/libs/gitment/gitment-default.css">
+<link rel="stylesheet" href="/css/gitment.css">
+
+<div class="gitment-card card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="gitment-content" class="card-content"></div>
+</div>
+
+<script src="/libs/gitment/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+    id: 'Thu Jul 01 2021 14:16:55 GMT+0800',
+    owner: 'jaydroid1024',
+    repo: 'hexo_blog_repo',
+    oauth: {
+        client_id: '4c4d58f27f5177dff57c',
+        client_secret: 'c9fce45c9250437cb34e3a7755c4135df47aa65b'
+    }
+});
+
+gitment.render('gitment-content');
+</script>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2021/07/31/android-base/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="筑基系列-Android基础知识小抄版（更新中...）">
+                        
+                        <span class="card-title">筑基系列-Android基础知识小抄版（更新中...）</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Android/Java 基础知识小抄版提纲挈领，包括：Java（集合、并发、IO、语言特性）Android（四大组件原理、Handler、布局等）
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-07-31
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Android/" class="post-category">
+                                    Android
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Android/">
+                        <span class="chip bg-color">Android</span>
+                    </a>
+                    
+                    <a href="/tags/Java/">
+                        <span class="chip bg-color">Java</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/05/31/computer-composition/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="筑基系列-计算机基础知识小抄版">
+                        
+                        <span class="card-title">筑基系列-计算机基础知识小抄版</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            计算机基础知识提纲挈领，包括发展史、CPU、总线、存储器、指令系统、控制器、运算器、位运算等
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-31
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" class="post-category">
+                                    计算机
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/">
+                        <span class="chip bg-color">计算机基础</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">
+                        <span class="chip bg-color">组成原理</span>
+                    </a>
+                    
+                    <a href="/tags/CPU/">
+                        <span class="chip bg-color">CPU</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%AD%98%E5%82%A8%E5%99%A8/">
+                        <span class="chip bg-color">存储器</span>
+                    </a>
+                    
+                    <a href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/">
+                        <span class="chip bg-color">位运算</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 王学杰<br />'
+            + '文章作者: Jay<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.3'
+                   list-folded='false'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">2021</span>
+            <a href="/about" target="_blank">Jay</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">42k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2021";
+                    var startMonth = "1";
+                    var startDate = "1";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+            <span id="icp"><img src="/medias/icp.png" style="vertical-align: text-bottom;" />
+                <a href="https://beian.miit.gov.cn/" target="_blank">京ICP备2020043565号-1</a>
+            </span>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/jaydroid1024" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:wangxuejie@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1018673209" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1018673209" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?88efcea1b43fcd428172af2f7305f80e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    
+    <script type="text/javascript" color="0,0,255"
+        pointColor="0,0,255" opacity='0.7'
+        zIndex="-1" count="99"
+        src="/libs/background/canvas-nest.js"></script>
+    
+
+    
+
+    
+    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

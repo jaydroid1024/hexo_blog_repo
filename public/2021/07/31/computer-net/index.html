@@ -1,0 +1,3577 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="筑基系列-计算机网络基础知识小抄版, 筑基、体系、实践、分享">
+    <meta name="description" content="筑基、体系、实践、分享">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N498NKZS3G"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'G-N498NKZS3G');
+</script>
+
+
+    <title>筑基系列-计算机网络基础知识小抄版 | 王学杰</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 4.2.1">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="王学杰" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">王学杰</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>主页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">王学杰</div>
+        <div class="logo-desc">
+            
+            筑基、体系、实践、分享
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			主页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/jaydroid1024" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/jaydroid1024" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">筑基系列-计算机网络基础知识小抄版</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/">
+                                <span class="chip bg-color">计算机基础</span>
+                            </a>
+                        
+                            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
+                                <span class="chip bg-color">计算机网络</span>
+                            </a>
+                        
+                            <a href="/tags/TCP-IP/">
+                                <span class="chip bg-color">TCP/IP</span>
+                            </a>
+                        
+                            <a href="/tags/HTTP-HTTPS/">
+                                <span class="chip bg-color">HTTP/HTTPS</span>
+                            </a>
+                        
+                            <a href="/tags/OSI%E4%B8%83%E5%B1%82%E6%A8%A1%E5%9E%8B/">
+                                <span class="chip bg-color">OSI七层模型</span>
+                            </a>
+                        
+                            <a href="/tags/DNS/">
+                                <span class="chip bg-color">DNS</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" class="post-category">
+                                计算机
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2021-07-31
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2021-08-01
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    14.8k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    55 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p><img src="https://raw.githubusercontent.com/jaydroid1024/jay_image_repo/main/img/post_banner_jay.png" alt=""></p>
+<h1 id="筑基系列-计算机网络基础知识小抄版"><a href="#筑基系列-计算机网络基础知识小抄版" class="headerlink" title="筑基系列-计算机网络基础知识小抄版"></a>筑基系列-计算机网络基础知识小抄版</h1><blockquote>
+<p>计算机基础知识筑基三部曲：</p>
+<ul>
+<li><strong><a href="https://juejin.cn/post/6991367806772052004" target="_blank" rel="noopener">第一部：筑基系列-计算机基础知识小抄版</a></strong><ul>
+<li>包括发展史、CPU、总线、存储器、指令系统、控制器、运算器、位运算等</li>
+</ul>
+</li>
+<li><strong><a href="https://juejin.cn/post/6991385109509193764" target="_blank" rel="noopener">第二部：筑基系列-操作系统基础知识小抄版</a></strong><ul>
+<li>包括进程与线程同步管理、作业管理、存储管理、虚拟内存、Linux、文件管理等</li>
+</ul>
+</li>
+<li><strong><a href="https://juejin.cn/post/6991397445251334151" target="_blank" rel="noopener">第三部：筑基系列-计算机网络基础知识小抄版</a></strong><ul>
+<li>包括OSI七层模型各层详解、IP协议、TCP\IP协议、Http协议、DNS协议等</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
+<li><p><a href="#1.计算机网络概述">1.计算机网络概述</a></p>
+<ul>
+<li><a href="#11-什么是计算机网络">1.1 什么是计算机网络</a></li>
+<li><a href="#12-计算机网络的分类">1.2 计算机网络的分类</a></li>
+<li><a href="#13-计算机网络的发展历史">1.3 计算机网络的发展历史</a></li>
+<li><a href="#14-计算机网络的层次结构">1.4 计算机网络的层次结构</a></li>
+<li><a href="#15-现代互联网的网络拓扑">1.5 现代互联网的网络拓扑</a></li>
+<li><a href="#16-计算机网络的性能指标">1.6 计算机网络的性能指标</a></li>
+</ul>
+</li>
+<li><p><a href="#2.物理层">2.物理层</a></p>
+<ul>
+<li><a href="#21-物理层的作用">2.1 物理层的作用</a></li>
+<li><a href="#22-信道的基本概念">2.2 信道的基本概念</a></li>
+</ul>
+</li>
+<li><p><a href="#3.数据链路层">3.数据链路层</a></p>
+<ul>
+<li><a href="#31-数据链路层主要功能">3.1 数据链路层主要功能</a></li>
+<li><a href="#32-最大传输单元mtu">3.2 最大传输单元MTU</a></li>
+<li><a href="#33-以太网协议详解">3.3 以太网协议详解</a></li>
+</ul>
+</li>
+<li><p><a href="#4.网络层">4.网络层</a></p>
+<ul>
+<li><a href="#41-网络层的主要功能">4.1 网络层的主要功能</a></li>
+<li><a href="#42-ip协议详解">4.2 IP协议详解</a></li>
+<li><a href="#43-ip协议的转发流程">4.3 IP协议的转发流程</a></li>
+<li><a href="#44-arp协议与rarp协议">4.4 ARP协议与RARP协议</a></li>
+<li><a href="#45-ip地址的分类">4.5 IP地址的分类</a></li>
+<li><a href="#46-ip地址的划分子网">4.6 IP地址的划分子网</a></li>
+<li><a href="#47-无分类地址cidr">4.7 无分类地址CIDR</a></li>
+<li><a href="#48-网络地址转换nat技术">4.8 网络地址转换NAT技术</a></li>
+<li><a href="#49-icmp协议详解">4.9 ICMP协议详解</a></li>
+<li><a href="#410-网络层的路由概述">4.10 网络层的路由概述</a></li>
+<li><a href="#411-自治系统as">4.11 自治系统(AS)</a></li>
+<li><a href="#412-内部网关路由协议之rip协议">4.12 内部网关路由协议之RIP协议</a></li>
+<li><a href="#413-外部网关路由协议之bgp协议">4.13 外部网关路由协议之BGP协议</a></li>
+</ul>
+</li>
+<li><p><a href="#5.传输层">5.传输层</a></p>
+<ul>
+<li><a href="#51-传输层的主要功能">5.1 传输层的主要功能</a></li>
+<li><a href="#52-udp协议详解">5.2 UDP协议详解</a></li>
+<li><a href="#53-tcp报文详解">5.3 TCP报文详解</a></li>
+<li><a href="#54-tcp可靠传输的基本原理">5.4 TCP可靠传输的基本原理</a></li>
+<li><a href="#55-tcp协议的可靠传输">5.5 TCP协议的可靠传输</a></li>
+<li><a href="#56-tcp协议的流量控制">5.6 TCP协议的流量控制</a></li>
+<li><a href="#57-tcp协议的拥塞控制">5.7 TCP协议的拥塞控制</a></li>
+<li><a href="#58-tcp连接的建立">5.8 TCP连接的建立</a></li>
+<li><a href="#59-tcp连接的释放">5.9 TCP连接的释放</a></li>
+<li><a href="#510-套接字与套接字编程">5.10 套接字与套接字编程</a></li>
+</ul>
+</li>
+<li><p><a href="#6.应用层">6.应用层</a></p>
+<ul>
+<li><p><a href="#61-应用层概述">6.1 应用层概述</a></p>
+</li>
+<li><p><a href="#62-应用层主要功能">6.2 应用层主要功能</a></p>
+</li>
+<li><p><a href="#63-dns服务详解">6.3 DNS服务详解</a></p>
+</li>
+<li><p><a href="#64-dhcp协议详解">6.4 DHCP协议详解</a></p>
+</li>
+<li><p><a href="#65-http协议详解">6.5 HTTP协议详解</a></p>
+</li>
+<li><p><a href="#66-http工作的结构">6.6 HTTP工作的结构</a></p>
+</li>
+<li><p><a href="#67-https协议详解">6.7 HTTPS协议详解</a></p>
+</li>
+<li><p><a href="#68-输入域名按下回车键的过程有哪些">6.8 输入域名按下回车键的过程有哪些</a></p>
+</li>
+</ul>
+</li>
+<li><p><a href="#7.HTTP协议详解">7.HTTP协议详解</a></p>
+<ul>
+<li><a href="#71-浏览器背后的故事">7.1 浏览器背后的故事</a></li>
+<li><a href="#72-http协议的前世今生">7.2 HTTP协议的前世今生</a></li>
+<li><a href="#73-透过tcpip看http">7.3 透过TCP/IP看HTTP</a></li>
+</ul>
+</li>
+<li><p><a href="#8.计算机网络实践">8.计算机网络实践</a></p>
+<ul>
+<li><a href="#81-网络嗅探工具">8.1 网络嗅探工具</a></li>
+</ul>
+</li>
+<li><p><a href="#9关于我">9.关于我</a></p>
+</li>
+<li><p><a href="#10参考">10.参考</a></p>
+</li>
+</ul>
+<h2 id="1-计算机网络概述"><a href="#1-计算机网络概述" class="headerlink" title="1.计算机网络概述"></a>1.计算机网络概述</h2><h3 id="1-1-什么是计算机网络"><a href="#1-1-什么是计算机网络" class="headerlink" title="1.1 什么是计算机网络"></a>1.1 什么是计算机网络</h3><ul>
+<li>计算机网络是指将地理位置不同的具有独立功能的多台计算机及其外部设备，通过通信线路连接起来，在网络操作系统，网络管理软件及网络通信协议的管理和协调下，实现资源共享和信息传递的计算机系统</li>
+<li>计算机网络的不是软件概念，还包含硬件设备</li>
+<li>计算机网络不仅仅是信息通信，还可以支持广泛的应用</li>
+</ul>
+<h3 id="1-2-计算机网络的分类"><a href="#1-2-计算机网络的分类" class="headerlink" title="1.2 计算机网络的分类"></a>1.2 计算机网络的分类</h3><table>
+<thead>
+<tr>
+<th>分类</th>
+<th>英文</th>
+<th>范围</th>
+<th>区域</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>广域网</td>
+<td>WAN(Wide Area Network)</td>
+<td>几十到几千公里</td>
+<td>跨省、跨国</td>
+</tr>
+<tr>
+<td>城域网</td>
+<td>MAN(Metro. Area Network)</td>
+<td>5KM-50KM</td>
+<td>城市间</td>
+</tr>
+<tr>
+<td>局域网</td>
+<td>LAN(Local Area Network)</td>
+<td>1KM以内</td>
+<td>地区内</td>
+</tr>
+</tbody></table>
+<h3 id="计算机网络的发展历史"><a href="#计算机网络的发展历史" class="headerlink" title="计算机网络的发展历史"></a>计算机网络的发展历史</h3><ul>
+<li><p>世界互联网发展历史</p>
+<ul>
+<li>单个网络 ARPANET<ul>
+<li>计算机–&gt;交换机&lt;–计算机</li>
+</ul>
+</li>
+<li>三级结构互联网<ul>
+<li>主干网–&gt;地区网–&gt;校园网</li>
+</ul>
+</li>
+<li>多层次ISP互联网<ul>
+<li>ISP(Internet Service Provider): 网络服务提供商</li>
+<li>中国电信、中国移动、中国联通等</li>
+<li>主干ISP(海底电缆)–&gt;地区ISP(山东移动)–&gt;校园、家庭、公司</li>
+<li>查看全球网络地图：<a href="https://www.infrapedia.com/app" target="_blank" rel="noopener">https://www.infrapedia.com/app</a></li>
+</ul>
+</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/jaydroid1024/jay_image_repo/main/img/20210801171046.jpg" alt=""></p>
+</li>
+<li><p>中国互联网的发展历史</p>
+<ul>
+<li>1980 年开始互联网实验</li>
+<li>1989 年第一个公共网络建立运行</li>
+<li>1994 接入国际互联网</li>
+<li>中国的互联网企业<ul>
+<li>中国电信互联网CHINANET</li>
+<li>中国联通互联网UNINET</li>
+<li>中国移动互联网CMNET</li>
+<li>中国教育与科研计算机网CERNET</li>
+<li>中国科学技术网CSTNET</li>
+<li>1996年，张朝阳创建搜狐</li>
+<li>1997年，丁磊创建网易</li>
+<li>1998年，王志东创建新浪</li>
+<li>1998年，马化腾、张志东创建腾讯</li>
+<li>1999年，马云创建阿里巴巴</li>
+<li>2000年，李彦宏创建百度</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-4-计算机网络的层次结构"><a href="#1-4-计算机网络的层次结构" class="headerlink" title="1.4 计算机网络的层次结构"></a>1.4 计算机网络的层次结构</h3><ul>
+<li>层次结构设计的基本原则<ul>
+<li>分层实现不同的功能<ul>
+<li>保证数据通路顺畅</li>
+<li>识别目的计算机</li>
+<li>目的计算机状态</li>
+<li>数据是否错误</li>
+<li>层次划分：网络应用数据(视频、文件、游戏)–&gt;数据可靠通信(数据错误、重复)–&gt;物理网络接入(光电等物理特性)</li>
+</ul>
+</li>
+<li>各层之间是相互独立的</li>
+<li>每一层要有足够的灵活性</li>
+<li>各层之间完全解耦</li>
+</ul>
+</li>
+<li>OSI七层模型<ul>
+<li>应用层：为计算机用户提供接口和服务</li>
+<li>表示层：数据处理（编码解码、加密解密等）</li>
+<li>会话层：管理（建立、维护、重连）通信会话</li>
+<li>传输层：管理端到端的通信连接</li>
+<li>网络层：数据路由（决定数据在网络的路径）</li>
+<li>数据链路层：管理相邻节点之间的数据通信</li>
+<li>物理层：数据通信的光电物理特性</li>
+<li>OSI在市场化过程中困难重重， TCP/IP在全球范围成功运行</li>
+<li>OSI欲成为全球计算机都遵循的标准</li>
+<li>OSI最终并没有成为广为使用的标准模型</li>
+<li>为什么没有被接受<ul>
+<li>OSI标准制定周期过长，按OSI标准生产的设备无法及时进入市场</li>
+<li>OSI的专家缺乏实际经验</li>
+<li>OSI模型设计的并不合理，一些功能在多层中重复出现</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>TCP/IP四层模型<ul>
+<li>应用层：HTTP/FTP/… ，对应OSI的应用层、表示层、会话层</li>
+<li>传输层：TCP/UDP，对应OSI的传输层</li>
+<li>网络层：IP/ICMP，对应OSI的网络层</li>
+<li>网络接口层：Ethernet/ARP/RARP，对应OSI的数据链路层、物理层</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-5-现代互联网的网络拓扑"><a href="#1-5-现代互联网的网络拓扑" class="headerlink" title="1.5 现代互联网的网络拓扑"></a>1.5 现代互联网的网络拓扑</h3><ul>
+<li>边缘部分<ul>
+<li>家庭：终端机器(手机)–&gt;路由器–&gt;网关–&gt;地区ISP</li>
+<li>企业：终端机器(电脑)–&gt;路由器–&gt;内部网关–&gt;统一网关–&gt;地区ISP</li>
+</ul>
+</li>
+<li>核心部分<ul>
+<li>地区ISP–&gt;主干ISP–&gt;国际路由器</li>
+</ul>
+</li>
+<li>网络连接错综复杂</li>
+<li>接入设备数以亿计</li>
+<li>网络覆盖边际全球</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/jaydroid1024/jay_image_repo/main/img/20210801171055.jpg" alt=""></p>
+<ul>
+<li>客户-服务器(C/S)模式<ul>
+<li>C请求服务–&gt;S获得服务</li>
+</ul>
+</li>
+<li>对等连接(P2P)模式</li>
+</ul>
+<h3 id="1-6-计算机网络的性能指标"><a href="#1-6-计算机网络的性能指标" class="headerlink" title="1.6 计算机网络的性能指标"></a>1.6 计算机网络的性能指标</h3><ul>
+<li>速率<ul>
+<li>速率单位： bps=bit/s</li>
+<li>为什么电信拉的100M光纤，测试峰值速度只有12M每秒？<ul>
+<li>bps到字节的转换</li>
+<li>网络常用单位为(Mbps)</li>
+<li>100M/s = 100Mbps = 100Mbit/s</li>
+<li>100Mbit/s=(100/8)MB/s=12.5MB/s</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>时延<ul>
+<li>总时延 = 发送时延 + 排队时延 + 传播时延 + 处理时延</li>
+<li>发送时延<ul>
+<li>发送时延 = 数据长度(𝑏𝑖𝑡)/发送速率(𝑏𝑖𝑡/𝑠)</li>
+<li>发送速率受限于计算机网卡</li>
+</ul>
+</li>
+<li>传输时延<ul>
+<li>传播时延 = 传输路径距离/传播速率(𝑏𝑖𝑡/𝑠)</li>
+<li>传播速率受限于传输介质，铜线、光线</li>
+</ul>
+</li>
+<li>排队时延<ul>
+<li>数据包在网络设备中等待被处理的时间</li>
+</ul>
+</li>
+<li>处理时延<ul>
+<li>数据包到达设备或者目的机器被处理所需要的时间</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>往返时间RTT<ul>
+<li>RTT表示的是数据报文在端到端通信中的来回一次的时间</li>
+<li>RTT(Route-Trip Time)是评估网络质量的一项重要指标</li>
+<li>通常使用ping命令查看RTT</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-物理层"><a href="#2-物理层" class="headerlink" title="2.物理层"></a>2.物理层</h2><h3 id="2-1-物理层的作用"><a href="#2-1-物理层的作用" class="headerlink" title="2.1 物理层的作用"></a>2.1 物理层的作用</h3><ul>
+<li>相关设备<ul>
+<li>双绞线</li>
+<li>同轴电缆</li>
+<li>光纤</li>
+<li>红外线</li>
+<li>无线</li>
+<li>激光</li>
+</ul>
+</li>
+<li>传输比特流</li>
+<li>连接不同的物理设备</li>
+<li>物理特性<ul>
+<li>机械特性</li>
+<li>电气特性</li>
+<li>功能特性</li>
+<li>过程特性</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-2-信道的基本概念"><a href="#2-2-信道的基本概念" class="headerlink" title="2.2 信道的基本概念"></a>2.2 信道的基本概念</h3><ul>
+<li><p>一条通信电路包含一个接收信道和一个发送信道</p>
+</li>
+<li><p>信道是往一个方向传送信息的媒体</p>
+</li>
+<li><p>单工信道</p>
+<ul>
+<li>有线电视、无线电收音机等等</li>
+<li>只能一个方向通信，没有反方向反馈的信道</li>
+</ul>
+</li>
+<li><p>半双工信道</p>
+<ul>
+<li>不能双方同时发送，也不能同时接收</li>
+<li>双方都可以发送和接收信息</li>
+</ul>
+</li>
+<li><p>全双工信道</p>
+<ul>
+<li>双方都可以同时发送和接收信息</li>
+</ul>
+</li>
+<li><p>分用-复用技术</p>
+<ul>
+<li>信道利用率并不高？</li>
+<li>分用器</li>
+<li>复用器</li>
+<li>频分复用</li>
+<li>时分复用</li>
+<li>波分复用</li>
+<li>码分复用</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-数据链路层"><a href="#3-数据链路层" class="headerlink" title="3.数据链路层"></a>3.数据链路层</h2><h3 id="3-1-数据链路层主要功能"><a href="#3-1-数据链路层主要功能" class="headerlink" title="3.1 数据链路层主要功能"></a>3.1 数据链路层主要功能</h3><ul>
+<li><p>封装成帧</p>
+<ul>
+<li>发送端在网络层的一段数据前后添加特定标记形成“帧”</li>
+<li>“帧”是数据链路层数据的基本单位</li>
+<li>接收端根据前后特定标记识别出“帧”</li>
+<li>物理层才不管你“帧”不“帧”，物理层之作用bit流的传输</li>
+<li>IP数据报–&gt;“帧”的数据[帧首部， “帧”的数据 ，帧尾部]</li>
+<li>帧首部和尾部是特定的控制字符（特定比特流）SOH: 00000001，EOT: 00000100</li>
+</ul>
+</li>
+<li><p>透明传输</p>
+<ul>
+<li>“一种实际存在的事物却又看起来不存在一样”</li>
+<li>“透明”在计算机领域是非常重要的一个术语</li>
+<li>“即是控制字符在帧数据中，但是要当做不存在的去处理”</li>
+<li>数据中也出现了控制字符，对数据中的控制字符进行特殊处理，转义</li>
+<li>“\n”、“\t”等控制字符，编程语言中“\”一般为转义字符，“\” 、“\\”</li>
+</ul>
+</li>
+<li><p>差错监测</p>
+<ul>
+<li>数据链路层负责起“差错监测”的工作</li>
+<li>物理层只管传输比特流，无法控制是否出错</li>
+<li>循环冗余校验码CRC<ul>
+<li>检测数据传输或者保存后可能出现的错误</li>
+<li>一种根据传输或保存的数据而产生固定位数校验码的方法</li>
+<li>生成的数字计算出来并且附加到数据后面</li>
+<li>模“2”除法<ul>
+<li>与算术除法类似，但除法不借位，实际是“异或”操作</li>
+<li>模“2”除法是二进制下的除法</li>
+<li>0 xor 0 = 0，0 xor 1 = 1，1 xor 0 = 1，1 xor 1 = 0</li>
+</ul>
+</li>
+<li>检测流程<ul>
+<li>选定一个用于校验的多项式G(x)，并在数据尾部添加r个0</li>
+<li>将添加r个0后的数据，使用模“2”除法除以多项式的位串</li>
+<li>得到的余数填充在原数据r个0的位置得到可校验的位串</li>
+<li>例子1：使用CRC计算101001的可校验位串<ul>
+<li>计算过程有点难！！！</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>数据链路层只进行数据的检测，不进行纠正，一旦出错会丢弃</li>
+<li>CRC的错误检测能力与位串的阶数r有关</li>
+</ul>
+</li>
+<li>奇偶校验码<ul>
+<li>检测机制：在比特流最后一位加上一位（1或者0），（所有比特流中的1相加）偶数加0，奇数加1 </li>
+<li>缺陷：出错两位，奇偶校验码校测不到错误</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-2-最大传输单元MTU"><a href="#3-2-最大传输单元MTU" class="headerlink" title="3.2 最大传输单元MTU"></a>3.2 最大传输单元MTU</h3><ul>
+<li>MTU<ul>
+<li>数据链路层的数据帧也不是无限大的</li>
+<li>最大传输单元MTU(Maximum Transmission Unit)</li>
+<li>数据帧过大或过小都会影响传输的效率</li>
+<li>总时延 = 发送时延 + 排队时延 + 传播时延 + 处理时延</li>
+<li>以太网MTU一般为1500字节</li>
+</ul>
+</li>
+<li>路径MTU<ul>
+<li>路径MTU由链路中MTU的最小值决定</li>
+<li>木桶效应</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-3-以太网协议详解"><a href="#3-3-以太网协议详解" class="headerlink" title="3.3 以太网协议详解"></a>3.3 以太网协议详解</h3><ul>
+<li><p>MAC地址</p>
+<ul>
+<li>MAC地址（Media Access Control Address）直译为媒体存取控制位址，也称为局域网地址（LAN Address）</li>
+<li>每一个设备都拥有唯一的MAC地址</li>
+<li>MAC地址（物理地址、硬件地址）</li>
+<li>MAC地址共48位，使用十六进制表示</li>
+<li>ipconfig/all 查看本机所有MAC地址 ，30-B4-9E-ED-85-CA</li>
+</ul>
+</li>
+<li><p>以太网协议</p>
+<ul>
+<li>以太网是一种应用于数据链路层的协议</li>
+<li>以太网(Ethernet)是一种使用广泛的局域网技术</li>
+<li>使用以太网可以完成相邻设备的数据帧传输</li>
+<li>以太网数据格式<ul>
+<li>类型：0800： IP数据报，0806： ARP请求/应答，8035： RARP请求/应答</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>目的地址（MAC地址) 单位字节</th>
+<th>源地址</th>
+<th>类型</th>
+<th>帧数据</th>
+<th>CRC校验码</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>6</td>
+<td>6</td>
+<td>2</td>
+<td>46-1500</td>
+<td>4</td>
+</tr>
+</tbody></table>
+<ul>
+<li>MAC地址表，路由器持有</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>MAC地址</th>
+<th>硬件接口</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>31-B4-9E-ED-85-CA</td>
+<td>接口1</td>
+</tr>
+<tr>
+<td>32-B4-9E-ED-85-CB</td>
+<td>接口2</td>
+</tr>
+<tr>
+<td>33-B4-9E-ED-85-CC</td>
+<td>接口4</td>
+</tr>
+</tbody></table>
+<ul>
+<li>A终端通过路由器发送数据到C终端的过程<ul>
+<li>A通过网卡发出数据帧</li>
+<li>数据帧到达路由器，路由器取出前6字节（目的MAC地址）</li>
+<li>路由器匹配MAC地址表，找到对应的网络接口</li>
+<li>路由器往该网络接口发送数据帧</li>
+<li>如果MAC地址表没有匹配成功</li>
+<li>路由器将广播A的数据包到除A以外的端口</li>
+<li>路由器检查MAC地址表，发现没有C的信息</li>
+<li>路由器将收到来自B、 C的回应，并将地址记录</li>
+</ul>
+</li>
+<li>以太网协议只提供相邻物理节点传输，跨设备是无法传输的，需要借助网络层</li>
+</ul>
+</li>
+</ul>
+<h2 id="4-网络层"><a href="#4-网络层" class="headerlink" title="4.网络层"></a>4.网络层</h2><h3 id="4-1-网络层的主要功能"><a href="#4-1-网络层的主要功能" class="headerlink" title="4.1 网络层的主要功能"></a>4.1 网络层的主要功能</h3><ul>
+<li>网络层：数据路由（决定数据在网络的路径）</li>
+<li>数据链路层只能解决相邻物理节点传输</li>
+</ul>
+<h3 id="4-2-IP协议详解"><a href="#4-2-IP协议详解" class="headerlink" title="4.2 IP协议详解"></a>4.2 IP协议详解</h3><ul>
+<li><p>虚拟互联网络</p>
+<ul>
+<li>物理设备通过使用IP协议，屏蔽了物理网络之间的差异</li>
+<li>实际的计算机网络是错综复杂的</li>
+<li>当网络中的主机使用IP协议连接时，则无需关注网络细节</li>
+<li>IP协议使得网络层可以屏蔽底层细节而专注网络层的数据转发</li>
+<li>IP协议使得复杂的实际网络变为一个虚拟互连的网络</li>
+<li>IP协议解决了在虚拟网络中数据报传输路径的问题</li>
+</ul>
+</li>
+<li><p>IP协议</p>
+<ul>
+<li>IP地址<ul>
+<li>MAC地址： 30-B4-9E-ED-85-CA：00110000-11000020-11101101-01000101-11001010<ul>
+<li>48位，16进制表示</li>
+<li>唯一，不可变</li>
+</ul>
+</li>
+<li>P地址： 192.168.11.11：11000000.10101000.00001011.00001011<ul>
+<li>32位，常分成4个8位，一般采用点分十进制表示，共可以表示 2^32 = 4294961296</li>
+<li>IP地址常使用<strong>点分十进制</strong>来表示(0<del>255.0</del>255.0<del>255.0</del>255)，例如：255.255.255.255</li>
+<li>受网络环境影响会发生改变</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>IP报文格式</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>协议层</th>
+<th>数据格式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>物理层</td>
+<td>001010101001110110101010101010…10101010101010101010101010101</td>
+</tr>
+<tr>
+<td>数据链路层</td>
+<td>【帧首部 】【“帧”的数据】 【帧尾部】</td>
+</tr>
+<tr>
+<td>网络层</td>
+<td>【IP首部】【 IP数据报的数据】</td>
+</tr>
+</tbody></table>
+<ul>
+<li>IP报文头部各个参数的作用</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>4位版本</th>
+<th>4位首部长度</th>
+<th>8位服务类型(TOS)</th>
+<th>16位总长度(字节)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>16位标识</td>
+<td>3位标志</td>
+<td>13位片偏移</td>
+<td></td>
+</tr>
+<tr>
+<td>8位生存时间(TTL)</td>
+<td>8位协议</td>
+<td>16位首部校验和</td>
+<td></td>
+</tr>
+<tr>
+<td>32位源IP地址</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>32位目的IP地址</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>选项options（若有）</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>IP数据</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<ul>
+<li>每一行32位，第六行可选，所以IP报文头部至少占4×5=20个字节</li>
+<li>第一行<ul>
+<li>版本：占4位，指的是IP协议的版本，通信双方的版本必须一致，当前主流版本是4，即IPv4，也有IPv6</li>
+<li>首部位长度：占4位，最大数值为15，表示的是IP首部长度，单位是“32位字”（4个字节），也即是IP首部最大长度为60字节</li>
+<li>8位服务类型(TOS)：TOS包括共8位，包括3 bit的优先权字段（取值可以从000-111所有值），4 bit的TOS子字段和1 bit未用位但必须置0。</li>
+<li>总长度：占16位，最大数值为65535，表示的是IP数据报总长度（IP首部+IP数据），数据链路层MTU,如果IP数据报的数据多余“帧”的数据，需要分片处理</li>
+</ul>
+</li>
+<li>第二行<ul>
+<li>16位标识：IP协议内部使用</li>
+<li>3位标志：标记是否可以分片</li>
+<li>13位片偏移：第几个分片</li>
+</ul>
+</li>
+<li>第三行<ul>
+<li>TTL：占8位，表明IP数据报文在网络中的寿命，每经过一个设备， TTL减1，当TTL=0时，网络设备必须丢弃该报文，避免数据在网络无限传输</li>
+<li>协议：占8位，表明IP数据所携带的具体数据是什么协议的（如： TCP、 UDP等）<ul>
+<li>协议名 ICMP、 IGMP、 IP 、TCP、 UDP、 OSPF …，字段值 1 、2 、4 、6、 17、 89 …</li>
+</ul>
+</li>
+<li>首部校验和：占16位，校验IP首部是否有出错</li>
+</ul>
+</li>
+<li>源IP地址：发送方</li>
+<li>目的IP地址：接收方</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-3-IP协议的转发流程"><a href="#4-3-IP协议的转发流程" class="headerlink" title="4.3 IP协议的转发流程"></a>4.3 IP协议的转发流程</h3><ul>
+<li><p>逐跳(hop-by-hop)</p>
+</li>
+<li><p>路由表</p>
+<ul>
+<li>计算机或者路由器都拥有路由表</li>
+<li>MAC地址表和路由表</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>MAC地址</th>
+<th>硬件接口</th>
+<th></th>
+<th>目的IP地址</th>
+<th>下一跳IP地址</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>A</td>
+<td>E1</td>
+<td></td>
+<td>IP1</td>
+<td>IP4</td>
+</tr>
+<tr>
+<td>B</td>
+<td>E2</td>
+<td></td>
+<td>IP2</td>
+<td>IP5</td>
+</tr>
+<tr>
+<td>C</td>
+<td>E3</td>
+<td></td>
+<td>IP3</td>
+<td>IP6</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>转发流程：网络层</p>
+<p><img src="https://tva1.sinaimg.cn/large/008eGmZEly1gnl5pjkrqtj30nm07gjsc.jpg" alt=""></p>
+<ul>
+<li>A将数据报发送给E</li>
+<li>A发出目的地为C的IP数据报， 查询路由表发现下一跳为E</li>
+<li>E查询路由表发现下一跳为F，将数据报发送给F</li>
+<li>F查询路由表发现目的地C直接连接，将数据报发送给C</li>
+</ul>
+</li>
+<li><p>IP数据报每一跳的IP地址始终不变</p>
+</li>
+<li><p>数据帧每一跳的MAC地址都在变化</p>
+</li>
+</ul>
+<h3 id="4-4-ARP协议与RARP协议"><a href="#4-4-ARP协议与RARP协议" class="headerlink" title="4.4 ARP协议与RARP协议"></a>4.4 ARP协议与RARP协议</h3><ul>
+<li>ARP协议<ul>
+<li>ARP(Address Resolution Protocol)地址解析协议，通过IP地址查找MAC地址</li>
+<li>ARP缓存表：[IP地址, MAC地址] 如：192.168.83.254 —00-50-56-e0-33-40</li>
+<li>ARP缓存表缓存了IP地址到硬件地址之间的映射关系</li>
+<li>ARP缓存表是ARP协议和RARP协议运行的关键</li>
+<li>ARP缓存表中的记录并不是永久有效的，有一定的期限</li>
+<li><strong>arp -a</strong> :查看ARP缓存表</li>
+<li>数据报格式，共28个字节，封装在数据链路层里，用于网络层，【类型0806 ，ARP请求/应答 ，PAD】<ul>
+<li>硬件类型，2位</li>
+<li>协议类型 ，2位</li>
+<li>标记 ，24</li>
+<li>发送端 以太网地址 ，6位</li>
+<li>发送端 IP地址 ，4位</li>
+<li>目的端 以太网地址 ，6位</li>
+<li>目的端 IP地址，4位</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>RARP协议<ul>
+<li>RARP(Reverse Address Resolution Protocol)逆地址解析协议</li>
+<li>数据链路层MAC48位地址–》网络层IP32位地址</li>
+</ul>
+</li>
+<li>ARP和RARP的操作对程序员是透明的</li>
+<li>(R)ARP协议是TCP/IP协议栈里面基础的协议</li>
+<li>理解(R)ARP协议有助于理解网络分层的细节</li>
+<li>转发流程：网络层+数据链路层+物理层<ul>
+<li>第一步：A-&gt;E<ul>
+<li>A发出目的地为C的IP数据报， 查询路由表发现下一跳为E</li>
+<li>A将IP数据报交给数据链路层，并告知目的MAC地址是E</li>
+<li>数据链路层填充源MAC地址A和目的MAC地址E</li>
+<li>数据链路层通过物理层将数据发送给E</li>
+</ul>
+</li>
+<li>第二步：E–&gt;F<ul>
+<li>E的数据链路层接收到数据帧， 把帧数据交给网络层</li>
+<li>E查询路由表， 发现下一跳为F</li>
+<li>E把数据报交给数据链路层， 并告知目的MAC地址为F</li>
+<li>E的数据链路层封装数据帧并发送</li>
+</ul>
+</li>
+<li>第三步：F–&gt;C<ul>
+<li>F的数据链路层接收到数据帧， 把帧数据交给网络层</li>
+<li>F查询路由表， 发现下一跳为C</li>
+<li>F把数据报交给数据链路层，并告知目的MAC地址为C</li>
+<li>F的数据链路层封装数据帧并发送</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-5-IP地址的分类"><a href="#4-5-IP地址的分类" class="headerlink" title="4.5 IP地址的分类"></a>4.5 IP地址的分类</h3><ul>
+<li><p>IP地址长度为32位，常分成4个8位，常使用点分十进制来表示(0<del>255.0</del>255.0<del>255.0</del>255)，2^32 = 4294961296</p>
+</li>
+<li><p>直接对42亿多个IP地址规划和分配IP地址非常麻烦</p>
+</li>
+<li><p>IP地址=【网络号段+主机号段】=【网络号段+ (子网号段+子网主机号段)】=</p>
+</li>
+<li><p>分类的IP地址</p>
+<ul>
+<li>网络号 <ul>
+<li>网络号的位数直接决定了可以分配的网络数（计算方法=2^网络号位数-特殊网络号数）</li>
+</ul>
+</li>
+<li>主机号<ul>
+<li>主机号的位数则决定了网络中最大的主机数（计算方法=2^主机号位数-特殊主机号数）</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>IP类型</th>
+<th>组成</th>
+<th>最小网络号</th>
+<th>最大网络号</th>
+<th>子网数量(理想)</th>
+<th>最小主机号</th>
+<th>最大主机号</th>
+<th>主机数量</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>A</td>
+<td>8位网络号(0开头）+24位主机号</td>
+<td>0(00000000)</td>
+<td>127(01111111)</td>
+<td>2^7=128</td>
+<td>0.0.0</td>
+<td>255.255.255</td>
+<td>2^24=16,777,216</td>
+</tr>
+<tr>
+<td>B</td>
+<td>16位网络号（10开头）+16位主机号</td>
+<td>128(100000000).0</td>
+<td>191(10111111).255</td>
+<td>2^14(6+8)=16,384</td>
+<td>0.0</td>
+<td>255.255</td>
+<td>2^16=65536</td>
+</tr>
+<tr>
+<td>C</td>
+<td>24位网络号（110开头）+8位主机号</td>
+<td>192(110000000).0.0</td>
+<td>223(11011111).255.255</td>
+<td>2^21(5+8+8)=2,097,252</td>
+<td>0</td>
+<td>255</td>
+<td>2^8=256</td>
+</tr>
+<tr>
+<td>D</td>
+<td>组播地址（1110开头）</td>
+<td>224(111000000).0.0.0</td>
+<td>239(11101111).255.255.255</td>
+<td>2^4=16</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>E</td>
+<td>保留以后再用（1111开头）</td>
+<td>240(111110000).0.0.0</td>
+<td>225(11111111).255.255.255</td>
+<td>2^4=16</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<ul>
+<li>特殊的网络号<ul>
+<li>A类地址网络段后7位全1(01111111:127)表示回环地址</li>
+<li>A类地址网络段全0(00000000)表示特殊网络</li>
+<li>B类地址网络段(10000000.00000000:128.0)是不可使用的</li>
+<li>C类地址网络段(192.0.0)是不可使用的</li>
+<li>上表中的A类IP的子网可用数量为：2^7-2，B类:2^14-1，C类：2^21-1</li>
+</ul>
+</li>
+<li>特殊的主机号<ul>
+<li>主机号为全1表示广播地址，向当前网络段所有主机发消息，例如：1.0.0.0</li>
+<li>主机号全0表示当前网络段，不可分配为特定主机，例如：1.255.255.255</li>
+<li>上表中A\B\C的可用主机号数量为：2^24-2、2^16-2、2^8-2</li>
+</ul>
+</li>
+<li>127.0.0.1，通常被称为本地回环地址(Loopback Address)，不属于任何一个有类别地址类。localhost是个域名</li>
+<li>如何判断一个IP属于哪一类IP地址<ul>
+<li>取出首八位：</li>
+<li>A类：(0,127) / 0xxxxxxx，</li>
+<li>B类：[128,19]) / 10xxxxxx，</li>
+<li>C类：[192,223] / 110xxxxx</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-6-IP地址的划分子网"><a href="#4-6-IP地址的划分子网" class="headerlink" title="4.6 IP地址的划分子网"></a>4.6 IP地址的划分子网</h3><ul>
+<li>某公司拥有100名员工，每人配备一个计算机，请问该公司应该申请哪种网络段？<ul>
+<li>C类可分配的主机数量为2^8-2=254个</li>
+</ul>
+</li>
+<li>某公司拥有256名员工，每人配备一个计算机，请问该公司应该申请哪种网络段？<ul>
+<li>B类可分配的主机数量为2^16-2=65534个</li>
+<li>造成了很大的地址空间浪费</li>
+</ul>
+</li>
+<li>子网号<ul>
+<li>IP地址=【网络号段+主机号段】=【网络号段+ (子网号段+子网主机号段)】=</li>
+<li>例如一个C类IP 193.10.10.0 = 24位网络号（110开头）+8位主机号 </li>
+<li>主机号段为.0=.00000000</li>
+<li>将主机号段最高位分成 <strong>.0</strong>0000000 和  <strong>.1</strong>0000000 两个子网</li>
+<li><strong>.0</strong>0000000 子网可以表示的主机范围为：(0) <strong>.0</strong>0000000 – (127) <strong>.0</strong>1111111 </li>
+<li><strong>.1</strong>0000000 子网可以表示的主机范围为：(128) <strong>.1</strong>0000000 – (255) <strong>.1</strong>1111111 </li>
+<li>某公司拥有100名员工，每人配备一个计算机，就可以申请C类IP的子网从而可以充分利用IP的数量</li>
+</ul>
+</li>
+<li>子网掩码<ul>
+<li>子网号这么多，有没有办法快速判断某个IP的网络子网掩码号？</li>
+<li>子网掩码由连续的1和连续的0组成</li>
+<li>子网掩码和IP地址一样，都是32位</li>
+<li>某一个子网的子网掩码具备网络号位数个连续的1</li>
+<li>A类IP的子网掩码：255.0.0.0 </li>
+<li>B类IP的子网掩码：255.255.0.0 </li>
+<li>C类IP的子网掩码：255.255.255.0</li>
+<li>划分子网的子网掩码：子网掩码-子网号-主机号<ul>
+<li>例如：193.10.10.0 = 24位网络号（110开头）+1位子网号+7位主机号 <ul>
+<li>子网掩码为：255.255.255.128（24+1个1和7个0组成）</li>
+<li>求 193.10.10.6 这个IP对应的子网号</li>
+<li>第一步IP对应的二进制：            193.10.10.6 – 11000001.00001010.00001010.00000110</li>
+<li>第二步子网掩码对应的二进制：255.255.255.128 – 11111111.11111111.11111111.10000000</li>
+<li>第三步：一二步与运算得到子网号 11000001.00001010.00001010.00000000  – 193.10.10.0</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-7-无分类地址CIDR"><a href="#4-7-无分类地址CIDR" class="headerlink" title="4.7 无分类地址CIDR"></a>4.7 无分类地址CIDR</h3><ul>
+<li><p>IP地址=【网络号段+主机号段】=【网络号段+ (子网号段+子网主机号段)】</p>
+</li>
+<li><p>子网划分相对复杂所以出现了CIDR</p>
+</li>
+<li><p>无类域内路由选择（Classless Inter-Domain Routing）</p>
+</li>
+<li><p>CIDR中没有A、 B、 C类网络号、和子网划分的概念</p>
+</li>
+<li><p>CIDR将网络前缀相同的IP地址称为一个“CIDR地址块”</p>
+</li>
+<li><p>IP地址=【网络前缀+主机号】</p>
+</li>
+<li><p>网络前缀是任意位数的</p>
+</li>
+<li><p>CIDR采用斜线记法来表示一个IP地址</p>
+<ul>
+<li>193.10.10.129/25==11000001.00001010.00001010.10000001</li>
+<li>25表示网络前缀有25位，主机位有7位</li>
+<li>相比原来子网划分更加灵活</li>
+<li>超网-》子网</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>CIDR前缀长度</th>
+<th>掩码点分十进制</th>
+<th>地址数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>/13</td>
+<td>255.248.0.0</td>
+<td>2^19=512K</td>
+</tr>
+<tr>
+<td>/14</td>
+<td>255.252.0.0</td>
+<td>2^18=256K</td>
+</tr>
+<tr>
+<td>/15</td>
+<td>255.254.0.0</td>
+<td>2^17=128K</td>
+</tr>
+<tr>
+<td>/16</td>
+<td>255.255.0.0</td>
+<td>2^16=64K</td>
+</tr>
+<tr>
+<td>/17</td>
+<td>255.255.128.0</td>
+<td>2^15=32K</td>
+</tr>
+<tr>
+<td>/18</td>
+<td>255.255.192.0</td>
+<td>2^14=16K</td>
+</tr>
+<tr>
+<td>/19</td>
+<td>255.255.224.0</td>
+<td>2^13=8K</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<h3 id="4-8-网络地址转换NAT技术"><a href="#4-8-网络地址转换NAT技术" class="headerlink" title="4.8 网络地址转换NAT技术"></a>4.8 网络地址转换NAT技术</h3><ul>
+<li><p>IPv4最多只有40+亿个IP地址</p>
+</li>
+<li><p>早期IP地址的不合理规划导致IP号浪费</p>
+</li>
+<li><p>网络拓扑：边缘部分：家庭，多个设备如何复用同一个IP地址的</p>
+</li>
+<li><p>内网地址</p>
+<ul>
+<li>内部机构使用</li>
+<li>避免与外网地址重复</li>
+<li>三类内网地址<ul>
+<li>10.0.0.0~10.255.255.255（支持千万数量级设备）</li>
+<li>172.16.0.0~172.31.255.255（支持百万数量级设备）</li>
+<li>192.168.0.0~192.168.255.255（支持万数量级设备）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>外网地址</p>
+<ul>
+<li>全球范围使用</li>
+<li>全球公网唯一</li>
+</ul>
+</li>
+<li><p>网络地址转换NAT技术</p>
+<ul>
+<li>内网多个设备使用同一个外网IP请求外网的服务，外部怎么知道具体是哪个设备在请求的？</li>
+<li>网络地址转换NAT(Network Address Translation)</li>
+<li>NAT技术用于多个主机通过一个公有IP访问互联网的私有网络中</li>
+<li>NAT减缓了IP地址的消耗，但是增加了网络通信的复杂度</li>
+<li>端口(Port)号</li>
+<li>端口映射表：NA(P)T表</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>数据传输方向</th>
+<th>旧的地址和端口号</th>
+<th>新的地址与端口号</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>出</td>
+<td>92.168.2.11:6666</td>
+<td>173.21.59.10:16666</td>
+</tr>
+<tr>
+<td>出</td>
+<td>192.168.2.10:7777</td>
+<td>173.21.59.10:17777</td>
+</tr>
+<tr>
+<td>入</td>
+<td>173.21.59.10:16666</td>
+<td>192.168.2.11:6666</td>
+</tr>
+<tr>
+<td>入</td>
+<td>173.21.59.10:17777</td>
+<td>192.168.2.10:7777</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<h3 id="4-9-ICMP协议详解"><a href="#4-9-ICMP协议详解" class="headerlink" title="4.9 ICMP协议详解"></a>4.9 ICMP协议详解</h3><ul>
+<li><p>网际控制报文协议（Internet Control Message Protocol）</p>
+</li>
+<li><p>ICMP协议可以报告错误信息或者异常情况，辅助IP协议</p>
+</li>
+<li><p>网络层  【IP首部】-【 IP数据报的数据】</p>
+</li>
+<li><p>【IP首部】协议：占8位，表明IP数据所携带的具体数据是什么协议的（如： TCP、 UDP、ICMP等）</p>
+</li>
+<li><p>ICMP数据封装在【 IP数据报的数据】里面</p>
+</li>
+<li><p>【ICMP报文首部】-【 ICMP报文数据】</p>
+</li>
+<li><p>8位类型+ 8位代码 +16位校验和+ICMP报文数据</p>
+</li>
+<li><p>分类</p>
+<ul>
+<li>差错报告报文 </li>
+<li>询问报文</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>ICMP报文种类</th>
+<th>类型的值</th>
+<th>报文类型</th>
+<th>具体代码</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>差错报告报文</td>
+<td>3 (终点不可达）</td>
+<td>网络不可达 / 主机不可达</td>
+<td>0/1</td>
+</tr>
+<tr>
+<td></td>
+<td>5 (重定向）</td>
+<td>对网络重定向 / 对主机重定向</td>
+<td>0/1</td>
+</tr>
+<tr>
+<td></td>
+<td>11</td>
+<td>传输超时</td>
+<td>-</td>
+</tr>
+<tr>
+<td></td>
+<td>12</td>
+<td>坏的IP头 / 缺少其他必要参数</td>
+<td>0/1</td>
+</tr>
+<tr>
+<td>询问报文</td>
+<td>0或8</td>
+<td>回送(Echo)请求或应答</td>
+<td>-</td>
+</tr>
+<tr>
+<td></td>
+<td>13或14</td>
+<td>时间戳(Timestamp)请求或应答</td>
+<td>-</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>ICMP报文的应用</p>
+<ul>
+<li>Ping应用<ul>
+<li>询问报文-0或8 - 回送(Echo)请求或应答</li>
+<li>Ping回环地址127.0.0.1,如果失败计算机的协议栈可能出问题，需要重装操作系统</li>
+<li>Ping网关地址，如果失败，网关路由器可能出问题</li>
+<li>Ping远端地址，如果失败，家到ISP服务商之间可能出问题了，需要找服务商解决</li>
+</ul>
+</li>
+<li>Traceroute应用<ul>
+<li>Traceroute可以探测IP数据报在网络中走过的路径</li>
+<li>【IP首部】TTL：占8位，表明IP数据报文在网络中的寿命，每经过一个设备， TTL减1，当TTL=0时，网络设备必须丢弃该报文–ICMP终点不可达差错报文</li>
+<li>命令：Windows：tracert github.com ，Mac：traceroute to github.com <ul>
+<li><strong>221.179.159.20来自北京市北京 移动</strong></li>
+<li><strong>111.24.3.17来自 移动</strong></li>
+<li><strong>223.119.2.21来自香港 移动</strong></li>
+<li><strong>52.93.11.39来自新加坡 亚马逊云</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-10-网络层的路由概述"><a href="#4-10-网络层的路由概述" class="headerlink" title="4.10 网络层的路由概述"></a>4.10 网络层的路由概述</h3><ul>
+<li><p>路由表问题</p>
+<ul>
+<li>路由表是怎么来的</li>
+<li>下一跳地址是唯一的吗？</li>
+<li>下一跳地址是怎么来的？</li>
+<li>下一跳地址是最佳的吗？</li>
+<li>路由器怎么多，他们是怎么协同工作的？</li>
+<li>需要一个好的算法去解决这些事情</li>
+</ul>
+</li>
+<li><p>路由算法</p>
+<p><img src="https://raw.githubusercontent.com/jaydroid1024/jay_image_repo/main/img/20210801171345.jpg" alt=""></p>
+<ul>
+<li>每一条边表示一条网络路径</li>
+<li>每一顶点表示一个网络、路由器或计算机</li>
+<li>路由算法实际上是图论的算法</li>
+<li>网络环境复杂，路由算法要比图论的算法要复杂</li>
+<li>路由算法具备哪些特性<ul>
+<li>算法是正确的、 完整的</li>
+<li>算法在计算上应该尽可能的简单</li>
+<li>算法可以适应网络中的变化</li>
+<li>算法是稳定的和公平的</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-11-自治系统-AS"><a href="#4-11-自治系统-AS" class="headerlink" title="4.11 自治系统(AS)"></a>4.11 自治系统(AS)</h3><ul>
+<li>对互联网进行划分<ul>
+<li>互联网的规模是非常大的</li>
+<li>互联网环境是非常复杂的</li>
+<li>自治系统(Autonomous System)</li>
+<li>自治系统内部路由的协议称为：内部网关协议(RIP、 OSPF)</li>
+<li>自治系统外部路由的协议称为：外部网关协议(BGP)</li>
+<li>两个内部网关协议需要通过外部网关协议进行通讯</li>
+</ul>
+</li>
+<li>一个自治系统(AS)是处于一个管理机构下的网络设备群</li>
+<li>AS内部网络自行管理， AS对外提供一个或者多个出（入）口</li>
+</ul>
+<h3 id="4-12-内部网关路由协议之RIP协议"><a href="#4-12-内部网关路由协议之RIP协议" class="headerlink" title="4.12 内部网关路由协议之RIP协议"></a>4.12 内部网关路由协议之RIP协议</h3><ul>
+<li><p>距离矢量(DV)算法</p>
+<ul>
+<li>DV=Distance vector</li>
+<li>每一个节点使用两个向量𝐷𝑖和S𝑖</li>
+<li>𝐷𝑖描述的是当前节点到别的节点的距离</li>
+<li>S𝑖描述的是当前节点到别的节点的下一节点</li>
+<li>每一个节点与相邻的节点交换向量𝐷𝑖和S𝑖的信息</li>
+<li>每一个节点根据交换的信息更新自己的节点信息</li>
+<li>算法实现过程<ul>
+<li>todo</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>RIP协议的过程</p>
+<ul>
+<li>RIP(Routing Information Protocol)协议</li>
+<li>RIP协议是使用DV算法的一种路由协议</li>
+<li>RIP协议把网络的跳数(hop)作为DV算法的距离</li>
+<li>RIP协议每隔30s交换一次路由信息</li>
+<li>RIP协议认为跳数&gt;15的路由则为不可达路由</li>
+<li>具体流程<ul>
+<li>路由器初始化路由信息(两个向量𝐷𝑖和S𝑖)</li>
+<li>对相邻路由器X发过来的信息，对信息的内容进行修改（下一跳地址设置为X，所有距离加1）<ul>
+<li>检索本地路由，将信息中新的路由插入到路由表里面</li>
+<li>检索本地路由，对于下一跳为X的，更新为修改后的信息</li>
+<li>检索本地路由，对比相同目的的距离，如果新信息的距离更小，则更新本地路由表</li>
+</ul>
+</li>
+<li>如果3分钟没有收到相邻的路由信息，则把相邻路由设置为不可达(16跳)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>RIP协议的优缺点</p>
+<ul>
+<li>故障信息传递慢</li>
+<li>RIP协议：实现简单，开销很小</li>
+<li>RIP协议：限制了网络的规模</li>
+<li>RIP协议：“坏消息传的慢”，更新收敛时间过长</li>
+</ul>
+</li>
+<li><p>Dijkstra（迪杰斯特拉）算法</p>
+<ul>
+<li>Dijkstra算法是著名的图算法</li>
+<li>Dijkstra算法解决有权图从一个节点到其他节点的最短路径问题</li>
+<li>“以起始点为中心，向外层层扩展”</li>
+<li>最短路径问题<ul>
+<li>初始化两个集合(S, U)（S为只有初始顶点点A的集合， U为其他顶点集合）</li>
+<li>如果U不为空， 对U集合顶点进行距离的排序，并取出距离A最近的一个顶点D<ul>
+<li>将顶点D的纳入S集合</li>
+<li>更新通过顶点D到达U集合所有点的距离（如果距离更小则更新，否则不更新）</li>
+<li>重复2步骤</li>
+</ul>
+</li>
+<li>知道U集合为空，算法完成</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>内部网关路由协议之OSPF协议</p>
+<ul>
+<li>链路状态(LS)协议<ul>
+<li>向所有的路由器发送消息</li>
+<li>消息描述该路由器与相邻路由器的链路状态<ul>
+<li>距离、时延、带宽</li>
+</ul>
+</li>
+<li>只有链路状态发生变化时，才发送更新信息</li>
+</ul>
+</li>
+<li>OSPF协议的过程<ul>
+<li>OSPF(Open Shortest Path First：开放最短路径优先)</li>
+<li>OSPF协议的核心是Dijkstra算法</li>
+<li>向所有的路由器发送消息<ul>
+<li>获得网络中的所有信息–&gt; “网络的完整拓扑”</li>
+<li>也称为“链路状态数据库”</li>
+<li>“链路状态数据库”是全网一致的</li>
+<li>Dijkstra（迪杰斯特拉）算法</li>
+</ul>
+</li>
+<li>消息描述该路由器与相邻路由器的链路状态<ul>
+<li>OSPF协议更加客观、更加先进</li>
+</ul>
+</li>
+<li>只有链路状态发生变化时，才发送更新信息<ul>
+<li>减少了数据的交换，更快收敛</li>
+</ul>
+</li>
+<li>路由器接入网络</li>
+<li>路由器向邻居发出问候信息</li>
+<li>与邻居交流链路状态数据库</li>
+<li>广播和更新未知路由</li>
+</ul>
+</li>
+<li>五种消息类型<ul>
+<li>问候消息（Hello）</li>
+<li>链路状态数据库描述信息</li>
+<li>链路状态请求信息</li>
+<li>链路状态更新信息</li>
+<li>链路状态确认信息</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>RIP协议</th>
+<th>OSPF协议</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>从邻居看网络</td>
+<td>整个网络的拓扑</td>
+</tr>
+<tr>
+<td>在路由器之间累加距离</td>
+<td>Dijkstra算法计算最短路径</td>
+</tr>
+<tr>
+<td>频繁、周期更新，收敛很慢</td>
+<td>状态变化更新，收敛很快</td>
+</tr>
+<tr>
+<td>路由间拷贝路由信息</td>
+<td>路由间传递链路状态，自行计算路径</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<h3 id="4-13-外部网关路由协议之BGP协议"><a href="#4-13-外部网关路由协议之BGP协议" class="headerlink" title="4.13 外部网关路由协议之BGP协议"></a>4.13 外部网关路由协议之BGP协议</h3><ul>
+<li>BGP(Border Gateway Protocol: 边际网关协议)</li>
+<li>BGP协议是运行在自制系统(AS)之间的一种协议</li>
+<li>互联网的规模很大</li>
+<li>AS内部使用不同的路由协议</li>
+<li>AS之间需要考虑除网络特性以外的一些因素（政治、安全…）</li>
+<li>BGP协议能够找到一条到达目的比较好的路由</li>
+<li>BGP发言人(speaker)<ul>
+<li>BGP并不关心内部网络拓扑</li>
+<li>AS之间通过BGP发言人交流信息</li>
+<li>BGP Speaker可以人为配置策略</li>
+</ul>
+</li>
+</ul>
+<h2 id="5-传输层"><a href="#5-传输层" class="headerlink" title="5.传输层"></a>5.传输层</h2><h3 id="5-1-传输层的主要功能"><a href="#5-1-传输层的主要功能" class="headerlink" title="5.1 传输层的主要功能"></a>5.1 传输层的主要功能</h3><ul>
+<li><p>本质：跨设备的进程与进程的通信</p>
+<ul>
+<li>单机进程间通信方式：共享内存、Unix域套接字</li>
+</ul>
+</li>
+<li><p>端口的概念</p>
+<ul>
+<li>使用端口(Port)来标记不同的网络进程</li>
+<li>端口(Port)使用16比特位表示(0~65535)</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>FTP</th>
+<th>HTTP</th>
+<th>HTTPS</th>
+<th>DNS</th>
+<th>TELNET</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>21</td>
+<td>80</td>
+<td>443</td>
+<td>53</td>
+<td>23</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<h3 id="5-2-UDP协议详解"><a href="#5-2-UDP协议详解" class="headerlink" title="5.2 UDP协议详解"></a>5.2 UDP协议详解</h3><ul>
+<li>UDP是一个非常简单的协议</li>
+<li>UDP(User Datagram Protocol: 用户数据报协议)</li>
+<li>数据报(Datagram)<ul>
+<li>不合并 不拆分</li>
+</ul>
+</li>
+<li>层次位置</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>协议层</th>
+<th>数据格式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>物理层</td>
+<td>001010101001110110101010101010…10101010101010101010101010101</td>
+</tr>
+<tr>
+<td>数据链路层</td>
+<td>【帧首部 】【“帧”的数据】 【帧尾部】</td>
+</tr>
+<tr>
+<td>网络层</td>
+<td>【IP首部】【 IP数据报的数据】</td>
+</tr>
+<tr>
+<td>传输层</td>
+<td>【UDP首部】【 UDP数据报的数据(应用层数据)】</td>
+</tr>
+</tbody></table>
+<ul>
+<li>报文结构<ul>
+<li>16位源端口号 + 16位目的端口号</li>
+<li>16位UDP长度 + 16位UDP校验和</li>
+<li>头部报文共8个字节</li>
+<li>UDP数据</li>
+<li>各个报文字段的意义<ul>
+<li>16位源端口号<ul>
+<li>源机器使用的网络进程</li>
+</ul>
+</li>
+<li>16位目的端口号<ul>
+<li>目的机器使用的进程</li>
+</ul>
+</li>
+<li>16位UDP长度<ul>
+<li>udp数据报的长度，最小是8个字节仅包括手部</li>
+</ul>
+</li>
+<li>6位UDP校验和<ul>
+<li>检测数据报在传输过程中是否出错</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>UDP的特点<ul>
+<li>UDP是无连接协议</li>
+<li>UDP不能保证可靠的交付数据，“想发就发”，“无法保证数据在网络中是否丢失”</li>
+<li>UDP是面向报文传输的</li>
+<li>UDP没有拥塞控制</li>
+<li>UDP的首部开销很小</li>
+</ul>
+</li>
+</ul>
+<h3 id="5-3-TCP报文详解"><a href="#5-3-TCP报文详解" class="headerlink" title="5.3 TCP报文详解"></a>5.3 TCP报文详解</h3><ul>
+<li>TCP(Transmission Control Protocol: 传输控制协议)</li>
+<li>TCP协议是计算机网络中非常复杂的一个协议</li>
+<li>层次位置</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>协议层</th>
+<th>数据格式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>物理层</td>
+<td>001010101001110110101010101010…10101010101010101010101010101</td>
+</tr>
+<tr>
+<td>数据链路层</td>
+<td>【帧首部 】【“帧”的数据】 【帧尾部】</td>
+</tr>
+<tr>
+<td>网络层</td>
+<td>【IP首部】【 IP数据报的数据】</td>
+</tr>
+<tr>
+<td>传输层</td>
+<td>【TCP首部】【 TCP数据报的数据 】</td>
+</tr>
+</tbody></table>
+<ul>
+<li><p>特点</p>
+<ul>
+<li>TCP是面向连接的协议</li>
+<li>TCP的一个连接有两端（点对点通信）</li>
+<li>TCP提供可靠的传输服务</li>
+<li>TCP协议提供全双工的通信</li>
+<li>TCP是面向字节流的协议，合并、分拆</li>
+</ul>
+</li>
+<li><p>报文结构</p>
+<ul>
+<li><p>16位源端口 16位目的端口</p>
+</li>
+<li><p>32位序号</p>
+</li>
+<li><p>32位确认号</p>
+</li>
+<li><p>数据偏移 +保留字段 +TCP标记 +窗口</p>
+</li>
+<li><p>16位校验和 + 16位紧急指针</p>
+</li>
+<li><p>以上行固定20个字节</p>
+</li>
+<li><p>TCP选项（可选）+ 填充</p>
+</li>
+<li><p>各个报文字段的意义</p>
+<ul>
+<li><p>16位源端口号</p>
+<ul>
+<li>源机器使用的网络进程</li>
+</ul>
+</li>
+<li><p>16位目的端口号</p>
+<ul>
+<li>目的机器使用的进程</li>
+</ul>
+</li>
+<li><p>32位序号</p>
+<ul>
+<li>0~2^32-1</li>
+<li>面向字节流，一个字节一个序号</li>
+<li>数据首字节序号</li>
+</ul>
+</li>
+<li><p>32位确认号</p>
+<ul>
+<li>0~2^32-1</li>
+<li>一个字节一个序号</li>
+<li>期望收到数据的首字节序号</li>
+<li>确认号为N：则表示N-1序号的数据都已经收到</li>
+</ul>
+</li>
+<li><p>数据偏移</p>
+<ul>
+<li>占4位： 0~15，单位为： 32位字</li>
+<li>数据偏离首部的距离</li>
+</ul>
+</li>
+<li><p>保留字段</p>
+</li>
+<li><p>TCP标记</p>
+<ul>
+<li>占6位，每位各有不同意义</li>
+<li>TCP三次握手和四次挥手会用到这里的标记为</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>标记</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>URG</td>
+<td>Urgent: 紧急位， URG=1，表示紧急数据</td>
+</tr>
+<tr>
+<td>ACK</td>
+<td>Acknowledgement: 确认位， ACK=1，确认号才生效</td>
+</tr>
+<tr>
+<td>PSH</td>
+<td>Push: 推送位， PSH=1，尽快地把数据交付给应用层</td>
+</tr>
+<tr>
+<td>RST</td>
+<td>Reset: 重置位， RST=1，重新建立连接</td>
+</tr>
+<tr>
+<td>SYN</td>
+<td>Synchronization: 同步位， SYN=1 表示连接请求报文</td>
+</tr>
+<tr>
+<td>FIN</td>
+<td>Finish: 终止位， FIN=1 表示释放连接</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>窗口</p>
+<ul>
+<li>占16位： 0~2^16-1</li>
+<li>窗口指明允许对方发送的数据量</li>
+<li>确认号是500，窗口大小1000，则501-1500是可以接收的</li>
+</ul>
+</li>
+<li><p>16位校验和 </p>
+</li>
+<li><p>16位紧急指针</p>
+<ul>
+<li>紧急数据（URG=1）</li>
+<li>指定紧急数据在报文的位置</li>
+</ul>
+</li>
+<li><p>TCP选项（可选）</p>
+<ul>
+<li>最多40字节</li>
+<li>支持未来的拓展</li>
+</ul>
+</li>
+<li><p>填充</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="5-4-TCP可靠传输的基本原理"><a href="#5-4-TCP可靠传输的基本原理" class="headerlink" title="5.4 TCP可靠传输的基本原理"></a>5.4 TCP可靠传输的基本原理</h3><ul>
+<li><p>停止等待协议</p>
+<p><img src="https://raw.githubusercontent.com/jaydroid1024/jay_image_repo/main/img/20210801171526.jpg" alt=""></p>
+<ul>
+<li>无差错的情况</li>
+<li>出差错的情况<ul>
+<li>发送的消息在路上丢失了</li>
+<li>确认的消息在路上丢失了</li>
+<li>确认的消息很久才到</li>
+<li>超时重传</li>
+<li>超时重传计时器<ul>
+<li>每发送一个消息，都需要设置一个定时器</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>优缺点<ul>
+<li>停止等待协议是最简单的可靠传输协议</li>
+<li>停止等待协议对信道的利用效率不高</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>连续ARQ协议</p>
+<ul>
+<li>ARQ(Automatic Repeat reQuest：自动重传请求)</li>
+<li>既然单个发送和确认效率低，可不可以批量发送和确认？</li>
+<li>滑动窗口<ul>
+<li>固定窗口内的字节批量发出，确认几个窗口就向后滑动几个</li>
+</ul>
+</li>
+<li>累计确认<ul>
+<li>只要收到某个消息的确认，那么这个消息之前的消息都确认了</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="5-5-TCP协议的可靠传输"><a href="#5-5-TCP协议的可靠传输" class="headerlink" title="5.5 TCP协议的可靠传输"></a>5.5 TCP协议的可靠传输</h3><ul>
+<li>TCP的可靠传输基于连续ARQ协议</li>
+<li>TCP的滑动窗口以字节为单位</li>
+<li>滑动窗口<ul>
+<li>【已经确认的字节序号】-【窗口】-【不允许发送的字节序号】</li>
+<li>窗口中的字节数据：已发送未确认+可用窗口</li>
+<li>如果没有按顺序收到窗口开始的确认，只收到中间的确认消息，窗口不滑动，执行超时重传</li>
+<li>选择重传<ul>
+<li>选择重传需要指定需要重传的字节</li>
+<li>每一个字节都有唯一的32位序号</li>
+<li>存储在TCP选项（可选）</li>
+<li>最多40个字节，序号展4个字节，最多10个序号，每个序号表示的某段的起止位置，分段传输</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="5-6-TCP协议的流量控制"><a href="#5-6-TCP协议的流量控制" class="headerlink" title="5.6 TCP协议的流量控制"></a>5.6 TCP协议的流量控制</h3><ul>
+<li>流量控制指让发送方发送速率不要太快</li>
+<li>流量控制是使用滑动窗口来实现的</li>
+<li>流量控制流程<ul>
+<li><strong>窗口（rwnd）</strong>指明允许对方发送的数据量，Receiver window</li>
+<li><strong>序号（seq）</strong>用来标识从TCP发端向TCP收端发送的数据字节流，它表示在这个报文段中的的第一个数据字节。如果将字节流看作在两个应用程序间的单向流动，则TCP用序号对每个字节进行计数。序号是32bit的无符号数，序号到达232－1后又从0开始。sequence</li>
+<li><strong>确认序号（ack）</strong> 是上次已成功收到数据字节序号加1。只有ACK标志位为1时确认序号字段才有效。acknowledgement </li>
+<li><strong>确认位（ACK）</strong>  Acknowledgement: 确认位， ACK=1，确认号才生效</li>
+<li>发送方：发送100字节的数据（seq=1, DATA）</li>
+<li>发送方：发送100字节的数据（seq=101, DATA）</li>
+<li>-&gt;接收方：确认200字节的数据，并告诉对方窗口为300（ACK=1, ack=201, rwnd=300）</li>
+<li>发送方：发送100字节的数据（seq=301, DATA）</li>
+<li>发送方：发送200字节的数据（seq=401, DATA）</li>
+<li>-&gt;接收方：确认300字节的数据，并告诉对方窗口为0（ACK=1, ack=601, rwnd=0）</li>
+<li>-&gt;接收方想再次接受数据需要发送窗口大小给发送方</li>
+<li>如果这个窗口调整请求出错了会产生死锁吗</li>
+<li>坚持定时器来避免死锁的情况</li>
+</ul>
+</li>
+<li>坚持定时器<ul>
+<li>当接收到窗口为0的消息，则启动坚持定时器</li>
+<li>坚持定时器每隔一段时间发送一个窗口探测报文</li>
+</ul>
+</li>
+</ul>
+<h3 id="5-7-TCP协议的拥塞控制"><a href="#5-7-TCP协议的拥塞控制" class="headerlink" title="5.7 TCP协议的拥塞控制"></a>5.7 TCP协议的拥塞控制</h3><ul>
+<li>一条数据链路经过非常多的设备</li>
+<li>数据链路中各个部分都有可能成为网路传输的瓶颈</li>
+<li>拥塞控制 VS 流量控制<ul>
+<li>流量控制考虑点对点的通信量的控制</li>
+<li>拥塞控制考虑整个网络，是全局性的考虑</li>
+</ul>
+</li>
+<li>拥塞判断：报文超时可以认为是拥塞</li>
+<li>拥塞控制算法<ul>
+<li>慢启动算法<ul>
+<li>由小到大逐渐增加发送数据量</li>
+<li>每收到一个报文确认，就加一，例如：1 2 4 8 16 （指数增长）</li>
+<li>慢启动阈值(ssthresh)</li>
+</ul>
+</li>
+<li>拥塞避免算法<ul>
+<li>维护一个拥塞窗口的变量，大于慢启动阈值</li>
+<li>只要网络不拥塞，就试探着拥塞窗口调大，17 18 19</li>
+<li>最大限度的利用管道</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/jaydroid1024/jay_image_repo/main/img/20210801171603.jpg" alt=""></p>
+<h3 id="5-8-TCP连接的建立"><a href="#5-8-TCP连接的建立" class="headerlink" title="5.8 TCP连接的建立"></a>5.8 TCP连接的建立</h3><ul>
+<li>TCP标记：占6位，每位各有不同意义</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>标记</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SYN</td>
+<td>Synchronization: 同步位， SYN=1 表示连接请求报文</td>
+</tr>
+<tr>
+<td>ACK</td>
+<td>Acknowledgement: 确认位， ACK=1，确认号才生效</td>
+</tr>
+<tr>
+<td>FIN</td>
+<td>Finish: 终止位， FIN=1 表示释放连接</td>
+</tr>
+<tr>
+<td>seq</td>
+<td>sequence，序号（seq）用来标识从TCP发端向TCP收端发送的数据字节流，它表示在这个报文段中的的第一个数据字节。32位</td>
+</tr>
+<tr>
+<td>ack</td>
+<td>acknowledgement，确认序号（ack）是上一次已成功收到的数据字节序号（seq）加1。标识期望发对方发来的序号是它的值，只有ACK标志位为1时确认序号字段才有效。32位</td>
+</tr>
+</tbody></table>
+<ul>
+<li>三次握手建立TCP连接的过程<ul>
+<li>接收方：监听</li>
+<li>发送方：SYN=1, seq=x</li>
+<li>发送方：同步已发送</li>
+<li>接收方：SYN=1, ACK=1, seq=y, ack=x+ 1</li>
+<li>接收方：同步已接受</li>
+<li>发送方：ACK=1, seq=x+ 1, ack=y+1</li>
+<li>发送方：建立连接</li>
+<li>接收方：建立连接</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/jaydroid1024/jay_image_repo/main/img/20210801171620.jpg" alt=""></p>
+<ul>
+<li>为什么需要三次握手<ul>
+<li>避免已经失效的连接请求报文传送到对方， 引起错误</li>
+<li>避免两次建立连接时多次连接的情况</li>
+<li>第三次握手时，发送方可以检查是否已经发起了第三次，如果已经发起了就忽略其它超时的连接</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/jaydroid1024/jay_image_repo/main/img/20210801172608.jpg" alt=""></p>
+<ul>
+<li>TCP三次握手 <ul>
+<li>使用TCP协议进行通信的双方必须先建立连接，然后才能开始传输数据。为了确保连接双方可靠性，在双方建立连接时, TCP协议采用了三次握手策略。</li>
+<li>第一次握手:客户端发送带有SYN标志的连接请求报文段，然后进入SYN SEND )状态，等待服务端的确认。</li>
+<li>第二次握手:服务端接收到客户端的SYN报文段后需要发送ACK信息对这个SYN报文段进行确认。同时，还要发送自己的SYN请求信息。服务端会将上述的信息放到一个报文段(SYN+ ACK报文段)中，一并发送给客户端此时服务端将会进入SYN RECV状态。</li>
+<li>第三次握手:客户端接收到服务端的SYN+ ACK报文段后,会想服务端发送ACK确认报文段，这个报文段发送完毕后，客户端和服务端都进入ESTABLISHED状态,完成TCP三次握手。</li>
+</ul>
+</li>
+<li>为什么需要第三次<ul>
+<li>确认双方的收发能力，一共八个能力：自己的收发和对方的收发</li>
+<li>第一次：服务端能知道客户端的发送和自己的接收能力正常</li>
+<li>第二次：客户端能知道服务端的接收（第一次）和发送能力和自己的发送（第一次）能力和接收能力都正常</li>
+<li>第三次：服务端能知道客户端的接收（第二次）和自己的发送（第二次）能力正常</li>
+</ul>
+</li>
+</ul>
+<h3 id="5-9-TCP连接的释放"><a href="#5-9-TCP连接的释放" class="headerlink" title="5.9 TCP连接的释放"></a>5.9 TCP连接的释放</h3><ul>
+<li>TCP标记：占6位，每位各有不同意义</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>标记</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SYN</td>
+<td>Synchronization: 同步位， SYN=1 表示连接请求报文</td>
+</tr>
+<tr>
+<td>ACK</td>
+<td>Acknowledgement: 确认位， ACK=1，确认号才生效</td>
+</tr>
+<tr>
+<td>FIN</td>
+<td>Finish: 终止位， FIN=1 表示释放连接</td>
+</tr>
+<tr>
+<td>seq</td>
+<td>sequence，序号（seq）用来标识从TCP发端向TCP收端发送的数据字节流，它表示在这个报文段中的的第一个数据字节。32位</td>
+</tr>
+<tr>
+<td>ack</td>
+<td>acknowledgement，确认序号（ack）是上一次已成功收到的数据字节序号（seq）加1。标识期望发对方发来的序号是它的值，只有ACK标志位为1时确认序号字段才有效。32位</td>
+</tr>
+</tbody></table>
+<ul>
+<li><p>四次释放</p>
+<ul>
+<li>四次释放TCP连接的过程<ul>
+<li>发送方：FIN=1,seq=u</li>
+<li>发送方：释放等待状态（FIN-WAIT-1）</li>
+<li>接收方：ACK=1,seq=v,ack=u+1</li>
+<li>发送方：释放等待状态（FIN-WAIT-2）</li>
+<li>接收方：关闭等待状态（CLOSE-WAIT）</li>
+<li>接收方：因为是被动关闭可能有未发出的数据需要继续完成发送</li>
+<li>接收方：FIN=1,ACK=1,seq=w,ack=u+1</li>
+<li>接收方：最后确认状态（LAST-ACK）</li>
+<li>发送方：ACK=1,seq=u+1,ack=w+1</li>
+<li>发送方：等待计时（TIME-WAIT）</li>
+<li>接收方：关闭状态</li>
+<li>发送方：关闭状态</li>
+</ul>
+</li>
+<li>等待计时器<ul>
+<li>等待时间：2MSL<ul>
+<li>MSL(Max Segment Lifetime): 最长报文段寿命</li>
+<li>MSL建议设置为2分钟</li>
+</ul>
+</li>
+<li>为什么需要等待2MSL？<ul>
+<li>确保发送方的ACK可以到达接收方</li>
+<li>最后一个报文没有确认</li>
+<li>接收方在 2MSL时间内没有收到，则接收方会重发确认释放请求数据报</li>
+<li>确保当前连接的所有报文都已经过期</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/jaydroid1024/jay_image_repo/main/img/20210801171643.jpg" alt=""></p>
+<h3 id="5-10-套接字与套接字编程"><a href="#5-10-套接字与套接字编程" class="headerlink" title="5.10 套接字与套接字编程"></a>5.10 套接字与套接字编程</h3><ul>
+<li>使用端口(Port)来标记不同的网络进程，端口(Port)使用16比特位表示(0~65535)</li>
+<li>网络套接字<ul>
+<li>𝐼𝑃: 𝑃𝑜𝑟𝑡—— 套接字</li>
+<li>套接字(Socket)是抽象概念，表示TCP连接的一端</li>
+<li>通过套接字可以进行数据发送或接收</li>
+<li>TCP连接由两个套接字组成：TCP={ 𝑆𝑜𝑐𝑘𝑒𝑡1: 𝑆𝑜𝑐𝑘𝑒𝑡2}= { {𝐼𝑃: 𝑃𝑜𝑟𝑡}  { 𝐼𝑃: 𝑃𝑜𝑟𝑡} }</li>
+<li>客户端 –TCP连接—服务端</li>
+<li>服务端<ul>
+<li>创建套接字</li>
+<li>绑定(bind)套接字</li>
+<li>监听(listen)套接字</li>
+<li>接收&amp;处理信息</li>
+</ul>
+</li>
+<li>客户端<ul>
+<li>创建套接字</li>
+<li>连接套接字</li>
+<li>发送信息</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>客户端-服务端编程<ul>
+<li>Java、Pathy</li>
+</ul>
+</li>
+<li>网络套接字 VS 域套接字<ul>
+<li>域套接字：域套接字文件，不会经过tcp/ip协议簇，单机跨进程建议使用</li>
+<li>网络套接字：单机和跨机都会在tcp/ip协议栈走一圈，单机跨进程不建议使用</li>
+</ul>
+</li>
+</ul>
+<h2 id="6-应用层"><a href="#6-应用层" class="headerlink" title="6.应用层"></a>6.应用层</h2><h3 id="6-1-应用层概述"><a href="#6-1-应用层概述" class="headerlink" title="6.1 应用层概述"></a>6.1 应用层概述</h3><ul>
+<li>传输层以及以下的层提供完整的通信服务</li>
+<li>应用层是面向用户的一层</li>
+<li>已有的应用层软件 ，面向传输层的编程</li>
+<li>UDP<ul>
+<li>多媒体信息分发<ul>
+<li>视频 语音 实时信息</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>TCP<ul>
+<li>可靠消息传输<ul>
+<li>金融交易 可靠通讯 MQ</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="6-2-应用层主要功能"><a href="#6-2-应用层主要功能" class="headerlink" title="6.2 应用层主要功能"></a>6.2 应用层主要功能</h3><ul>
+<li>应用进程的报文类型（请求报文、应答报文）</li>
+<li>报文的语法、格式</li>
+<li>应用进程发送数据的时机、规则</li>
+<li>定义应用间通讯的规则</li>
+</ul>
+<h3 id="6-3-DNS服务详解"><a href="#6-3-DNS服务详解" class="headerlink" title="6.3 DNS服务详解"></a>6.3 DNS服务详解</h3><ul>
+<li><p>DNS（Domain Name System: 域名系统）</p>
+<ul>
+<li>域：Domain，网络端，自治域</li>
+<li>名：Name，IP地址</li>
+</ul>
+</li>
+<li><p>主机的进程：Web 服务、网络存储服务、远程调用服务、邮件服务</p>
+</li>
+<li><p>IP地址+端口：14.215.177.39:80 、14.18.245.164:25、161.23.37.215:8810</p>
+</li>
+<li><p>DNS的功能</p>
+<ul>
+<li>使用域名帮助记忆<ul>
+<li>点分十进制转为人容易记忆的单词</li>
+<li>域名–&gt;DNS服务–&gt;IP</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>域名详解</p>
+<ul>
+<li><p>域名由点、字母和数字组成</p>
+</li>
+<li><p>点分割不同的域</p>
+</li>
+<li><p>域名可以分为顶级域、二级域、三级域</p>
+<ul>
+<li>例如 ：www(三级域).taobao(二级域).com(顶级域)</li>
+<li>顶级域<ul>
+<li>国家<ul>
+<li>cn：中国</li>
+<li>us：美国</li>
+<li>uk：英国</li>
+<li>ca：加拿大</li>
+</ul>
+</li>
+<li>通用<ul>
+<li>com：公司</li>
+<li>net：网络服务机构</li>
+<li>gov：政府机构</li>
+<li>org：其它组织机构</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>二级域<ul>
+<li>qq、taobao、baidu、alibaba、aliyun、amazon、google、facebook</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/jaydroid1024/jay_image_repo/main/img/20210801171724.jpg" alt=""></p>
+</li>
+</ul>
+</li>
+<li><p>域名服务器</p>
+<ul>
+<li>一般由国际或者机构搭建</li>
+<li>查询过程<ul>
+<li>本地查询，有就返回</li>
+<li>没有去查根域名服务器</li>
+<li>根域名服务器告诉去查哪一个顶级域名服务器</li>
+<li>顶级域名服务器查到后告诉哪一个域名服务器</li>
+<li>如果域名服务器没找到会返回根域名服务器再次查找</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/jaydroid1024/jay_image_repo/main/img/20210801171736.jpg" alt=""></p>
+</li>
+<li><p>DNS域名解析</p>
+<ul>
+<li>通常我们访问一一个网站，使用的是主机名或者域名来进行访问的。因为相对于IP地址(一组纯数字)，域名更容易让人记住。但TCP/IP协议使用的是IP地址进行访问的，所以必须有个机制或服务把域名转换成IP地址。DNS服务就是用来解决这个问题的，它提供域名到IP地址之间的解析服务。</li>
+<li>用户输入-浏览器-域名查询-获取IP-发送请求-web服务器-回传网页内容-浏览器-渲染-用户</li>
+</ul>
+</li>
+<li><p>DNS解析流程</p>
+<ul>
+<li>就近原则</li>
+<li>本机host文件</li>
+<li>本机dns服务</li>
+<li>远程13台根域名服务</li>
+<li>转发模式</li>
+</ul>
+</li>
+</ul>
+<h3 id="6-4-DHCP协议详解"><a href="#6-4-DHCP协议详解" class="headerlink" title="6.4 DHCP协议详解"></a>6.4 DHCP协议详解</h3><ul>
+<li>DHCP是什么<ul>
+<li>DHCP(Dynamic Host Configuration Protocol: 动态主机设置协议)</li>
+<li>DHCP是一个局域网协议</li>
+<li>DHCP是应用UDP协议的应用层协议</li>
+</ul>
+</li>
+<li>DHCP的功能<ul>
+<li>即插即用联网<ul>
+<li>临时IP，内网地址，转换为外网</li>
+<li>租期，租期到了会回收</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>DHCP的工作机制<ul>
+<li>DHCP服务器监听默认端口： 67</li>
+<li>主机使用UDP协议广播DHCP发现报文</li>
+<li>DHCP服务器发出DHCP提供报文</li>
+<li>主机向DHCP服务器发出DHCP请求报文</li>
+<li>DHCP服务器回应并提供IP地址</li>
+</ul>
+</li>
+</ul>
+<h3 id="6-5-HTTP协议详解"><a href="#6-5-HTTP协议详解" class="headerlink" title="6.5 HTTP协议详解"></a>6.5 HTTP协议详解</h3><ul>
+<li><p>HTTP是什么</p>
+<ul>
+<li>HTTP(HyperText Transfer Protocol: 超文本传输协议)</li>
+<li>超文本： “超级文本”， “带超链接文本”，“富文本”</li>
+<li>http(s)://&lt;主机&gt;:&lt;端口&gt;/&lt;路径&gt;，例如：<a href="https://www.baidu.com/" target="_blank" rel="noopener">https://www.baidu.com/</a></li>
+<li>HTTP协议是可靠的数据传输协议<ul>
+<li>Web内容：文本 图片 文件 动图 音频 视频</li>
+</ul>
+</li>
+<li>C/S: 客户端—&gt;HTTP协议—-&gt; 服务端</li>
+</ul>
+</li>
+<li><p>Web服务器</p>
+<ul>
+<li><p>硬件部分 ：阿里云虚拟服务器、迷你计算机</p>
+</li>
+<li><p>软件部分：Apache、Nginx</p>
+<ul>
+<li><em>Nginx</em> (engine x) 是一个高性能的HTTP和反向代理web服务器，同时也提供了IMAP/POP3/SMTP服务。</li>
+<li>Apache(音译为阿帕奇)是世界使用排名第一的Web服务器软件。它可以运行在几乎所有广泛使用的计算机平台上，由于其跨平台和安全性被广泛使用，是最流行的Web服务器端软件之一。</li>
+</ul>
+</li>
+<li><p>工作机制</p>
+<ul>
+<li>接受客户端连接 </li>
+<li>接收请求报文 </li>
+<li>处理请求</li>
+<li>访问Web资源</li>
+<li>构造应答</li>
+<li>发送应答</li>
+</ul>
+</li>
+<li><p>HTTP请求方法</p>
+<ul>
+<li>GET：获取指定的服务端资源</li>
+<li>POST：提交数据到服务端</li>
+<li>DELETE：删除指定的服务端资源</li>
+<li>UPDATE：更新指定的服务端资源</li>
+<li>PUT</li>
+<li>OPTIONS</li>
+<li>PATCH</li>
+<li>HEAD</li>
+<li>TRACE</li>
+</ul>
+</li>
+<li><p>HTTP指定资源</p>
+<ul>
+<li>在地址中指定</li>
+<li>在请求数据中指定</li>
+</ul>
+</li>
+<li><p>HTTP请求报文</p>
+<ul>
+<li>[请求方法] [请求地址] [HTTP版本]</li>
+<li>[请求头]</li>
+<li>[请求内容]</li>
+</ul>
+</li>
+<li><p>HTTP应答报文</p>
+<ul>
+<li>[HTTP版本] [状态码] [状态解释]</li>
+<li>[应答头]</li>
+<li>[应答内容]</li>
+</ul>
+</li>
+<li><p>HTTP应答状态码</p>
+<ul>
+<li>状态码 含义<br>200<del>299 成功状态码<br>300</del>399 重定向状态码<br>400<del>499 客户端错误状态码<br>500</del>599 服务端错误状态码</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>状态码</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>200~299</td>
+<td>成功状态码</td>
+</tr>
+<tr>
+<td>300~399</td>
+<td>重定向状态码</td>
+</tr>
+<tr>
+<td>400~499</td>
+<td>客户端错误状态码</td>
+</tr>
+<tr>
+<td>500~599</td>
+<td>服务端错误状态码</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="6-6-HTTP工作的结构"><a href="#6-6-HTTP工作的结构" class="headerlink" title="6.6 HTTP工作的结构"></a>6.6 HTTP工作的结构</h3><ul>
+<li>Web代理<ul>
+<li>正向代理</li>
+<li>反向代理</li>
+</ul>
+</li>
+<li>CDN<ul>
+<li>CDN（Content Delivery Network：内容分发网络）</li>
+<li>多媒体内容</li>
+</ul>
+</li>
+<li>爬虫<ul>
+<li>增加网络拥塞</li>
+<li>损耗服务器资源</li>
+</ul>
+</li>
+</ul>
+<h3 id="6-7-HTTPS协议详解"><a href="#6-7-HTTPS协议详解" class="headerlink" title="6.7 HTTPS协议详解"></a>6.7 HTTPS协议详解</h3><ul>
+<li>敏感信息：账号密码、个人信息、账户金额、交易信息、敏感信息…</li>
+<li>HTTPS(Secure)是安全的HTTP协议</li>
+<li>http(s)://&lt;主机&gt;:&lt;端口&gt;/&lt;路径&gt;，端口：443</li>
+<li>工作机制<ul>
+<li>加密模型<ul>
+<li>对称加密：使用秘钥加密 ，使用秘钥解密，两个秘钥“一致”</li>
+<li>非对称加密：两个秘钥“不一致”<ul>
+<li>A、 B是拥有一定数学关系的一组秘钥</li>
+<li>私钥：私钥自己使用，不对外公开</li>
+<li>公钥：公钥给大家使用，对外公开</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>数字证书<ul>
+<li>数字证书是可信任组织颁发给特定对象的认证</li>
+<li>证书格式、版本号</li>
+<li>证书序列号</li>
+<li>签名算法</li>
+<li>有效期</li>
+<li>对象名称</li>
+<li>对象公开秘钥</li>
+</ul>
+</li>
+<li>SSL<ul>
+<li>SSL(Secure Sockets Layer: 安全套接层)</li>
+<li>SSL位于传输层与应用层之间</li>
+<li>数据安全和数据完整</li>
+<li>对传输层数据进行加密后传输</li>
+</ul>
+</li>
+<li>HTTPS工作流程<ul>
+<li>443端口的TCP连接</li>
+<li>SSL安全参数握手</li>
+<li>客户端发送数据</li>
+<li>服务端发送数据</li>
+</ul>
+</li>
+<li>SSL安全参数握手过程<ul>
+<li>客户端：随机数1、协议版本、加密算法</li>
+<li>服务端：确定加密算法、数字证书、随机数2</li>
+<li>客户端：<ul>
+<li>确认证书是否有效</li>
+<li>生成随机数3</li>
+<li>使用服务器的公钥加密随机数3</li>
+</ul>
+</li>
+<li>根据随机数1、 2、 3和相同的算法生成对称秘钥</li>
+<li>双方使用对称秘钥进行加密通信</li>
+<li>综合使用对称加密、非对称加密</li>
+<li>双方分别生成秘钥，没有经过传输</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="6-8-输入域名按下回车键的过程有哪些"><a href="#6-8-输入域名按下回车键的过程有哪些" class="headerlink" title="6.8 输入域名按下回车键的过程有哪些"></a>6.8 输入域名按下回车键的过程有哪些</h3><ul>
+<li>域名解析<ul>
+<li>客户端生成DNS的UDP报文</li>
+<li>查询本机配置的DNS IP地址</li>
+<li>UDP报文经本机协议栈发送出去</li>
+<li>网络层 数据链路层 物理层</li>
+<li>请求顶级域名服务器</li>
+</ul>
+</li>
+<li>建立连接<ul>
+<li>TCP三次握手</li>
+<li>SSL握手 交换秘钥</li>
+</ul>
+</li>
+<li>HTTP通信<ul>
+<li>GET</li>
+</ul>
+</li>
+<li>释放连接<ul>
+<li>四次挥手 结束连接</li>
+</ul>
+</li>
+</ul>
+<h2 id="7-HTTP协议详解"><a href="#7-HTTP协议详解" class="headerlink" title="7.HTTP协议详解"></a>7.HTTP协议详解</h2><h3 id="7-1-浏览器背后的故事"><a href="#7-1-浏览器背后的故事" class="headerlink" title="7.1 浏览器背后的故事"></a>7.1 浏览器背后的故事</h3><ul>
+<li><a href="http://www.basedev.cn/">http://www.basedev.cn/</a></li>
+<li>用户输入-浏览器-域名查询-获取IP-发送请求-web服务器-回传网页内容-浏览器-渲染-用户</li>
+<li>HTTP<ul>
+<li>超文本传输协议(HTTP)是一-种通信协议， 它允许将超文本标记语言(HTML)文档从Web服务器传送到客户端的浏览器</li>
+<li>HTTP是- -个属于应用层的面向对象的协议，由于其简捷、快速的方式，适用于分布式超媒体信息系统。它于1990年提出，经过几年的使用与发展，得到不断地完善和扩展</li>
+</ul>
+</li>
+<li>Web与HTTP<ul>
+<li>WEB是一种基于超文本和HTTP的、 全球性的、动态交互的、跨平台的分布式图形信息系统</li>
+<li>建立在Internet上的一种网络服务，为浏览者在Internet.上查找和浏览信息提供了图形化的、易于访问的直观界面，其中的文档及超，级链接将Internet上的信息节点组织成一个互为关联的网状结构</li>
+</ul>
+</li>
+</ul>
+<h3 id="7-2-HTTP协议的前世今生"><a href="#7-2-HTTP协议的前世今生" class="headerlink" title="7.2 HTTP协议的前世今生"></a>7.2 HTTP协议的前世今生</h3><ul>
+<li>1990年10月万维网之父TimBerners-Lee最早提出了HTTP协议</li>
+<li>1991年HTTP0.9诞生</li>
+<li>1996年5月HTTP1.0发布</li>
+<li>1997年1月HTTP1.1发布</li>
+<li>2015年5月HTTP2.0提出</li>
+<li>HTTP3.0，QUIC协议</li>
+</ul>
+<h3 id="7-3-透过TCP-IP看HTTP"><a href="#7-3-透过TCP-IP看HTTP" class="headerlink" title="7.3 透过TCP/IP看HTTP"></a>7.3 透过TCP/IP看HTTP</h3><ul>
+<li>TCP/IP协议族<ul>
+<li>TCP/IP协议其实是一-系列与互联网相关联的协议集 合起来的总称</li>
+<li>分层管理是TCP/IP协议的重要特征</li>
+</ul>
+</li>
+<li>应用层<ul>
+<li>应用层一般是我们编写的应用程序,决定了向用户提供的应用服务。应用层可以通过系统调用与传输层进行通信。如: FTP、DNS、HTTP等。</li>
+</ul>
+</li>
+<li>传输层<ul>
+<li>传输层通过系统调用向应用层提供处于网络连接中的两台计算机之间的数据传输功能。</li>
+<li>在传输层有两个性质不同的协议:TCP和UDP。</li>
+</ul>
+</li>
+<li>网络层<ul>
+<li>网络层用来处理在网络上流动的数据包，数据包是网络传输的最小数据单位。该层规定了通过怎样的路径(传输路线)到达对方计算机，并把数据包传输给对方。</li>
+</ul>
+</li>
+<li>链路层.<ul>
+<li>链路层用来处理连接网络的硬件部分，包括控制操作系统、硬件设备驱动、NIC (Network Interface Card,网络适配器)以及光纤等物理可见部分。硬件. 上的范畴均在链路层的作用范围之内。</li>
+</ul>
+</li>
+<li>数据包的封装过程</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/008eGmZEly1gnqxpcdpezj30ig0aqzm8.jpg" alt=""></p>
+<ul>
+<li>http数据传输过程<ul>
+<li>发送端发送数据时，数据会从上层传输到下层，且每经过一层都会被打上该层的头部信息。</li>
+<li>接收端接收数据时，数据会从下层传输到上层，传输前会把下层的头部信息删除.</li>
+</ul>
+</li>
+</ul>
+<h2 id="8-计算机网络实践"><a href="#8-计算机网络实践" class="headerlink" title="8.计算机网络实践"></a>8.计算机网络实践</h2><h3 id="8-1-网络嗅探工具"><a href="#8-1-网络嗅探工具" class="headerlink" title="8.1 网络嗅探工具"></a>8.1 网络嗅探工具</h3><ul>
+<li><p>实现流程</p>
+<ul>
+<li>搭建服务基本框架</li>
+<li>Python操作字节序列<ul>
+<li>字节序<ul>
+<li>255 = 00000000,11111111</li>
+<li>大端字节序：高位在前，00000000,11111111<ul>
+<li>网络，易读</li>
+</ul>
+</li>
+<li>小端字节序：高位在后，11111111, 00000000<ul>
+<li>主机，CPU对小端字节序处理效率高效</li>
+</ul>
+</li>
+<li>计算机电路先处理低位字节效率比较高</li>
+<li>人类习惯读写大端字节序</li>
+</ul>
+</li>
+<li>格式字符<ul>
+<li>%s 字符串，%d 整数，%x 十六进制，%f 浮点数</li>
+<li>格式字符 C++/Python类型 标准大小（字节）</li>
+<li>B-unsigned char/整数 1</li>
+<li>H unsigned short/整数 2</li>
+<li>L unsigned long/整数 4</li>
+<li>s char[]/字节串 </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>实现IP报文解析器</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/jaydroid1024/jay_image_repo/main/img/20210801173224.jpg" alt=""></p>
+<ul>
+<li>实现UDP报文解析器</li>
+<li>实现TCP报文解析器</li>
+</ul>
+</li>
+<li><p>网卡模式</p>
+<ul>
+<li>混杂模式 <ul>
+<li>接受所有经过网卡设备的数据 </li>
+</ul>
+</li>
+<li>非混杂模式<ul>
+<li>只接受目的地址指向自己的数据</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>IP报文解析</p>
+</li>
+<li><p>TCP报文解析</p>
+</li>
+<li><p>UDP报文解析</p>
+</li>
+<li><p>从零到一实现HTTP服务器开发</p>
+</li>
+</ul>
+<h2 id="9-关于我"><a href="#9-关于我" class="headerlink" title="9.关于我"></a>9.关于我</h2><p>一个专注基础知识的十二线小码农，本着 <strong>基础，体系，实践，分享</strong> 的学习理念，在自我提升的同时分享自己的心得体会，不断完善，周而复始。</p>
+<p><a href="http://basedev.cn/" target="_blank" rel="noopener">个人网站 basedev.cn</a>  </p>
+<p><a href="https://github.com/jaydroid1024" target="_blank" rel="noopener">Github</a></p>
+<p>BaseDev系列只整理点到为止的知识纲领，不求甚解；欲知其所以然者还得回归书本且付诸实践</p>
+<h2 id="10-参考"><a href="#10-参考" class="headerlink" title="10.参考"></a>10.参考</h2><p><a href="https://kaiwu.lagou.com/course/courseInfo.htm?sid=20-h5Url-0&amp;courseId=478&amp;lagoufrom=noapp&amp;sharetype=wx_friend#/content" target="_blank" rel="noopener">重学操作系统 | 拉钩教育</a></p>
+<p><a href="https://coding.imooc.com/class/package/355.html" target="_blank" rel="noopener">编程必备基础 | 慕课网</a></p>
+
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Jay</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://www.basedev.cn/2021/07/31/computer-net/">http://www.basedev.cn/2021/07/31/computer-net/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">Jay</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/">
+                                    <span class="chip bg-color">计算机基础</span>
+                                </a>
+                            
+                                <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
+                                    <span class="chip bg-color">计算机网络</span>
+                                </a>
+                            
+                                <a href="/tags/TCP-IP/">
+                                    <span class="chip bg-color">TCP/IP</span>
+                                </a>
+                            
+                                <a href="/tags/HTTP-HTTPS/">
+                                    <span class="chip bg-color">HTTP/HTTPS</span>
+                                </a>
+                            
+                                <a href="/tags/OSI%E4%B8%83%E5%B1%82%E6%A8%A1%E5%9E%8B/">
+                                    <span class="chip bg-color">OSI七层模型</span>
+                                </a>
+                            
+                                <a href="/tags/DNS/">
+                                    <span class="chip bg-color">DNS</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="wechat,qq,qzone,weibo,twitter,facebook,google,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+        <link rel="stylesheet" href="/libs/gitment/gitment-default.css">
+<link rel="stylesheet" href="/css/gitment.css">
+
+<div class="gitment-card card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="gitment-content" class="card-content"></div>
+</div>
+
+<script src="/libs/gitment/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+    id: 'Sat Jul 31 2021 14:16:55 GMT+0800',
+    owner: 'jaydroid1024',
+    repo: 'hexo_blog_repo',
+    oauth: {
+        client_id: '4c4d58f27f5177dff57c',
+        client_secret: 'c9fce45c9250437cb34e3a7755c4135df47aa65b'
+    }
+});
+
+gitment.render('gitment-content');
+</script>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2021/07/31/jdispatcher/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="JDispatcher-Android组件生命周期分发框架">
+                        
+                        <span class="card-title">JDispatcher-Android组件生命周期分发框架</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Android 组件生命周期分发框架，适用于组件化，模块化，启动优化等场景
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-07-31
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%A1%86%E6%9E%B6/" class="post-category">
+                                    框架
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E7%BB%84%E4%BB%B6%E5%8C%96/">
+                        <span class="chip bg-color">组件化</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%B3%A8%E8%A7%A3/">
+                        <span class="chip bg-color">注解</span>
+                    </a>
+                    
+                    <a href="/tags/Gradle-Plugin/">
+                        <span class="chip bg-color">Gradle Plugin</span>
+                    </a>
+                    
+                    <a href="/tags/ASM/">
+                        <span class="chip bg-color">ASM</span>
+                    </a>
+                    
+                    <a href="/tags/APT/">
+                        <span class="chip bg-color">APT</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/07/31/android-base/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="筑基系列-Android基础知识小抄版（更新中...）">
+                        
+                        <span class="card-title">筑基系列-Android基础知识小抄版（更新中...）</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Android/Java 基础知识小抄版提纲挈领，包括：Java（集合、并发、IO、语言特性）Android（四大组件原理、Handler、布局等）
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-07-31
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Android/" class="post-category">
+                                    Android
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Android/">
+                        <span class="chip bg-color">Android</span>
+                    </a>
+                    
+                    <a href="/tags/Java/">
+                        <span class="chip bg-color">Java</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 王学杰<br />'
+            + '文章作者: Jay<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.3'
+                   list-folded='false'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">2021</span>
+            <a href="/about" target="_blank">Jay</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">42k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2021";
+                    var startMonth = "1";
+                    var startDate = "1";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+            <span id="icp"><img src="/medias/icp.png" style="vertical-align: text-bottom;" />
+                <a href="https://beian.miit.gov.cn/" target="_blank">京ICP备2020043565号-1</a>
+            </span>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/jaydroid1024" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:wangxuejie@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1018673209" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1018673209" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?88efcea1b43fcd428172af2f7305f80e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    
+    <script type="text/javascript" color="0,0,255"
+        pointColor="0,0,255" opacity='0.7'
+        zIndex="-1" count="99"
+        src="/libs/background/canvas-nest.js"></script>
+    
+
+    
+
+    
+    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

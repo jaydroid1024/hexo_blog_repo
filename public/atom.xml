@@ -6,7 +6,7 @@
   <link href="http://www.basedev.cn/atom.xml" rel="self"/>
   
   <link href="http://www.basedev.cn/"/>
-  <updated>2020-05-04T09:33:24.103Z</updated>
+  <updated>2021-07-31T10:43:09.691Z</updated>
   <id>http://www.basedev.cn/</id>
   
   <author>
@@ -17,29 +17,198 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Hello World</title>
-    <link href="http://www.basedev.cn/2020/05/04/hello-world/"/>
-    <id>http://www.basedev.cn/2020/05/04/hello-world/</id>
-    <published>2020-05-04T08:32:57.519Z</published>
-    <updated>2020-05-04T09:33:24.103Z</updated>
+    <title>JDispatcher-Android组件生命周期分发框架</title>
+    <link href="http://www.basedev.cn/2021/07/31/jdispatcher/"/>
+    <id>http://www.basedev.cn/2021/07/31/jdispatcher/</id>
+    <published>2021-07-31T06:16:55.000Z</published>
+    <updated>2021-07-31T10:43:09.691Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a</summary>
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/jaydroid1024/jay_image_repo/main/img/post_banner_jay.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h1</summary>
         
       
     
     
     
-    <category term="Hello" scheme="http://www.basedev.cn/categories/Hello/"/>
+    <category term="框架" scheme="http://www.basedev.cn/categories/%E6%A1%86%E6%9E%B6/"/>
     
     
-    <category term="H" scheme="http://www.basedev.cn/tags/H/"/>
+    <category term="组件化" scheme="http://www.basedev.cn/tags/%E7%BB%84%E4%BB%B6%E5%8C%96/"/>
     
-    <category term="W" scheme="http://www.basedev.cn/tags/W/"/>
+    <category term="注解" scheme="http://www.basedev.cn/tags/%E6%B3%A8%E8%A7%A3/"/>
+    
+    <category term="Gradle Plugin" scheme="http://www.basedev.cn/tags/Gradle-Plugin/"/>
+    
+    <category term="ASM" scheme="http://www.basedev.cn/tags/ASM/"/>
+    
+    <category term="APT" scheme="http://www.basedev.cn/tags/APT/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>筑基系列-计算机网络基础知识小抄版</title>
+    <link href="http://www.basedev.cn/2021/07/31/computer-net/"/>
+    <id>http://www.basedev.cn/2021/07/31/computer-net/</id>
+    <published>2021-07-31T06:16:55.000Z</published>
+    <updated>2021-08-01T10:03:58.071Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/jaydroid1024/jay_image_repo/main/img/post_banner_jay.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h1</summary>
+        
+      
+    
+    
+    
+    <category term="计算机" scheme="http://www.basedev.cn/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+    
+    
+    <category term="计算机基础" scheme="http://www.basedev.cn/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/"/>
+    
+    <category term="计算机网络" scheme="http://www.basedev.cn/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    
+    <category term="TCP/IP" scheme="http://www.basedev.cn/tags/TCP-IP/"/>
+    
+    <category term="HTTP/HTTPS" scheme="http://www.basedev.cn/tags/HTTP-HTTPS/"/>
+    
+    <category term="OSI七层模型" scheme="http://www.basedev.cn/tags/OSI%E4%B8%83%E5%B1%82%E6%A8%A1%E5%9E%8B/"/>
+    
+    <category term="DNS" scheme="http://www.basedev.cn/tags/DNS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>筑基系列-Android基础知识小抄版（更新中...）</title>
+    <link href="http://www.basedev.cn/2021/07/31/android-base/"/>
+    <id>http://www.basedev.cn/2021/07/31/android-base/</id>
+    <published>2021-07-31T06:16:55.000Z</published>
+    <updated>2021-08-01T17:59:49.461Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/jaydroid1024/jay_image_repo/main/img/post_banner_jay.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h1</summary>
+        
+      
+    
+    
+    
+    <category term="Android" scheme="http://www.basedev.cn/categories/Android/"/>
+    
+    
+    <category term="Android" scheme="http://www.basedev.cn/tags/Android/"/>
+    
+    <category term="Java" scheme="http://www.basedev.cn/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>筑基系列-操作系统基础知识小抄版</title>
+    <link href="http://www.basedev.cn/2021/07/01/computer-os/"/>
+    <id>http://www.basedev.cn/2021/07/01/computer-os/</id>
+    <published>2021-07-01T06:16:55.000Z</published>
+    <updated>2021-08-01T10:03:21.291Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/jaydroid1024/jay_image_repo/main/img/post_banner_jay.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h1</summary>
+        
+      
+    
+    
+    
+    <category term="计算机" scheme="http://www.basedev.cn/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+    
+    
+    <category term="计算机基础" scheme="http://www.basedev.cn/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/"/>
+    
+    <category term="操作系统" scheme="http://www.basedev.cn/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+    <category term="Linux" scheme="http://www.basedev.cn/tags/Linux/"/>
+    
+    <category term="进程" scheme="http://www.basedev.cn/tags/%E8%BF%9B%E7%A8%8B/"/>
+    
+    <category term="线程" scheme="http://www.basedev.cn/tags/%E7%BA%BF%E7%A8%8B/"/>
+    
+    <category term="作业管理" scheme="http://www.basedev.cn/tags/%E4%BD%9C%E4%B8%9A%E7%AE%A1%E7%90%86/"/>
+    
+    <category term="文件管理" scheme="http://www.basedev.cn/tags/%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>筑基系列-计算机基础知识小抄版</title>
+    <link href="http://www.basedev.cn/2021/05/31/computer-composition/"/>
+    <id>http://www.basedev.cn/2021/05/31/computer-composition/</id>
+    <published>2021-05-31T06:16:55.000Z</published>
+    <updated>2021-08-01T10:04:05.902Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/jaydroid1024/jay_image_repo/main/img/post_banner_jay.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h1</summary>
+        
+      
+    
+    
+    
+    <category term="计算机" scheme="http://www.basedev.cn/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+    
+    
+    <category term="计算机基础" scheme="http://www.basedev.cn/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/"/>
+    
+    <category term="组成原理" scheme="http://www.basedev.cn/tags/%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/"/>
+    
+    <category term="CPU" scheme="http://www.basedev.cn/tags/CPU/"/>
+    
+    <category term="存储器" scheme="http://www.basedev.cn/tags/%E5%AD%98%E5%82%A8%E5%99%A8/"/>
+    
+    <category term="位运算" scheme="http://www.basedev.cn/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo 博客框架使用简介</title>
+    <link href="http://www.basedev.cn/2018/09/07/hexo-intro/"/>
+    <id>http://www.basedev.cn/2018/09/07/hexo-intro/</id>
+    <published>2018-09-07T01:25:00.000Z</published>
+    <updated>2021-08-01T07:34:52.111Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/jaydroid1024/jay_image_repo/main/img/post_banner_jay.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h1 id=&quot;Hexo-博客框架&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="博客" scheme="http://www.basedev.cn/categories/%E5%8D%9A%E5%AE%A2/"/>
+    
+    
+    <category term="Hexo - Matery" scheme="http://www.basedev.cn/tags/Hexo-Matery/"/>
     
   </entry>
   
