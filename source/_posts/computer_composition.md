@@ -16,6 +16,8 @@ summary: 计算机基础知识提纲挈领，包括发展史、CPU、总线、�
 
 ![](https://raw.githubusercontent.com/jaydroid1024/jay_image_repo/main/img/post_banner_jay.png)
 
+
+
 # 筑基系列-计算机基础知识小抄版
 
 

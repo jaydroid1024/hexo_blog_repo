@@ -440,21 +440,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-08-02
+                    2021-11-03
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    677
+                    4.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    19 分
                 </div>
                 
 
@@ -470,7 +470,7 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p><img src="https://raw.githubusercontent.com/jaydroid1024/jay_image_repo/main/img/post_banner_jay.png" alt=""></p>
-<h1 id="筑基系列-Android基础知识小抄版"><a href="#筑基系列-Android基础知识小抄版" class="headerlink" title="筑基系列-Android基础知识小抄版"></a>筑基系列-Android基础知识小抄版</h1><p>Android各版本对应JDK版本</p>
+<p>Android各版本对应JDK版本</p>
 <table>
 <thead>
 <tr>
@@ -566,7 +566,307 @@
 <td align="left">8</td>
 </tr>
 </tbody></table>
-<h1 id="1-Java"><a href="#1-Java" class="headerlink" title="1.Java"></a>1.Java</h1><h2 id="1-1-集合"><a href="#1-1-集合" class="headerlink" title="1.1 集合"></a>1.1 集合</h2><h4 id="1-1-1-ArrayList和LinkedList区别"><a href="#1-1-1-ArrayList和LinkedList区别" class="headerlink" title="1.1.1 ArrayList和LinkedList区别"></a>1.1.1 ArrayList和LinkedList区别</h4><ul>
+<p>Android Gradle 插件版本所需的 Gradle 版本。为了获得最佳性能，您应使用 Gradle 和插件这两者的最新版本。</p>
+<table>
+<thead>
+<tr>
+<th align="left">插件版本</th>
+<th align="left">所需的 Gradle 版本</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">1.0.0 - 1.1.3</td>
+<td align="left">2.2.1 - 2.3</td>
+</tr>
+<tr>
+<td align="left">1.2.0 - 1.3.1</td>
+<td align="left">2.2.1 - 2.9</td>
+</tr>
+<tr>
+<td align="left">1.5.0</td>
+<td align="left">2.2.1 - 2.13</td>
+</tr>
+<tr>
+<td align="left">2.0.0 - 2.1.2</td>
+<td align="left">2.10 - 2.13</td>
+</tr>
+<tr>
+<td align="left">2.1.3 - 2.2.3</td>
+<td align="left">2.14.1 - 3.5</td>
+</tr>
+<tr>
+<td align="left">2.3.0+</td>
+<td align="left">3.3+</td>
+</tr>
+<tr>
+<td align="left">3.0.0+</td>
+<td align="left">4.1+</td>
+</tr>
+<tr>
+<td align="left">3.1.0+</td>
+<td align="left">4.4+</td>
+</tr>
+<tr>
+<td align="left">3.2.0 - 3.2.1</td>
+<td align="left">4.6+</td>
+</tr>
+<tr>
+<td align="left">3.3.0 - 3.3.3</td>
+<td align="left">4.10.1+</td>
+</tr>
+<tr>
+<td align="left">3.4.0 - 3.4.3</td>
+<td align="left">5.1.1+</td>
+</tr>
+<tr>
+<td align="left">3.5.0 - 3.5.4</td>
+<td align="left">5.4.1+</td>
+</tr>
+<tr>
+<td align="left">3.6.0 - 3.6.4</td>
+<td align="left">5.6.4+</td>
+</tr>
+<tr>
+<td align="left">4.0.0+</td>
+<td align="left">6.1.1+</td>
+</tr>
+<tr>
+<td align="left">4.1.0+</td>
+<td align="left">6.5+</td>
+</tr>
+<tr>
+<td align="left">4.2.0+</td>
+<td align="left">6.7.1+</td>
+</tr>
+<tr>
+<td align="left">7.0</td>
+<td align="left">7.0+</td>
+</tr>
+</tbody></table>
+<h1 id="1-Java"><a href="#1-Java" class="headerlink" title="1.Java"></a>1.Java</h1><h2 id="Java-基础"><a href="#Java-基础" class="headerlink" title="Java 基础"></a>Java 基础</h2><h3 id="JDK-JRE-JVM"><a href="#JDK-JRE-JVM" class="headerlink" title="JDK/JRE/JVM"></a>JDK/JRE/JVM</h3><p>JDK：Java Develpment Kit java 开发工具<br>JRE：Java Runtime Environment java运行时环境<br>JVM：java Virtual Machine java 虚拟机</p>
+<p><img src="https://raw.githubusercontent.com/jaydroid1024/jay_image_repo/main/img/20210805234734.png" alt=""></p>
+<h3 id="和equals比较"><a href="#和equals比较" class="headerlink" title="==和equals比较"></a>==和equals比较</h3><p><strong>==：</strong>对比的是栈中的值，基本数据类型是<strong>变量值</strong>，引用类型是堆中内存<strong>对象的地址</strong></p>
+<p><strong>equals：</strong>object中默认也是采用==比较，通常会重写，比如字符串类重写了equals比较的是每个char的值是否相等</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//Object.java</span>
+<span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">equals</span><span class="token punctuation">(</span>Object obj<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token keyword">this</span> <span class="token operator">==</span> obj<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//String.java</span>
+<span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">equals</span><span class="token punctuation">(</span>Object anObject<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span> <span class="token operator">==</span> anObject<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>anObject <span class="token keyword">instanceof</span> <span class="token class-name">String</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        String anotherString <span class="token operator">=</span> <span class="token punctuation">(</span>String<span class="token punctuation">)</span>anObject<span class="token punctuation">;</span>
+        <span class="token keyword">int</span> n <span class="token operator">=</span> value<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>n <span class="token operator">==</span> anotherString<span class="token punctuation">.</span>value<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">char</span> v1<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> value<span class="token punctuation">;</span>
+            <span class="token keyword">char</span> v2<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> anotherString<span class="token punctuation">.</span>value<span class="token punctuation">;</span>
+            <span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+            <span class="token keyword">while</span> <span class="token punctuation">(</span>n<span class="token operator">--</span> <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>v1<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">!=</span> v2<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>
+                    <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+                i<span class="token operator">++</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//test equals and ==</span>
+String str1 <span class="token operator">=</span> <span class="token string">"Hello"</span><span class="token punctuation">;</span>
+String str2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">(</span><span class="token string">"Hello"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+String str3 <span class="token operator">=</span> str2<span class="token punctuation">;</span> 
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>str1 <span class="token operator">==</span> str2<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// false</span>
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>str1 <span class="token operator">==</span> str3<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// false</span>
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>str2 <span class="token operator">==</span> str3<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// true</span>
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>str1<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>str2<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// true</span>
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>str1<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>str3<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// true</span>
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>str2<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>str3<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// true</span></code></pre>
+<h3 id="hashCode与equals"><a href="#hashCode与equals" class="headerlink" title="hashCode与equals"></a>hashCode与equals</h3><p>hashCode 是通过将对象的内部地址转换为整数来实现的，此内存地址不能通过 java sdk 获得，必须作为native方法实现。native 源码如下：</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//object.java</span>
+<span class="token keyword">public</span> <span class="token keyword">native</span> <span class="token keyword">int</span> <span class="token function">hashCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">//view src/share/native/java/lang/Object.c</span>
+<span class="token keyword">static</span> JNINativeMethod methods<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">{</span><span class="token string">"hashCode"</span><span class="token punctuation">,</span>    <span class="token string">"()I"</span><span class="token punctuation">,</span>                    <span class="token punctuation">(</span><span class="token keyword">void</span> <span class="token operator">*</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>JVM_IHashCode<span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span><span class="token string">"wait"</span><span class="token punctuation">,</span>        <span class="token string">"(J)V"</span><span class="token punctuation">,</span>                   <span class="token punctuation">(</span><span class="token keyword">void</span> <span class="token operator">*</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>JVM_MonitorWait<span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span><span class="token string">"notify"</span><span class="token punctuation">,</span>      <span class="token string">"()V"</span><span class="token punctuation">,</span>                    <span class="token punctuation">(</span><span class="token keyword">void</span> <span class="token operator">*</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>JVM_MonitorNotify<span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span><span class="token string">"notifyAll"</span><span class="token punctuation">,</span>   <span class="token string">"()V"</span><span class="token punctuation">,</span>                    <span class="token punctuation">(</span><span class="token keyword">void</span> <span class="token operator">*</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>JVM_MonitorNotifyAll<span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span><span class="token string">"clone"</span><span class="token punctuation">,</span>       <span class="token string">"()Ljava/lang/Object;"</span><span class="token punctuation">,</span>   <span class="token punctuation">(</span><span class="token keyword">void</span> <span class="token operator">*</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>JVM_Clone<span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+JNIEXPORT <span class="token keyword">void</span> JNICALL <span class="token function">Java_java_lang_Object_registerNatives</span><span class="token punctuation">(</span>JNIEnv <span class="token operator">*</span>env<span class="token punctuation">,</span> jclass cls<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token punctuation">(</span><span class="token operator">*</span>env<span class="token punctuation">)</span><span class="token operator">-></span><span class="token function">RegisterNatives</span><span class="token punctuation">(</span>env<span class="token punctuation">,</span> cls<span class="token punctuation">,</span> methods<span class="token punctuation">,</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>methods<span class="token punctuation">)</span><span class="token operator">/</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>methods<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+JNIEXPORT jclass JNICALL <span class="token function">Java_java_lang_Object_getClass</span><span class="token punctuation">(</span>JNIEnv <span class="token operator">*</span>env<span class="token punctuation">,</span> jobject this<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>this <span class="token operator">==</span> <span class="token constant">NULL</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">JNU_ThrowNullPointerException</span><span class="token punctuation">(</span>env<span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token operator">*</span>env<span class="token punctuation">)</span><span class="token operator">-></span><span class="token function">GetObjectClass</span><span class="token punctuation">(</span>env<span class="token punctuation">,</span> this<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>此源包含 getClass() 方法的实现。 hashCode 被定义为一个函数指针 JVM_IHashCode</p>
+<pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">//view src/share/vm/prims/jvm.cpp</span>
+<span class="token comment" spellcheck="true">// java.lang.Object ///////////////////////////////////////////////</span>
+<span class="token function">JVM_ENTRY</span><span class="token punctuation">(</span>jint<span class="token punctuation">,</span> <span class="token function">JVM_IHashCode</span><span class="token punctuation">(</span>JNIEnv<span class="token operator">*</span> env<span class="token punctuation">,</span> jobject handle<span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token function">JVMWrapper</span><span class="token punctuation">(</span><span class="token string">"JVM_IHashCode"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">// as implemented in the classic virtual machine; return 0 if object is NULL</span>
+  <span class="token keyword">return</span> handle <span class="token operator">==</span> <span class="token constant">NULL</span> <span class="token operator">?</span> <span class="token number">0</span> <span class="token punctuation">:</span> ObjectSynchronizer<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">FastHashCode</span> <span class="token punctuation">(</span>THREAD<span class="token punctuation">,</span> JNIHandles<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">resolve_non_null</span><span class="token punctuation">(</span>handle<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">;</span>
+JVM_END</code></pre>
+<pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">//view src/share/vm/runtime/synchronizer.cpp</span>
+intptr_t ObjectSynchronizer<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">FastHashCode</span> <span class="token punctuation">(</span>Thread <span class="token operator">*</span> Self<span class="token punctuation">,</span> oop obj<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>mark<span class="token operator">-></span><span class="token function">is_neutral</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    hash <span class="token operator">=</span> mark<span class="token operator">-></span><span class="token function">hash</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>              <span class="token comment" spellcheck="true">// this is a normal header</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>hash<span class="token punctuation">)</span> <span class="token punctuation">{</span>                       <span class="token comment" spellcheck="true">// if it has hash, just return it</span>
+      <span class="token keyword">return</span> hash<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    hash <span class="token operator">=</span> <span class="token function">get_next_hash</span><span class="token punctuation">(</span>Self<span class="token punctuation">,</span> obj<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// allocate a new hash code</span>
+    temp <span class="token operator">=</span> mark<span class="token operator">-></span><span class="token function">copy_set_hash</span><span class="token punctuation">(</span>hash<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// merge the hash code into header</span>
+    <span class="token comment" spellcheck="true">// use (machine word version) atomic operation to install the hash</span>
+    test <span class="token operator">=</span> <span class="token punctuation">(</span>markOop<span class="token punctuation">)</span> Atomic<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">cmpxchg_ptr</span><span class="token punctuation">(</span>temp<span class="token punctuation">,</span> obj<span class="token operator">-></span><span class="token function">mark_addr</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> mark<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>test <span class="token operator">==</span> mark<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> hash<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">// If atomic operation failed, we must inflate the header</span>
+    <span class="token comment" spellcheck="true">// into heavy weight monitor. We could add more code here</span>
+    <span class="token comment" spellcheck="true">// for fast path, but it does not worth the complexity.</span>
+  <span class="token punctuation">}</span>
+
+ <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+
+  monitor <span class="token operator">=</span> ObjectSynchronizer<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">inflate</span><span class="token punctuation">(</span>Self<span class="token punctuation">,</span> obj<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">// Load displaced header and check it has hash code</span>
+  mark <span class="token operator">=</span> monitor<span class="token operator">-></span><span class="token function">header</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">assert</span> <span class="token punctuation">(</span>mark<span class="token operator">-></span><span class="token function">is_neutral</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"invariant"</span><span class="token punctuation">)</span> <span class="token punctuation">;</span>
+  hash <span class="token operator">=</span> mark<span class="token operator">-></span><span class="token function">hash</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>hash <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    hash <span class="token operator">=</span> <span class="token function">get_next_hash</span><span class="token punctuation">(</span>Self<span class="token punctuation">,</span> obj<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    temp <span class="token operator">=</span> mark<span class="token operator">-></span><span class="token function">copy_set_hash</span><span class="token punctuation">(</span>hash<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// merge hash code into header</span>
+    <span class="token function">assert</span> <span class="token punctuation">(</span>temp<span class="token operator">-></span><span class="token function">is_neutral</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"invariant"</span><span class="token punctuation">)</span> <span class="token punctuation">;</span>
+    test <span class="token operator">=</span> <span class="token punctuation">(</span>markOop<span class="token punctuation">)</span> Atomic<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">cmpxchg_ptr</span><span class="token punctuation">(</span>temp<span class="token punctuation">,</span> monitor<span class="token punctuation">,</span> mark<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>test <span class="token operator">!=</span> mark<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment" spellcheck="true">// The only update to the header in the monitor (outside GC)</span>
+      <span class="token comment" spellcheck="true">// is install the hash code. If someone add new usage of</span>
+      <span class="token comment" spellcheck="true">// displaced header, please update this code</span>
+      hash <span class="token operator">=</span> test<span class="token operator">-></span><span class="token function">hash</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">assert</span> <span class="token punctuation">(</span>test<span class="token operator">-></span><span class="token function">is_neutral</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"invariant"</span><span class="token punctuation">)</span> <span class="token punctuation">;</span>
+      <span class="token function">assert</span> <span class="token punctuation">(</span>hash <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">"Trivial unexpected object/monitor header usage."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment" spellcheck="true">// We finally get the hash</span>
+  <span class="token keyword">return</span> hash<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+  <span class="token keyword">static</span> <span class="token keyword">inline</span> intptr_t <span class="token function">get_next_hash</span><span class="token punctuation">(</span>Thread <span class="token operator">*</span> Self<span class="token punctuation">,</span> oop obj<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  intptr_t value <span class="token operator">=</span> <span class="token number">0</span> <span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>hashCode <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+     <span class="token comment" spellcheck="true">// This form uses an unguarded global Park-Miller RNG,</span>
+     <span class="token comment" spellcheck="true">// so it's possible for two threads to race and generate the same RNG.</span>
+     <span class="token comment" spellcheck="true">// On MP system we'll have lots of RW access to a global, so the</span>
+     <span class="token comment" spellcheck="true">// mechanism induces lots of coherency traffic.</span>
+     value <span class="token operator">=</span> os<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>hashCode <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+     <span class="token comment" spellcheck="true">// This variation has the property of being stable (idempotent)</span>
+     <span class="token comment" spellcheck="true">// between STW operations.  This can be useful in some of the 1-0</span>
+     <span class="token comment" spellcheck="true">// synchronization schemes.</span>
+     intptr_t addrBits <span class="token operator">=</span> <span class="token function">intptr_t</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span> <span class="token operator">>></span> <span class="token number">3</span> <span class="token punctuation">;</span>
+     value <span class="token operator">=</span> addrBits <span class="token operator">^</span> <span class="token punctuation">(</span>addrBits <span class="token operator">>></span> <span class="token number">5</span><span class="token punctuation">)</span> <span class="token operator">^</span> GVars<span class="token punctuation">.</span>stwRandom <span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>hashCode <span class="token operator">==</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+     value <span class="token operator">=</span> <span class="token number">1</span> <span class="token punctuation">;</span>            <span class="token comment" spellcheck="true">// for sensitivity testing</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>hashCode <span class="token operator">==</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+     value <span class="token operator">=</span> <span class="token operator">++</span>GVars<span class="token punctuation">.</span>hcSequence <span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>hashCode <span class="token operator">==</span> <span class="token number">4</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+     value <span class="token operator">=</span> <span class="token function">intptr_t</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span> <span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+     <span class="token comment" spellcheck="true">// Marsaglia's xor-shift scheme with thread-specific state</span>
+     <span class="token comment" spellcheck="true">// This is probably the best overall implementation -- we'll</span>
+     <span class="token comment" spellcheck="true">// likely make this the default in future releases.</span>
+     <span class="token keyword">unsigned</span> t <span class="token operator">=</span> Self<span class="token operator">-></span>_hashStateX <span class="token punctuation">;</span>
+     t <span class="token operator">^</span><span class="token operator">=</span> <span class="token punctuation">(</span>t <span class="token operator">&lt;&lt;</span> <span class="token number">11</span><span class="token punctuation">)</span> <span class="token punctuation">;</span>
+     Self<span class="token operator">-></span>_hashStateX <span class="token operator">=</span> Self<span class="token operator">-></span>_hashStateY <span class="token punctuation">;</span>
+     Self<span class="token operator">-></span>_hashStateY <span class="token operator">=</span> Self<span class="token operator">-></span>_hashStateZ <span class="token punctuation">;</span>
+     Self<span class="token operator">-></span>_hashStateZ <span class="token operator">=</span> Self<span class="token operator">-></span>_hashStateW <span class="token punctuation">;</span>
+     <span class="token keyword">unsigned</span> v <span class="token operator">=</span> Self<span class="token operator">-></span>_hashStateW <span class="token punctuation">;</span>
+     v <span class="token operator">=</span> <span class="token punctuation">(</span>v <span class="token operator">^</span> <span class="token punctuation">(</span>v <span class="token operator">>></span> <span class="token number">19</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">^</span> <span class="token punctuation">(</span>t <span class="token operator">^</span> <span class="token punctuation">(</span>t <span class="token operator">>></span> <span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">;</span>
+     Self<span class="token operator">-></span>_hashStateW <span class="token operator">=</span> v <span class="token punctuation">;</span>
+     value <span class="token operator">=</span> v <span class="token punctuation">;</span>
+  <span class="token punctuation">}</span></code></pre>
+<p>JVM_IHashCode 在 jvm.cpp 中定义。请参阅从第 504 行开始的代码。这又调用了在synchronizer.cpp 中定义的 ObjectSynchronizer::FastHashCode。请参阅第 576 行的 FastHashCode 和第 530 行的 get_next_hash 的实现。</p>
+<p><strong>HashCode 的作用是：</strong></p>
+<ul>
+<li>hashCode 的作用是返回对象的哈希码值。支持此方法是为了有利于散列表，这个哈希码的作用是确定该对象在哈希表中的索引位</li>
+</ul>
+<p>置。</p>
+<ul>
+<li><p>hashCode的默认行为是对堆上的对象产生独特值。如果没有重写hashCode()，则该class的两个对象无论如何都不会相等（即使这两个对象指向相同的数据）</p>
+<p><strong>HashCode 的一般约定是：</strong></p>
+</li>
+<li><p>在 Java 应用程序的执行过程中，只要在同一个对象上多次调用它,hashCode方法必须始终如一地返回相同的整数，前提是未修改对象的  equals比较中使用的信息。该整数不需要从应用程序的一次执行到同一应用程序的另一次执行保持一致。</p>
+</li>
+<li><p>如果两个对象根据 equals()方法相等，则对这两个对象中的每一个调用  hashCode}方法必须产生相同的整数结果。</p>
+</li>
+<li><p>如果两个对象根据 equals()方法不相等，则调用 hashCode}方法这两个对象中的每一个都必须产生不同的整数结果。</p>
+</li>
+<li><p>两个对象有相同的hashcode值，它们也不一定是相等的</p>
+</li>
+<li><p>因此，equals方法被覆盖过，则hashCode方法也必须被覆盖</p>
+</li>
+<li><p>为不相等的对象生成不同的整数结果可能会提高哈希表的性能。</p>
+</li>
+<li><p>在合理可行的情况下，类 Object定义的 hashCode 方法确实为不同的对象返回不同的整数。</p>
+</li>
+</ul>
+<h3 id="final-关键字"><a href="#final-关键字" class="headerlink" title="final 关键字"></a>final 关键字</h3><ul>
+<li>修饰类：表示类不可被继承</li>
+<li>修饰方法：表示方法不可被子类覆盖，但是可以重载</li>
+<li>修饰变量：表示变量一旦被赋值就不可以更改它的值<ul>
+<li>如果final修饰的是类变量，只能在静态初始化块中指定初始值或者声明该类变量时指定初始值。</li>
+<li>如果final修饰的是成员变量，可以在非静态初始化块、声明该变量或者构造器中执行初始值。</li>
+<li>如果final修饰的是局部变量,系统不会为局部变量进行初始化，局部变量必须由程序员显示初始化。因此使用final修饰局部变量时，即可以在定义时指定默认值也可以在后面的代码中对final变量赋初值。</li>
+<li>如果是基本数据类型的变量，则其数值一旦在初始化之后便不能更改；</li>
+<li>如果是引用类型的变量，则在对其初始化之后便不能再让其指向另一个对象。但是引用的值是可变的</li>
+</ul>
+</li>
+</ul>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">final</span> Person p <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token number">25</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+p<span class="token punctuation">.</span><span class="token function">setAge</span><span class="token punctuation">(</span><span class="token number">24</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//合法</span>
+p<span class="token operator">=</span>null<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//非法</span></code></pre>
+<p><strong>为什么局部内部类和匿名内部类只能访问局部final变量？</strong></p>
+<p>首先需要知道的一点是: 内部类和外部类是处于同一个级别的，内部类不会因为定义在方法中就会随着方法的执行完毕就被销毁。<br>这里就会产生问题：当外部类的方法结束时，局部变量就会被销毁了，但是内部类对象可能还存在(只有没有人再引用它时，才会死亡)。这里就出现了一个矛盾：内部类对象访问了一个不存在的变量。为了解决这个问题，就将局部变量复制了一份作为内部类的成员变量，这样当局部变量死亡后，内部类仍可以访问它，实际访问的是局部变量的”copy”。这样就好像延长了局部变量的生命周期将局部变量复制为内部类的成员变量时，必须保证这两个变量是一样的，也就是如果我们在内部类中修改了成员变量，方法中的局部变量也得跟着改变，怎么解决问题呢？就将局部变量设置为final，对它初始化后，我就不让你再去修改这个变量，就保证了内部类的成员变量和方法的局部变量的一致性。这实际上也是一种妥协。使得局部变量与内部类内建立的拷贝保持一致。</p>
+<h3 id="String、StringBuffer、StringBuilder"><a href="#String、StringBuffer、StringBuilder" class="headerlink" title="String、StringBuffer、StringBuilder"></a>String、StringBuffer、StringBuilder</h3><ul>
+<li>String是final修饰的，不可变，每次操作都会产生新的String对象</li>
+<li>StringBuffer和StringBuilder都是在原对象上操作</li>
+<li>StringBuffer是线程安全的，StringBuilder线程不安全的</li>
+<li>StringBuffer方法都是synchronized修饰的</li>
+<li>性能：StringBuilder &gt; StringBuffer &gt; String</li>
+<li>场景：经常需要改变字符串内容时使用后面两个</li>
+<li>优先使用StringBuilder，多线程使用共享变量时使用StringBuffer</li>
+</ul>
+<h3 id="重载和重写的区别"><a href="#重载和重写的区别" class="headerlink" title="重载和重写的区别"></a>重载和重写的区别</h3><ul>
+<li>重载： 发生在同一个类中，方法名必须相同，参数类型不同、个数不同、顺序不同，方法返回值和访问修饰符可以不同，发生在编译时。</li>
+<li>重写： 发生在父子类中，方法名、参数列表必须相同，返回值范围小于等于父类，抛出的异常范围小于等于父类，访问修饰符范围大于等于父类；如果父类方法访问修饰符为private则子类就不能重写该方法。</li>
+</ul>
+<h3 id="接口和抽象类的区别"><a href="#接口和抽象类的区别" class="headerlink" title="接口和抽象类的区别"></a>接口和抽象类的区别</h3><ul>
+<li>抽象类可以存在普通成员函数，而接口中只能存在public abstract 方法。</li>
+<li>抽象类中的成员变量可以是各种类型的，而接口中的成员变量只能是public static final类型的。</li>
+<li>抽象类只能继承一个，接口可以实现多个。</li>
+<li>接口的设计目的，是对类的行为进行约束（更准确的说是一种“有”约束，因为接口不能规定类不可以有什么行为），也就是提供一种机制，可以强制要求不同的类具有相同的行为。它只约束了行为的有无，但不对如何实现行为进行限制。</li>
+<li>而抽象类的设计目的，是代码复用。当不同的类具有某些相同的行为(记为行为集合A)，且其中一部分行为的实现方式一致时（A的非真子集，记为B），可以让这些类都派生于一个抽象类。在这个抽象类中实现了B，避免让所有的子类来实现B，这就达到了代码复用的目的。而A减B的部分，留给各个子类自己实现。正是因为A-B在这里没有实现，所以抽象类不允许实例化出来（否则当调用到A-B时，无法执行）。</li>
+<li>抽象类是对类本质的抽象，表达的是 is a 的关系，比如： BMW is a Car 。抽象类包含并实现子类的通用特性，将子类存在差异化的特性进行抽象，交由子类去实现。</li>
+<li>而接口是对行为的抽象，表达的是 like a 的关系。比如： Bird like a Aircraft （像飞行器一样可以飞），但其本质上 is a Bird 。接口的核心是定义行为，即实现类可以做什么，至于实现类主体是谁、是如何实现的，接口并不关心。</li>
+<li>使用场景：当你关注一个事物的本质的时候，用抽象类；当你关注一个操作的时候，用接口。</li>
+<li>抽象类的功能要远超过接口，但是，定义抽象类的代价高。因为高级语言来说（从实际设计上来说也是）每个类只能继承一个类。在这个类中，你必须继承或编写出其所有子类的所有共性。虽然接口在功能上会弱化许多，但是它只是针对一个动作的描述。而且你可以在一个类中同时实现多个接口。在设计阶段会降低难度</li>
+</ul>
+<h2 id="Java-集合"><a href="#Java-集合" class="headerlink" title="Java 集合"></a>Java 集合</h2><h3 id="List和Set的区别"><a href="#List和Set的区别" class="headerlink" title="List和Set的区别"></a>List和Set的区别</h3><ul>
+<li>List：有序，按对象进入的顺序保存对象，可重复，允许多个Null元素对象，可以使用Iterator取出所有元素，在逐一遍历，还可以使用get(int index)获取指定下标的元素</li>
+<li>Set：无序，不可重复，最多允许有一个Null元素对象，取元素时只能用Iterator接口取得所有元素，在逐一遍历各个元素</li>
+</ul>
+<h4 id="ArrayList和LinkedList区别"><a href="#ArrayList和LinkedList区别" class="headerlink" title="ArrayList和LinkedList区别"></a>ArrayList和LinkedList区别</h4><ul>
 <li><p><a href="http://androidos.net.cn/android/9.0.0_r8/xref/libcore/ojluni/src/main/java/java/util/ArrayList.java" target="_blank" rel="noopener">ArrayList 源码</a></p>
 </li>
 <li><p><a href="http://androidos.net.cn/android/9.0.0_r8/xref/libcore/ojluni/src/main/java/java/util/LinkedList.java" target="_blank" rel="noopener">LinkedList 源码</a></p>
@@ -577,8 +877,21 @@
 </li>
 <li><p>另外ArrayList和LinkedList都实现了List接⼝，但是LinkedList还额外实现了Deque接⼝，所以LinkedList还可以当做队列来使⽤</p>
 </li>
+<li><p>ArrayList：基于动态数组，连续内存存储，适合下标访问（随机访问），扩容机制：因为数组长度固定，超出长度存数据时需要新建数组，然后将老数组的数据拷贝到新数组，如果不是尾部插入数据还会涉及到元素的移动（往后复制一份，插入新元素），使用尾插法并指定初始容量可以极大提升性能、甚至超过linkedList（需要创建大量的node对象）</p>
+</li>
+<li><p>LinkedList：基于链表，可以存储在分散的内存中，适合做数据插入及删除操作，不适合查询：需要逐一遍历LinkedList必须使用iterator不能使用for循环，因为每次for循环体内通过get(i)取得某一元素时都需要对list重新进行遍历，性能消耗极大。另外不要试图使用indexOf等返回元素索引，并利用其进行遍历，使用indexlOf对list进行了遍历，当结果为空时会遍历整个列表。</p>
+</li>
 </ul>
-<h4 id="1-1-2-HashMap的Put⽅法的⼤体流程"><a href="#1-1-2-HashMap的Put⽅法的⼤体流程" class="headerlink" title="1.1.2 HashMap的Put⽅法的⼤体流程"></a>1.1.2 HashMap的Put⽅法的⼤体流程</h4><ul>
+<h3 id="HashMap和HashTable有什么区别？其底层实现是什么？"><a href="#HashMap和HashTable有什么区别？其底层实现是什么？" class="headerlink" title="HashMap和HashTable有什么区别？其底层实现是什么？"></a>HashMap和HashTable有什么区别？其底层实现是什么？</h3><ul>
+<li>HashMap方法没有synchronized修饰，线程非安全，HashTable线程安全；</li>
+<li>HashMap允许key和value为null，而HashTable不允许</li>
+<li>jdk8开始链表高度到8、数组长度超过64，链表转变为红黑树，元素以内部类Node节点存在</li>
+<li>计算key的hash值，二次hash然后对数组长度取模，对应到数组下标，</li>
+<li>如果没有产生hash冲突(下标位置没有元素)，则直接创建Node存入数组，</li>
+<li>如果产生hash冲突，先进行equal比较，相同则取代该元素，不同，则判断链表高度插入链表，链</li>
+<li>表高度达到8，并且数组长度到64则转变为红黑树，长度低于6则将红黑树转回链表</li>
+</ul>
+<h4 id="HashMap的Put⽅法的⼤体流程"><a href="#HashMap的Put⽅法的⼤体流程" class="headerlink" title="HashMap的Put⽅法的⼤体流程"></a>HashMap的Put⽅法的⼤体流程</h4><ul>
 <li><a href="http://androidos.net.cn/android/9.0.0_r8/xref/libcore/ojluni/src/main/java/java/util/HashMap.java" target="_blank" rel="noopener">HashMap 源码1.8</a></li>
 <li><a href="http://androidos.net.cn/android/7.1.1_r28/xref/libcore/ojluni/src/main/java/java/util/HashMap.java" target="_blank" rel="noopener">HashMap 源码1.7</a></li>
 <li>根据Key通过哈希算法与与运算得出数组下标</li>
@@ -592,6 +905,61 @@
 </ul>
 </li>
 </ul>
+</li>
+</ul>
+<pre class=" language-java"><code class="language-java">
+<span class="token keyword">final</span> V <span class="token function">putVal</span><span class="token punctuation">(</span><span class="token keyword">int</span> hash<span class="token punctuation">,</span> K key<span class="token punctuation">,</span> V value<span class="token punctuation">,</span> <span class="token keyword">boolean</span> onlyIfAbsent<span class="token punctuation">,</span>
+               <span class="token keyword">boolean</span> evict<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    Node<span class="token operator">&lt;</span>K<span class="token punctuation">,</span>V<span class="token operator">></span><span class="token punctuation">[</span><span class="token punctuation">]</span> tab<span class="token punctuation">;</span> Node<span class="token operator">&lt;</span>K<span class="token punctuation">,</span>V<span class="token operator">></span> p<span class="token punctuation">;</span> <span class="token keyword">int</span> n<span class="token punctuation">,</span> i<span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>tab <span class="token operator">=</span> table<span class="token punctuation">)</span> <span class="token operator">==</span> null <span class="token operator">||</span> <span class="token punctuation">(</span>n <span class="token operator">=</span> tab<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
+        n <span class="token operator">=</span> <span class="token punctuation">(</span>tab <span class="token operator">=</span> <span class="token function">resize</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>p <span class="token operator">=</span> tab<span class="token punctuation">[</span>i <span class="token operator">=</span> <span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span> hash<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">==</span> null<span class="token punctuation">)</span>
+        tab<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">newNode</span><span class="token punctuation">(</span>hash<span class="token punctuation">,</span> key<span class="token punctuation">,</span> value<span class="token punctuation">,</span> null<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        Node<span class="token operator">&lt;</span>K<span class="token punctuation">,</span>V<span class="token operator">></span> e<span class="token punctuation">;</span> K k<span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>p<span class="token punctuation">.</span>hash <span class="token operator">==</span> hash <span class="token operator">&amp;&amp;</span>
+            <span class="token punctuation">(</span><span class="token punctuation">(</span>k <span class="token operator">=</span> p<span class="token punctuation">.</span>key<span class="token punctuation">)</span> <span class="token operator">==</span> key <span class="token operator">||</span> <span class="token punctuation">(</span>key <span class="token operator">!=</span> null <span class="token operator">&amp;&amp;</span> key<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>k<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+            e <span class="token operator">=</span> p<span class="token punctuation">;</span>
+        <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>p <span class="token keyword">instanceof</span> <span class="token class-name">TreeNode</span><span class="token punctuation">)</span>
+            e <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>TreeNode<span class="token operator">&lt;</span>K<span class="token punctuation">,</span>V<span class="token operator">></span><span class="token punctuation">)</span>p<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">putTreeVal</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> tab<span class="token punctuation">,</span> hash<span class="token punctuation">,</span> key<span class="token punctuation">,</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> binCount <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token punctuation">;</span> <span class="token operator">++</span>binCount<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>e <span class="token operator">=</span> p<span class="token punctuation">.</span>next<span class="token punctuation">)</span> <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    p<span class="token punctuation">.</span>next <span class="token operator">=</span> <span class="token function">newNode</span><span class="token punctuation">(</span>hash<span class="token punctuation">,</span> key<span class="token punctuation">,</span> value<span class="token punctuation">,</span> null<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token keyword">if</span> <span class="token punctuation">(</span>binCount <span class="token operator">>=</span> TREEIFY_THRESHOLD <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// -1 for 1st</span>
+                        <span class="token function">treeifyBin</span><span class="token punctuation">(</span>tab<span class="token punctuation">,</span> hash<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token keyword">break</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>e<span class="token punctuation">.</span>hash <span class="token operator">==</span> hash <span class="token operator">&amp;&amp;</span>
+                    <span class="token punctuation">(</span><span class="token punctuation">(</span>k <span class="token operator">=</span> e<span class="token punctuation">.</span>key<span class="token punctuation">)</span> <span class="token operator">==</span> key <span class="token operator">||</span> <span class="token punctuation">(</span>key <span class="token operator">!=</span> null <span class="token operator">&amp;&amp;</span> key<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>k<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                    <span class="token keyword">break</span><span class="token punctuation">;</span>
+                p <span class="token operator">=</span> e<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>e <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">// existing mapping for key</span>
+            V oldValue <span class="token operator">=</span> e<span class="token punctuation">.</span>value<span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>onlyIfAbsent <span class="token operator">||</span> oldValue <span class="token operator">==</span> null<span class="token punctuation">)</span>
+                e<span class="token punctuation">.</span>value <span class="token operator">=</span> value<span class="token punctuation">;</span>
+            <span class="token function">afterNodeAccess</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> oldValue<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token operator">++</span>modCount<span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">++</span>size <span class="token operator">></span> threshold<span class="token punctuation">)</span>
+        <span class="token function">resize</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">afterNodeInsertion</span><span class="token punctuation">(</span>evict<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> null<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 id="Java-多线程"><a href="#Java-多线程" class="headerlink" title="Java 多线程"></a>Java 多线程</h2><h4 id="ThreadLocal-简述"><a href="#ThreadLocal-简述" class="headerlink" title="ThreadLocal 简述"></a>ThreadLocal 简述</h4><ul>
+<li><p><a href="http://androidos.net.cn/android/9.0.0_r8/xref/libcore/ojluni/src/main/java/java/lang/ThreadLocal.java" target="_blank" rel="noopener">ThreadLocal 源码</a></p>
+</li>
+<li><p>ThreadLocal是Java中所提供的线程本地存储机制，可以利⽤该机制将数据缓存在某个线程内部，该线<br>程可以在任意时刻、任意⽅法中获取缓存的数据</p>
+</li>
+<li><p>ThreadLocal底层是通过ThreadLocalMap来实现的，每个Thread对象（注意不是ThreadLocal对象）中都存在⼀个ThreadLocalMap，Map的key为ThreadLocal对象，Map的value为需要缓<br>存的值</p>
+</li>
+<li><p>如果在线程池中使⽤ThreadLocal会造成内存泄漏，因为当ThreadLocal对象使⽤完之后，应该要把设置的key，value，也就是Entry对象进⾏回收，但线程池中的线程不会回收，⽽线程对象是通过强引⽤指向ThreadLocalMap，ThreadLocalMap也是通过强引⽤指向Entry对象，线程不被回收，Entry对象也就不会被回收，从⽽出现内存泄漏，解决办法是，在使⽤了ThreadLocal对象之后，⼿动调⽤ThreadLocal的remove⽅法，⼿动清楚Entry对象</p>
+</li>
+<li><p>ThreadLocal经典的应⽤场景就是连接管理（⼀个线程持有⼀个连接，该连接对象可以在不同的⽅法之间进⾏传递，线程之间不共享同⼀个连接）</p>
 </li>
 </ul>
 
@@ -930,31 +1298,31 @@ gitment.render('gitment-content');
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/07/01/computer-os/">
+                <a href="/2021/07/31/android-component-aar/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="筑基系列-操作系统基础知识小抄版">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="Android 组件化-组件aar化实战">
                         
-                        <span class="card-title">筑基系列-操作系统基础知识小抄版</span>
+                        <span class="card-title">Android 组件化-组件aar化实战</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            操作系统基础理论提纲挈领，包括进程与线程同步管理、作业管理、存储管理、虚拟内存、Linux、文件管理等
+                            Gradle 推送插件、阿里云效 Maven 仓库、Gradle 依赖管理
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-07-01
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-07-31
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" class="post-category">
-                                    计算机
+                            <a href="/categories/%E7%BB%84%E4%BB%B6%E5%8C%96/" class="post-category">
+                                    组件化
                                 </a>
                             
                             
@@ -964,32 +1332,20 @@ gitment.render('gitment-content');
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/">
-                        <span class="chip bg-color">计算机基础</span>
+                    <a href="/tags/%E7%BB%84%E4%BB%B6%E5%8C%96/">
+                        <span class="chip bg-color">组件化</span>
                     </a>
                     
-                    <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
-                        <span class="chip bg-color">操作系统</span>
+                    <a href="/tags/Maven/">
+                        <span class="chip bg-color">Maven</span>
                     </a>
                     
-                    <a href="/tags/Linux/">
-                        <span class="chip bg-color">Linux</span>
+                    <a href="/tags/aar%E5%8C%96/">
+                        <span class="chip bg-color">aar化</span>
                     </a>
                     
-                    <a href="/tags/%E8%BF%9B%E7%A8%8B/">
-                        <span class="chip bg-color">进程</span>
-                    </a>
-                    
-                    <a href="/tags/%E7%BA%BF%E7%A8%8B/">
-                        <span class="chip bg-color">线程</span>
-                    </a>
-                    
-                    <a href="/tags/%E4%BD%9C%E4%B8%9A%E7%AE%A1%E7%90%86/">
-                        <span class="chip bg-color">作业管理</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/">
-                        <span class="chip bg-color">文件管理</span>
+                    <a href="/tags/%E7%BC%96%E8%AF%91%E4%BC%98%E5%8C%96/">
+                        <span class="chip bg-color">编译优化</span>
                     </a>
                     
                 </div>
@@ -1220,7 +1576,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">42k</span>&nbsp;字
+                class="white-color">89.1k</span>&nbsp;字
             
             
             

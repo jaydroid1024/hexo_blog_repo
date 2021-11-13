@@ -15,6 +15,10 @@ summary: Android 组件生命周期分发框架，适用于组件化，模块化
 
 ![](https://raw.githubusercontent.com/jaydroid1024/jay_image_repo/main/img/post_banner_jay.png)
 
+
+
+
+
 # JDispatcher
 
 Android 组件生命周期分发框架，适用于组件化，模块化，启动优化等场景

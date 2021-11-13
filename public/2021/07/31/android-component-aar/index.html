@@ -1,0 +1,2237 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Android 组件化-组件aar化实战, 筑基、体系、实践、分享">
+    <meta name="description" content="筑基、体系、实践、分享">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N498NKZS3G"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'G-N498NKZS3G');
+</script>
+
+
+    <title>Android 组件化-组件aar化实战 | 王学杰</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 4.2.1">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="王学杰" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">王学杰</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>主页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">王学杰</div>
+        <div class="logo-desc">
+            
+            筑基、体系、实践、分享
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			主页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/jaydroid1024" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/jaydroid1024" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">Android 组件化-组件aar化实战</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E7%BB%84%E4%BB%B6%E5%8C%96/">
+                                <span class="chip bg-color">组件化</span>
+                            </a>
+                        
+                            <a href="/tags/Maven/">
+                                <span class="chip bg-color">Maven</span>
+                            </a>
+                        
+                            <a href="/tags/aar%E5%8C%96/">
+                                <span class="chip bg-color">aar化</span>
+                            </a>
+                        
+                            <a href="/tags/%E7%BC%96%E8%AF%91%E4%BC%98%E5%8C%96/">
+                                <span class="chip bg-color">编译优化</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E7%BB%84%E4%BB%B6%E5%8C%96/" class="post-category">
+                                组件化
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2021-07-31
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2021-08-26
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    6.6k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    28 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p><img src="https://raw.githubusercontent.com/jaydroid1024/jay_image_repo/main/img/post_banner_jay.png" alt=""></p>
+<h1 id="Android-组件化-组件aar化实战"><a href="#Android-组件化-组件aar化实战" class="headerlink" title="Android 组件化-组件aar化实战"></a>Android 组件化-组件aar化实战</h1><p>[toc]</p>
+<h2 id="1-Gradle-推送插件-Maven-Publish-Plugin"><a href="#1-Gradle-推送插件-Maven-Publish-Plugin" class="headerlink" title="1.Gradle 推送插件|Maven Publish Plugin"></a>1.Gradle 推送插件|Maven Publish Plugin</h2><p>Maven Publish 插件提供将构建产物发布到<a href="http://maven.apache.org/" target="_blank" rel="noopener">Apache Maven</a>存储库的功能。发布到 Maven 存储库的模块可以被 Maven、Gradle和其他了解 Maven 存储库格式的工具使用。</p>
+<h3 id="1-1-插件任务-Tasks"><a href="#1-1-插件任务-Tasks" class="headerlink" title="1.1 插件任务|Tasks"></a>1.1 插件任务|Tasks</h3><ul>
+<li><p><code>generatePomFileFor*PubName*Publication</code>—<a href="https://docs.gradle.org/7.0/dsl/org.gradle.api.publish.maven.tasks.GenerateMavenPom.html" target="_blank" rel="noopener">生成MavenPom</a></p>
+<p>为名为<em>PubName</em>的发布创建 POM 文件，填充已知元数据，例如项目名称、项目版本和依赖项。POM 文件的默认位置是<em>build/publications/$pubName/pom-default.xml</em>。</p>
+</li>
+<li><p><code>publish*PubName*PublicationTo*RepoName*Repository</code>— <a href="https://docs.gradle.org/7.0/dsl/org.gradle.api.publish.maven.tasks.PublishToMavenRepository.html" target="_blank" rel="noopener">PublishToMavenRepository</a></p>
+<p>将<em>PubName</em>发布发布到名为<em>RepoName</em>的存储库。如果您有一个没有明确名称的存储库定义，<em>RepoName</em>将是“Maven”。</p>
+</li>
+<li><p><code>publish*PubName*PublicationToMavenLocal</code>— <a href="https://docs.gradle.org/7.0/javadoc/org/gradle/api/publish/maven/tasks/PublishToMavenLocal.html" target="_blank" rel="noopener">PublishToMavenLocal</a></p>
+<p>将<em>PubName*发布与发布的 POM 文件和其他元数据一起复制到本地 Maven 缓存——通常是</em>$USER_HOME/.m2/repository*。</p>
+</li>
+<li><p><code>publish</code></p>
+<p><em>取决于</em>：所有任务<code>publish*PubName*PublicationTo*RepoName*Repository</code>将所有定义的发布发布到所有定义的存储库的聚合任务。它<em>不</em>包括复制出版物本地Maven缓存。</p>
+</li>
+<li><p><code>publishToMavenLocal</code></p>
+<p><em>取决于</em>：所有任务<code>publish*PubName*PublicationToMavenLocal</code>将所有定义的发布复制到本地 Maven 缓存，包括它们的元数据（POM 文件等）。</p>
+</li>
+</ul>
+<pre class=" language-groovy"><code class="language-groovy"><span class="token comment" spellcheck="true">//生成MavenPom</span>
+generateMetadataFileForDebugPublication
+generateMetadataFileForReleasePublication
+generatePomFileForDebugPublication 
+generatePomFileForReleasePublication
+
+<span class="token comment" spellcheck="true">//PublishToMavenRepository</span>
+publish
+publishAllPublicationsToMavenRepository
+publishDebugPublicationToMavenRepository
+publishReleasePublicationToMavenRepository
+
+<span class="token comment" spellcheck="true">//PublishToMavenLocal</span>
+publishToMavenLocal
+publishDebugPublicationToMavenLocal
+publishReleasePublicationToMavenLocal
+
+<span class="token comment" spellcheck="true">//如果你的项目使用了gralde wrapper组件的话请使用以下命令</span>
+<span class="token operator">.</span><span class="token operator">/</span>gradlew task <span class="token punctuation">[</span>name<span class="token punctuation">]</span>
+<span class="token operator">.</span><span class="token operator">/</span>gradlew task <span class="token punctuation">:</span>lib<span class="token operator">-</span>net<span class="token punctuation">:</span>publishToMavenLocal</code></pre>
+<h3 id="1-2-构建产物-Publications"><a href="#1-2-构建产物-Publications" class="headerlink" title="1.2 构建产物|Publications"></a>1.2 构建产物|Publications</h3><p>您可以在 Maven 出版物中配置四项主要内容：</p>
+<ul>
+<li>A <a href="https://docs.gradle.org/7.0/userguide/dependency_management_terminology.html#sub:terminology_component" target="_blank" rel="noopener">component</a>  例如 一个 java module、Android library module<ul>
+<li>通过该方法指定 MavenPublication.from(org.gradle.api.component.SoftwareComponent)</li>
+</ul>
+</li>
+<li><a href="https://docs.gradle.org/7.0/userguide/publishing_customization.html#sec:publishing_custom_artifacts_to_maven" target="_blank" rel="noopener">Custom artifacts</a> <ul>
+<li>自定义构建产物通过这个方法 <a href="https://docs.gradle.org/7.0/dsl/org.gradle.api.publish.maven.MavenPublication.html#org.gradle.api.publish.maven.MavenPublication:artifact(java.lang.Object)" target="_blank" rel="noopener">MavenPublication.artifact(java.lang.Object)</a> method.</li>
+</ul>
+</li>
+<li>标准的元数据 <ul>
+<li>例如 artifactId、groupId、version.</li>
+</ul>
+</li>
+<li>POM file 的其它配置<ul>
+<li>通过这个方法设置 MavenPublication.pom(org.gradle.api.Action)</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-3-仓库-Repositories"><a href="#1-3-仓库-Repositories" class="headerlink" title="1.3 仓库|Repositories"></a>1.3 仓库|Repositories</h3><p>插件提供 MavenArtifactRepository 类型的存储库</p>
+<p>定义发布存储库：</p>
+<pre class=" language-groovy"><code class="language-groovy">publishing <span class="token punctuation">{</span>
+   repositories <span class="token punctuation">{</span>
+      maven <span class="token punctuation">{</span>
+          url <span class="token string">"url"</span>
+          credentials <span class="token punctuation">{</span>
+              username <span class="token operator">=</span> <span class="token string">'name'</span>
+              password <span class="token operator">=</span> <span class="token string">'pwd'</span>
+          <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>Snapshot and release repositories</p>
+<pre class=" language-groovy"><code class="language-groovy">publishing <span class="token punctuation">{</span>
+    repositories <span class="token punctuation">{</span>
+        maven <span class="token punctuation">{</span>
+            <span class="token keyword">def</span> releasesRepoUrl <span class="token operator">=</span> layout<span class="token operator">.</span>buildDirectory<span class="token operator">.</span><span class="token function">dir</span><span class="token punctuation">(</span><span class="token string">'repos/releases'</span><span class="token punctuation">)</span>
+            <span class="token keyword">def</span> snapshotsRepoUrl <span class="token operator">=</span> layout<span class="token operator">.</span>buildDirectory<span class="token operator">.</span><span class="token function">dir</span><span class="token punctuation">(</span><span class="token string">'repos/snapshots'</span><span class="token punctuation">)</span>
+            url <span class="token operator">=</span> version<span class="token operator">.</span><span class="token function">endsWith</span><span class="token punctuation">(</span><span class="token string">'SNAPSHOT'</span><span class="token punctuation">)</span> <span class="token operator">?</span> snapshotsRepoUrl <span class="token punctuation">:</span> releasesRepoUrl
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 id="1-4-完整示例"><a href="#1-4-完整示例" class="headerlink" title="1.4 完整示例"></a>1.4 完整示例</h3><p>以下示例演示了如何签署和发布包含源代码、Javadoc 和自定义 POM 的 Java 库：</p>
+<p>build.gradle</p>
+<pre class=" language-groovy"><code class="language-groovy">plugins <span class="token punctuation">{</span>
+    id <span class="token string">'java-library'</span>
+    id <span class="token string">'maven-publish'</span>
+    id <span class="token string">'signing'</span>
+<span class="token punctuation">}</span>
+
+group <span class="token operator">=</span> <span class="token string">'com.example'</span>
+version <span class="token operator">=</span> <span class="token string">'1.0'</span>
+
+java <span class="token punctuation">{</span>
+    <span class="token function">withJavadocJar</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token function">withSourcesJar</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+publishing <span class="token punctuation">{</span>
+    publications <span class="token punctuation">{</span>
+        <span class="token function">mavenJava</span><span class="token punctuation">(</span>MavenPublication<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            artifactId <span class="token operator">=</span> <span class="token string">'my-library'</span>
+            from components<span class="token operator">.</span>java
+            versionMapping <span class="token punctuation">{</span>
+                <span class="token function">usage</span><span class="token punctuation">(</span><span class="token string">'java-api'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token function">fromResolutionOf</span><span class="token punctuation">(</span><span class="token string">'runtimeClasspath'</span><span class="token punctuation">)</span>
+                <span class="token punctuation">}</span>
+                <span class="token function">usage</span><span class="token punctuation">(</span><span class="token string">'java-runtime'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token function">fromResolutionResult</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+            pom <span class="token punctuation">{</span>
+                name <span class="token operator">=</span> <span class="token string">'My Library'</span>
+                description <span class="token operator">=</span> <span class="token string">'A concise description of my library'</span>
+                url <span class="token operator">=</span> <span class="token string">'http://www.example.com/library'</span>
+                properties <span class="token operator">=</span> <span class="token punctuation">[</span>
+                    myProp<span class="token punctuation">:</span> <span class="token string">"value"</span><span class="token punctuation">,</span>
+                    <span class="token string">"prop.with.dots"</span><span class="token punctuation">:</span> <span class="token string">"anotherValue"</span>
+                <span class="token punctuation">]</span>
+                licenses <span class="token punctuation">{</span>
+                    license <span class="token punctuation">{</span>
+                        name <span class="token operator">=</span> <span class="token string">'The Apache License, Version 2.0'</span>
+                        url <span class="token operator">=</span> <span class="token string">'http://www.apache.org/licenses/LICENSE-2.0.txt'</span>
+                    <span class="token punctuation">}</span>
+                <span class="token punctuation">}</span>
+                developers <span class="token punctuation">{</span>
+                    developer <span class="token punctuation">{</span>
+                        id <span class="token operator">=</span> <span class="token string">'johnd'</span>
+                        name <span class="token operator">=</span> <span class="token string">'John Doe'</span>
+                        email <span class="token operator">=</span> <span class="token string">'john.doe@example.com'</span>
+                    <span class="token punctuation">}</span>
+                <span class="token punctuation">}</span>
+                scm <span class="token punctuation">{</span>
+                    connection <span class="token operator">=</span> <span class="token string">'scm:git:git://example.com/my-library.git'</span>
+                    developerConnection <span class="token operator">=</span> <span class="token string">'scm:git:ssh://example.com/my-library.git'</span>
+                    url <span class="token operator">=</span> <span class="token string">'http://example.com/my-library/'</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    repositories <span class="token punctuation">{</span>
+        maven <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">// change URLs to point to your repos, e.g. http://my.org/repo</span>
+            <span class="token keyword">def</span> releasesRepoUrl <span class="token operator">=</span> layout<span class="token operator">.</span>buildDirectory<span class="token operator">.</span><span class="token function">dir</span><span class="token punctuation">(</span><span class="token string">'repos/releases'</span><span class="token punctuation">)</span>
+            <span class="token keyword">def</span> snapshotsRepoUrl <span class="token operator">=</span> layout<span class="token operator">.</span>buildDirectory<span class="token operator">.</span><span class="token function">dir</span><span class="token punctuation">(</span><span class="token string">'repos/snapshots'</span><span class="token punctuation">)</span>
+            url <span class="token operator">=</span> version<span class="token operator">.</span><span class="token function">endsWith</span><span class="token punctuation">(</span><span class="token string">'SNAPSHOT'</span><span class="token punctuation">)</span> <span class="token operator">?</span> snapshotsRepoUrl <span class="token punctuation">:</span> releasesRepoUrl
+            credentials <span class="token punctuation">{</span>
+              username <span class="token operator">=</span> <span class="token string">'name'</span>
+              password <span class="token operator">=</span> <span class="token string">'pwd'</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+signing <span class="token punctuation">{</span>
+    sign publishing<span class="token operator">.</span>publications<span class="token operator">.</span>mavenJava
+<span class="token punctuation">}</span>
+
+
+javadoc <span class="token punctuation">{</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>JavaVersion<span class="token operator">.</span><span class="token function">current</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">.</span><span class="token function">isJava9Compatible</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        options<span class="token operator">.</span><span class="token function">addBooleanOption</span><span class="token punctuation">(</span><span class="token string">'html5'</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>以上配置的结果是将发布以下工件：</p>
+<ul>
+<li>POM文件: <code>my-library-1.0.pom</code></li>
+<li>主要的 JAR 工件 : <code>my-library-1.0.jar</code></li>
+<li>已显式配置的源代码: <code>my-library-1.0-sources.jar</code></li>
+<li>已显式配置的 Javadoc： <code>my-library-1.0-javadoc.jar</code></li>
+</ul>
+<p>签名插件用于为每个工件生成签名文件。此外，将为所有工件和签名文件生成校验和文件。</p>
+<h3 id="1-5-Android-中-使用-Maven-发布插件"><a href="#1-5-Android-中-使用-Maven-发布插件" class="headerlink" title="1.5 Android 中 使用 Maven 发布插件"></a>1.5 Android 中 使用 Maven 发布插件</h3><p>Android Gradle 插件 3.6.0 及更高版本包括对 <a href="https://docs.gradle.org/current/userguide/publishing_maven.html" target="_blank" rel="noopener">Maven Publish Gradle 插件的支持</a>，它允许您将构建工件发布到 Apache Maven 存储库。Android Gradle 插件 为您的应用程序或库模块中的每个构建变体工件创建一个 <a href="https://docs.gradle.org/current/userguide/dependency_management_terminology.html#sub:terminology_component" target="_blank" rel="noopener"><em>组件</em></a>，您可以使用它来自定义 <a href="https://docs.gradle.org/current/userguide/publishing_maven.html#publishing_maven:publications" target="_blank" rel="noopener"><em>发布</em></a> 到 Maven 存储库。</p>
+<p>Android 插件创建的组件取决于模块是使用应用程序插件还是库插件，如下表所述。</p>
+<table>
+<thead>
+<tr>
+<th align="left">Android Gradle 插件</th>
+<th align="left">出版神器</th>
+<th align="left">组件名称</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>com.android.library</code></td>
+<td align="left">AAR</td>
+<td align="left"><code>components.variant</code></td>
+</tr>
+<tr>
+<td align="left"><code>com.android.application</code></td>
+<td align="left">APK 的 ZIP，以及可用的 ProGuard 或 R8 映射文件</td>
+<td align="left"><code>components.variant_apk</code></td>
+</tr>
+<tr>
+<td align="left"><code>com.android.application</code></td>
+<td align="left">一个 Android 应用程序包 (AAB)</td>
+<td align="left"><code>components.variant_aab</code></td>
+</tr>
+</tbody></table>
+<h3 id="1-6-Android-版示例"><a href="#1-6-Android-版示例" class="headerlink" title="1.6 Android 版示例"></a>1.6 Android 版示例</h3><pre class=" language-groovy"><code class="language-groovy"><span class="token comment" spellcheck="true">// Because the components are created only during the afterEvaluate phase, you must</span>
+<span class="token comment" spellcheck="true">// configure your publications using the afterEvaluate() lifecycle method.</span>
+afterEvaluate <span class="token punctuation">{</span>
+    publishing <span class="token punctuation">{</span>
+        publications <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">// Creates a Maven publication called "release".</span>
+            <span class="token function">release</span><span class="token punctuation">(</span>MavenPublication<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">// Applies the component for the release build variant.</span>
+                from components<span class="token operator">.</span>release
+                <span class="token comment" spellcheck="true">// You can then customize attributes of the publication as shown below.</span>
+                groupId <span class="token operator">=</span> GROUP
+                artifactId <span class="token operator">=</span> ARTIFACT_ID
+                version <span class="token operator">=</span> VERSION
+
+            <span class="token punctuation">}</span>
+            <span class="token comment" spellcheck="true">// Creates a Maven publication called “debug”.</span>
+            <span class="token function">debug</span><span class="token punctuation">(</span>MavenPublication<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">// Applies the component for the debug build variant.</span>
+                from components<span class="token operator">.</span>debug
+                groupId <span class="token operator">=</span> GROUP
+                artifactId <span class="token operator">=</span> ARTIFACT_ID <span class="token operator">+</span> <span class="token string">"-debug"</span>
+                version <span class="token operator">=</span> VERSION
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        repositories <span class="token punctuation">{</span>
+            maven <span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">// change URLs to point to your repos, e.g. http://my.org/repo</span>
+                url <span class="token operator">=</span> URL
+                credentials <span class="token punctuation">{</span>
+                    username USER_NAME
+                    password PASSWORD
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+
+</code></pre>
+<h3 id="1-7-Android-自定义POM文件版示例"><a href="#1-7-Android-自定义POM文件版示例" class="headerlink" title="1.7 Android 自定义POM文件版示例"></a>1.7 Android 自定义POM文件版示例</h3><pre class=" language-groovy"><code class="language-groovy">apply plugin<span class="token punctuation">:</span> <span class="token string">'maven-publish'</span>
+
+<span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"--------${project.name}：Maven Publish Gradle--------"</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">//release 和 snapshot 的控制开关</span>
+<span class="token keyword">def</span> isUploadToRelease <span class="token operator">=</span> rootProject<span class="token operator">.</span>ext<span class="token operator">.</span>mavenRepo<span class="token punctuation">[</span><span class="token string">'isUploadToRelease'</span><span class="token punctuation">]</span>
+<span class="token comment" spellcheck="true">//远程Maven仓库的URL Release</span>
+<span class="token keyword">def</span> MAVEN_REPO_RELEASE_URL <span class="token operator">=</span> rootProject<span class="token operator">.</span>ext<span class="token operator">.</span>mavenRepo<span class="token punctuation">[</span><span class="token string">'mavenRepoUrlRelease'</span><span class="token punctuation">]</span>
+<span class="token comment" spellcheck="true">//远程Maven仓库的URL snapshots</span>
+<span class="token keyword">def</span> MAVEN_REPO_SNAPSHOTS_URL <span class="token operator">=</span> rootProject<span class="token operator">.</span>ext<span class="token operator">.</span>mavenRepo<span class="token punctuation">[</span><span class="token string">'mavenRepoUrlSnapshots'</span><span class="token punctuation">]</span>
+<span class="token comment" spellcheck="true">//远程Maven仓库用户名</span>
+<span class="token keyword">def</span> USER_NAME <span class="token operator">=</span> rootProject<span class="token operator">.</span>ext<span class="token operator">.</span>mavenRepo<span class="token punctuation">[</span><span class="token string">'userName'</span><span class="token punctuation">]</span>
+<span class="token comment" spellcheck="true">//远程Maven仓库密码</span>
+<span class="token keyword">def</span> PASSWORD <span class="token operator">=</span> rootProject<span class="token operator">.</span>ext<span class="token operator">.</span>mavenRepo<span class="token punctuation">[</span><span class="token string">'password'</span><span class="token punctuation">]</span>
+<span class="token comment" spellcheck="true">// 唯一标识 每个组件都要指定</span>
+<span class="token keyword">def</span> GROUP <span class="token operator">=</span> group<span class="token operator">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">// todo 默认为项目名称</span>
+<span class="token keyword">def</span> ARTIFACT_ID <span class="token operator">=</span> project<span class="token operator">.</span>name
+<span class="token comment" spellcheck="true">// 版本号 每个组件都要指定</span>
+<span class="token keyword">def</span> VERSION <span class="token operator">=</span> version<span class="token operator">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">//远程Maven仓库的URL</span>
+<span class="token keyword">def</span> URL <span class="token operator">=</span> isUploadToRelease <span class="token operator">?</span> MAVEN_REPO_RELEASE_URL <span class="token punctuation">:</span> MAVEN_REPO_SNAPSHOTS_URL
+
+<span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"dependencies_path: $GROUP:$ARTIFACT_ID:$VERSION"</span><span class="token punctuation">)</span>
+<span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"MAVEN_REPO_RELEASE_URL: $MAVEN_REPO_RELEASE_URL"</span><span class="token punctuation">)</span>
+<span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"MAVEN_REPO_SNAPSHOTS_URL: $MAVEN_REPO_SNAPSHOTS_URL"</span><span class="token punctuation">)</span>
+
+
+<span class="token comment" spellcheck="true">//https://docs.gradle.org/7.0/userguide/publishing_maven.html#publishing_maven</span>
+<span class="token comment" spellcheck="true">//https://developer.android.com/studio/build/maven-publish-plugin</span>
+
+<span class="token comment" spellcheck="true">// Because the components are created only during the afterEvaluate phase, you must</span>
+<span class="token comment" spellcheck="true">// configure your publications using the afterEvaluate() lifecycle method.</span>
+
+
+task <span class="token function">sourceJar</span><span class="token punctuation">(</span>type<span class="token punctuation">:</span> Jar<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    from android<span class="token operator">.</span>sourceSets<span class="token operator">.</span>main<span class="token operator">.</span>java<span class="token operator">.</span>srcDirs
+    classifier <span class="token string">"sources"</span>
+<span class="token punctuation">}</span>
+
+afterEvaluate <span class="token punctuation">{</span>
+    publishing <span class="token punctuation">{</span>
+        publications <span class="token punctuation">{</span>
+            <span class="token function">maven</span><span class="token punctuation">(</span>MavenPublication<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                groupId GROUP
+                artifactId ARTIFACT_ID
+                version VERSION
+                artifact bundleReleaseAar
+                artifact sourceJar
+
+                <span class="token comment" spellcheck="true">//根据输入数据生成 POM 后，自定义配置 POM。</span>
+                pom<span class="token operator">.</span>withXml <span class="token punctuation">{</span>
+
+                    <span class="token keyword">final</span> dependenciesNode <span class="token operator">=</span> <span class="token function">asNode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">.</span><span class="token function">appendNode</span><span class="token punctuation">(</span><span class="token string">'dependencies'</span><span class="token punctuation">)</span>
+
+                    <span class="token comment" spellcheck="true">//dependenciesNode:dependencies[attributes={}; value=[]]</span>
+                    println <span class="token string">"dependenciesNode:"</span> <span class="token operator">+</span> dependenciesNode
+                    ext<span class="token operator">.</span>addDependency <span class="token operator">=</span> <span class="token punctuation">{</span> Dependency dep<span class="token punctuation">,</span> String scope <span class="token operator">-></span>
+                        <span class="token comment" spellcheck="true">//Dependency:DefaultExternalModuleDependency{group='com.qlife.android', name='lib-baidu-face', version='1.0.0', configuration='default'}</span>
+                        <span class="token comment" spellcheck="true">//scope:compile</span>
+                        println <span class="token string">"Dependency:"</span> <span class="token operator">+</span> dep
+                        println <span class="token string">"scope:"</span> <span class="token operator">+</span> scope
+
+                        <span class="token keyword">if</span> <span class="token punctuation">(</span>dep<span class="token operator">.</span>group <span class="token operator">==</span> null <span class="token operator">||</span> dep<span class="token operator">.</span>version <span class="token operator">==</span> null <span class="token operator">||</span> dep<span class="token operator">.</span>name <span class="token operator">==</span> null <span class="token operator">||</span> dep<span class="token operator">.</span>name <span class="token operator">==</span> <span class="token string">"unspecified"</span><span class="token punctuation">)</span>
+                            <span class="token keyword">return</span> <span class="token comment" spellcheck="true">// invalid dependencies should be ignored</span>
+
+                        <span class="token keyword">final</span> dependencyNode <span class="token operator">=</span> dependenciesNode<span class="token operator">.</span><span class="token function">appendNode</span><span class="token punctuation">(</span><span class="token string">'dependency'</span><span class="token punctuation">)</span>
+                        dependencyNode<span class="token operator">.</span><span class="token function">appendNode</span><span class="token punctuation">(</span><span class="token string">'artifactId'</span><span class="token punctuation">,</span> dep<span class="token operator">.</span>name<span class="token punctuation">)</span>
+
+                        <span class="token keyword">if</span> <span class="token punctuation">(</span>dep<span class="token operator">.</span>version <span class="token operator">==</span> <span class="token string">'unspecified'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                            dependencyNode<span class="token operator">.</span><span class="token function">appendNode</span><span class="token punctuation">(</span><span class="token string">'groupId'</span><span class="token punctuation">,</span> project<span class="token operator">.</span>ext<span class="token operator">.</span>pomGroupID<span class="token punctuation">)</span>
+                            dependencyNode<span class="token operator">.</span><span class="token function">appendNode</span><span class="token punctuation">(</span><span class="token string">'version'</span><span class="token punctuation">,</span> project<span class="token operator">.</span>ext<span class="token operator">.</span>pomVersion<span class="token punctuation">)</span>
+                            System<span class="token operator">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"${project.ext.pomGroupID} ${dep.name} ${project.ext.pomVersion}"</span><span class="token punctuation">)</span>
+                        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                            dependencyNode<span class="token operator">.</span><span class="token function">appendNode</span><span class="token punctuation">(</span><span class="token string">'groupId'</span><span class="token punctuation">,</span> dep<span class="token operator">.</span>group<span class="token punctuation">)</span>
+                            dependencyNode<span class="token operator">.</span><span class="token function">appendNode</span><span class="token punctuation">(</span><span class="token string">'version'</span><span class="token punctuation">,</span> dep<span class="token operator">.</span>version<span class="token punctuation">)</span>
+                            System<span class="token operator">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"${dep.group} ${dep.name} ${dep.version}"</span><span class="token punctuation">)</span>
+                        <span class="token punctuation">}</span>
+
+                        dependencyNode<span class="token operator">.</span><span class="token function">appendNode</span><span class="token punctuation">(</span><span class="token string">'scope'</span><span class="token punctuation">,</span> scope<span class="token punctuation">)</span>
+                        <span class="token comment" spellcheck="true">//一些依赖可能有类型，比如aar，应该在POM文件中提到</span>
+                        <span class="token comment" spellcheck="true">// Some dependencies may have types, such as aar, that should be mentioned in the POM file</span>
+                        <span class="token keyword">def</span> artifactsList <span class="token operator">=</span> dep<span class="token operator">.</span>properties<span class="token punctuation">[</span><span class="token string">'artifacts'</span><span class="token punctuation">]</span>
+                        <span class="token keyword">if</span> <span class="token punctuation">(</span>artifactsList <span class="token operator">!=</span> null <span class="token operator">&amp;&amp;</span> artifactsList<span class="token operator">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                            <span class="token keyword">final</span> artifact <span class="token operator">=</span> artifactsList<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+                            dependencyNode<span class="token operator">.</span><span class="token function">appendNode</span><span class="token punctuation">(</span><span class="token string">'type'</span><span class="token punctuation">,</span> artifact<span class="token operator">.</span><span class="token function">getType</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                        <span class="token punctuation">}</span>
+
+                        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>dep<span class="token operator">.</span>transitive<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                            <span class="token comment" spellcheck="true">//在非传递依赖的情况下，它的所有依赖都应该从 POM 文件中强制排除</span>
+                            <span class="token comment" spellcheck="true">// In case of non transitive dependency, all its dependencies should be force excluded from them POM file</span>
+                            <span class="token keyword">final</span> exclusionNode <span class="token operator">=</span> dependencyNode<span class="token operator">.</span><span class="token function">appendNode</span><span class="token punctuation">(</span><span class="token string">'exclusions'</span><span class="token punctuation">)</span><span class="token operator">.</span><span class="token function">appendNode</span><span class="token punctuation">(</span><span class="token string">'exclusion'</span><span class="token punctuation">)</span>
+                            exclusionNode<span class="token operator">.</span><span class="token function">appendNode</span><span class="token punctuation">(</span><span class="token string">'groupId'</span><span class="token punctuation">,</span> <span class="token string">'*'</span><span class="token punctuation">)</span>
+                            exclusionNode<span class="token operator">.</span><span class="token function">appendNode</span><span class="token punctuation">(</span><span class="token string">'artifactId'</span><span class="token punctuation">,</span> <span class="token string">'*'</span><span class="token punctuation">)</span>
+                        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>dep<span class="token operator">.</span>properties<span class="token operator">.</span>excludeRules<span class="token operator">.</span>empty<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                            <span class="token comment" spellcheck="true">//对于带排除的传递，应将所有排除规则添加到 POM 文件中</span>
+                            <span class="token comment" spellcheck="true">// For transitive with exclusions, all exclude rules should be added to the POM file</span>
+                            <span class="token keyword">final</span> exclusions <span class="token operator">=</span> dependencyNode<span class="token operator">.</span><span class="token function">appendNode</span><span class="token punctuation">(</span><span class="token string">'exclusions'</span><span class="token punctuation">)</span>
+                            dep<span class="token operator">.</span>properties<span class="token operator">.</span>excludeRules<span class="token operator">.</span>each <span class="token punctuation">{</span> ExcludeRule rule <span class="token operator">-></span>
+                                <span class="token keyword">final</span> exclusionNode <span class="token operator">=</span> exclusions<span class="token operator">.</span><span class="token function">appendNode</span><span class="token punctuation">(</span><span class="token string">'exclusion'</span><span class="token punctuation">)</span>
+                                exclusionNode<span class="token operator">.</span><span class="token function">appendNode</span><span class="token punctuation">(</span><span class="token string">'groupId'</span><span class="token punctuation">,</span> rule<span class="token operator">.</span>group <span class="token operator">?:</span> <span class="token string">'*'</span><span class="token punctuation">)</span>
+                                exclusionNode<span class="token operator">.</span><span class="token function">appendNode</span><span class="token punctuation">(</span><span class="token string">'artifactId'</span><span class="token punctuation">,</span> rule<span class="token operator">.</span>module <span class="token operator">?:</span> <span class="token string">'*'</span><span class="token punctuation">)</span>
+                            <span class="token punctuation">}</span>
+                        <span class="token punctuation">}</span>
+                    <span class="token punctuation">}</span>
+
+                    <span class="token comment" spellcheck="true">// List all "api" dependencies (for new Gradle) as "compile" dependencies</span>
+                    configurations<span class="token operator">.</span>api<span class="token operator">.</span><span class="token function">getDependencies</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">.</span>each <span class="token punctuation">{</span> dep <span class="token operator">-></span> <span class="token function">addDependency</span><span class="token punctuation">(</span>dep<span class="token punctuation">,</span> <span class="token string">"compile"</span><span class="token punctuation">)</span> <span class="token punctuation">}</span>
+                    <span class="token comment" spellcheck="true">// List all "implementation" dependencies (for new Gradle) as "runtime" dependencies</span>
+                    configurations<span class="token operator">.</span>implementation<span class="token operator">.</span><span class="token function">getDependencies</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">.</span>each <span class="token punctuation">{</span> dep <span class="token operator">-></span> <span class="token function">addDependency</span><span class="token punctuation">(</span>dep<span class="token punctuation">,</span> <span class="token string">"runtime"</span><span class="token punctuation">)</span> <span class="token punctuation">}</span>
+
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        repositories <span class="token punctuation">{</span>
+            maven <span class="token punctuation">{</span>
+                url <span class="token operator">=</span> URL
+                credentials <span class="token punctuation">{</span>
+                    username USER_NAME
+                    password PASSWORD
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+task <span class="token function">cleanBuildPublishLocal</span><span class="token punctuation">(</span>type<span class="token punctuation">:</span> GradleBuild<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    tasks <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'clean'</span><span class="token punctuation">,</span> <span class="token string">'build'</span><span class="token punctuation">,</span> <span class="token string">'publishToMavenLocal'</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+
+task <span class="token function">cleanBuildPublish</span><span class="token punctuation">(</span>type<span class="token punctuation">:</span> GradleBuild<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    tasks <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'clean'</span><span class="token punctuation">,</span> <span class="token string">'build'</span><span class="token punctuation">,</span> <span class="token string">'publish'</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+
+
+</code></pre>
+<h3 id="1-8-Maven-pom-文件格式"><a href="#1-8-Maven-pom-文件格式" class="headerlink" title="1.8 Maven pom 文件格式"></a>1.8 Maven pom 文件格式</h3><p>POM( Project Object Model，项目对象模型 ) 是 Maven 工程的基本工作单元，是一个XML文件，包含了项目的基本信息，用于描述项目如何构建，声明项目依赖，等等。</p>
+<p>执行任务或目标时，Maven 会在当前目录中查找 POM。它读取 POM，获取所需的配置信息，然后执行目标。</p>
+<p>POM 中可以指定以下配置：</p>
+<ul>
+<li>项目依赖</li>
+<li>插件</li>
+<li>执行目标</li>
+<li>项目构建 profile</li>
+<li>项目版本</li>
+<li>项目开发者列表</li>
+<li>相关邮件列表信息</li>
+</ul>
+<p>所有 POM 文件都需要 project 元素和三个必需字段：groupId，artifactId，version。</p>
+<table>
+<thead>
+<tr>
+<th align="left">节点</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">project</td>
+<td align="left">工程的根标签。</td>
+</tr>
+<tr>
+<td align="left">modelVersion</td>
+<td align="left">模型版本需要设置为 4.0.0。</td>
+</tr>
+<tr>
+<td align="left">groupId</td>
+<td align="left">公司或者组织的唯一标志，并且配置时生成的路径也是由此生成， 如com.companyname.project-group，maven会将该项目打成的jar包放本地路径：/com/companyname/project-group</td>
+</tr>
+<tr>
+<td align="left">artifactId</td>
+<td align="left">项目的唯一ID，一个groupId下面可能多个项目，就是靠artifactId来区分的。groupId 和 artifactId 一起定义了 artifact 在仓库中的位置。</td>
+</tr>
+<tr>
+<td align="left">version</td>
+<td align="left">这是工程的版本号。在 artifact 的仓库中，它用来区分不同的版本。</td>
+</tr>
+<tr>
+<td align="left">packaging</td>
+<td align="left">项目产生的构件类型，例如jar、war、ear、pom。插件可以创建他们自己的构件类型，所以前面列的不是全部构件类型</td>
+</tr>
+<tr>
+<td align="left">dependencies</td>
+<td align="left">该元素描述了项目相关的所有依赖。 这些依赖组成了项目构建过程中的一个个环节。它们自动从项目定义的仓库中下载。</td>
+</tr>
+<tr>
+<td align="left">dependency</td>
+<td align="left">依赖项</td>
+</tr>
+<tr>
+<td align="left">scope</td>
+<td align="left">依赖范围。在项目发布过程中，帮助决定哪些构件被包括进来。欲知详情请参考依赖机制。 <br>- compile ：默认范围，用于编译<br> - provided：类似于编译，但支持你期待jdk或者容器提供，类似于classpath   <br>- runtime: 在执行时需要使用 <br>- test: 用于test任务时使用 <br>- system: 需要外在提供相应的元素。通过systemPath来取得                 <br>- systemPath: 仅用于范围为system。提供相应的路径 <br>- optional: 当项目自身被依赖时，标注依赖是否传递。用于连续依赖时使用</td>
+</tr>
+</tbody></table>
+<p><a href="https://www.runoob.com/maven/maven-pom.html" target="_blank" rel="noopener">POM 标签大全详解</a></p>
+<p>一个简单的Android 依赖库的pom文件如下</p>
+<pre class=" language-xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0" encoding="UTF-8"?></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>project</span> <span class="token attr-name"><span class="token namespace">xsi:</span>schemaLocation</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd<span class="token punctuation">"</span></span> <span class="token attr-name">xmlns</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://maven.apache.org/POM/4.0.0<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">xmlns:</span>xsi</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://www.w3.org/2001/XMLSchema-instance<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token comment" spellcheck="true">&lt;!-- This module was also published with a richer model, Gradle metadata,  --></span>
+  <span class="token comment" spellcheck="true">&lt;!-- which should be used instead. Do not delete the following line which  --></span>
+  <span class="token comment" spellcheck="true">&lt;!-- is to indicate to Gradle or any Gradle module metadata file consumer  --></span>
+  <span class="token comment" spellcheck="true">&lt;!-- that they should prefer consuming it instead. --></span>
+  <span class="token comment" spellcheck="true">&lt;!-- do_not_remove: published-with-gradle-metadata --></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>modelVersion</span><span class="token punctuation">></span></span>4.0.0<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>modelVersion</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>com.qlife.android<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>lib-net-release<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>1.0.1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>packaging</span><span class="token punctuation">></span></span>aar<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>packaging</span><span class="token punctuation">></span></span>
+
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependencies</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>com.squareup.retrofit2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>retrofit<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>2.6.0<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>scope</span><span class="token punctuation">></span></span>compile<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>scope</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>com.squareup.okhttp3<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>logging-interceptor<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>4.2.2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>scope</span><span class="token punctuation">></span></span>runtime<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>scope</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>com.github.jaydroid1024.JDispatcher<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>jdispatcher-api<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>0.0.7<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>scope</span><span class="token punctuation">></span></span>runtime<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>scope</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
+    。。。
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependencies</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>project</span><span class="token punctuation">></span></span>
+</code></pre>
+<h2 id="2-阿里云-云效-Maven-仓库"><a href="#2-阿里云-云效-Maven-仓库" class="headerlink" title="2.阿里云-云效 Maven 仓库"></a>2.阿里云-云效 Maven 仓库</h2><p>如果想自己搭建 NXRM(Nexus Repository Manager)私服，可参考 <a href="https://help.sonatype.com/repomanager3" target="_blank" rel="noopener">Nexus 官网</a> <a href="https://help.sonatype.com/repomanager3/download" target="_blank" rel="noopener">下载NXRM</a></p>
+<p>阿里云Maven中央仓库为 <a href="https://devops.aliyun.com/?channel=maven.aliyun" target="_blank" rel="noopener">阿里云云效</a> 提供的公共代理仓库，帮助研发人员提高研发生产效率，使用阿里云Maven中央仓库作为下载源，速度更快更稳定。</p>
+<p><a href="https://devops.aliyun.com/?channel=maven.aliyun" target="_blank" rel="noopener">阿里云云效</a> 是企业级一站式 DevOps 平台，覆盖产品从需求到运营的研发全生命周期，其中云效也提供了免费、可靠的Maven私有仓库 <a href="https://packages.aliyun.com/?channel=maven.aliyun" target="_blank" rel="noopener">Packages</a></p>
+<h3 id="2-1-公共代理仓库"><a href="#2-1-公共代理仓库" class="headerlink" title="2.1 公共代理仓库"></a>2.1 公共代理仓库</h3><table>
+<thead>
+<tr>
+<th align="left">仓库名称</th>
+<th align="left">阿里云仓库地址</th>
+<th align="left">阿里云仓库地址(老版)</th>
+<th align="left">源地址</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">central</td>
+<td align="left"><a href="https://maven.aliyun.com/repository/central" target="_blank" rel="noopener">https://maven.aliyun.com/repository/central</a></td>
+<td align="left"><a href="https://maven.aliyun.com/nexus/content/repositories/central" target="_blank" rel="noopener">https://maven.aliyun.com/nexus/content/repositories/central</a></td>
+<td align="left"><a href="https://repo1.maven.org/maven2/" target="_blank" rel="noopener">https://repo1.maven.org/maven2/</a></td>
+</tr>
+<tr>
+<td align="left">jcenter</td>
+<td align="left"><a href="https://maven.aliyun.com/repository/public" target="_blank" rel="noopener">https://maven.aliyun.com/repository/public</a></td>
+<td align="left"><a href="https://maven.aliyun.com/nexus/content/repositories/jcenter" target="_blank" rel="noopener">https://maven.aliyun.com/nexus/content/repositories/jcenter</a></td>
+<td align="left"><a href="http://jcenter.bintray.com/" target="_blank" rel="noopener">http://jcenter.bintray.com/</a></td>
+</tr>
+<tr>
+<td align="left">public</td>
+<td align="left"><a href="https://maven.aliyun.com/repository/public" target="_blank" rel="noopener">https://maven.aliyun.com/repository/public</a></td>
+<td align="left"><a href="https://maven.aliyun.com/nexus/content/groups/public" target="_blank" rel="noopener">https://maven.aliyun.com/nexus/content/groups/public</a></td>
+<td align="left">central仓和jcenter仓的聚合仓</td>
+</tr>
+<tr>
+<td align="left">google</td>
+<td align="left"><a href="https://maven.aliyun.com/repository/google" target="_blank" rel="noopener">https://maven.aliyun.com/repository/google</a></td>
+<td align="left"><a href="https://maven.aliyun.com/nexus/content/repositories/google" target="_blank" rel="noopener">https://maven.aliyun.com/nexus/content/repositories/google</a></td>
+<td align="left"><a href="https://maven.google.com/" target="_blank" rel="noopener">https://maven.google.com/</a></td>
+</tr>
+<tr>
+<td align="left">gradle-plugin</td>
+<td align="left"><a href="https://maven.aliyun.com/repository/gradle-plugin" target="_blank" rel="noopener">https://maven.aliyun.com/repository/gradle-plugin</a></td>
+<td align="left"><a href="https://maven.aliyun.com/nexus/content/repositories/gradle-plugin" target="_blank" rel="noopener">https://maven.aliyun.com/nexus/content/repositories/gradle-plugin</a></td>
+<td align="left"><a href="https://plugins.gradle.org/m2/" target="_blank" rel="noopener">https://plugins.gradle.org/m2/</a></td>
+</tr>
+<tr>
+<td align="left">spring</td>
+<td align="left"><a href="https://maven.aliyun.com/repository/spring" target="_blank" rel="noopener">https://maven.aliyun.com/repository/spring</a></td>
+<td align="left"><a href="https://maven.aliyun.com/nexus/content/repositories/spring" target="_blank" rel="noopener">https://maven.aliyun.com/nexus/content/repositories/spring</a></td>
+<td align="left"><a href="http://repo.spring.io/libs-milestone/" target="_blank" rel="noopener">http://repo.spring.io/libs-milestone/</a></td>
+</tr>
+<tr>
+<td align="left">spring-plugin</td>
+<td align="left"><a href="https://maven.aliyun.com/repository/spring-plugin" target="_blank" rel="noopener">https://maven.aliyun.com/repository/spring-plugin</a></td>
+<td align="left"><a href="https://maven.aliyun.com/nexus/content/repositories/spring-plugin" target="_blank" rel="noopener">https://maven.aliyun.com/nexus/content/repositories/spring-plugin</a></td>
+<td align="left"><a href="http://repo.spring.io/plugins-release/" target="_blank" rel="noopener">http://repo.spring.io/plugins-release/</a></td>
+</tr>
+<tr>
+<td align="left">grails-core</td>
+<td align="left"><a href="https://maven.aliyun.com/repository/grails-core" target="_blank" rel="noopener">https://maven.aliyun.com/repository/grails-core</a></td>
+<td align="left"><a href="https://maven.aliyun.com/nexus/content/repositories/grails-core" target="_blank" rel="noopener">https://maven.aliyun.com/nexus/content/repositories/grails-core</a></td>
+<td align="left"><a href="https://repo.grails.org/grails/core" target="_blank" rel="noopener">https://repo.grails.org/grails/core</a></td>
+</tr>
+<tr>
+<td align="left">apache snapshots</td>
+<td align="left"><a href="https://maven.aliyun.com/repository/apache-snapshots" target="_blank" rel="noopener">https://maven.aliyun.com/repository/apache-snapshots</a></td>
+<td align="left"><a href="https://maven.aliyun.com/nexus/content/repositories/apache-snapshots" target="_blank" rel="noopener">https://maven.aliyun.com/nexus/content/repositories/apache-snapshots</a></td>
+<td align="left"><a href="https://repository.apache.org/snapshots/" target="_blank" rel="noopener">https://repository.apache.org/snapshots/</a></td>
+</tr>
+</tbody></table>
+<h3 id="2-2-Android-相关代理仓库"><a href="#2-2-Android-相关代理仓库" class="headerlink" title="2.2 Android 相关代理仓库"></a>2.2 Android 相关代理仓库</h3><table>
+<thead>
+<tr>
+<th>仓库名称</th>
+<th>阿里云仓库地址</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>central</td>
+<td><a href="https://maven.aliyun.com/repository/central" target="_blank" rel="noopener">https://maven.aliyun.com/repository/central</a></td>
+</tr>
+<tr>
+<td>jcenter</td>
+<td><a href="https://maven.aliyun.com/repository/public" target="_blank" rel="noopener">https://maven.aliyun.com/repository/public</a></td>
+</tr>
+<tr>
+<td>public</td>
+<td><a href="https://maven.aliyun.com/repository/public" target="_blank" rel="noopener">https://maven.aliyun.com/repository/public</a></td>
+</tr>
+<tr>
+<td>google</td>
+<td><a href="https://maven.aliyun.com/repository/google" target="_blank" rel="noopener">https://maven.aliyun.com/repository/google</a></td>
+</tr>
+<tr>
+<td>gradle-plugin</td>
+<td><a href="https://maven.aliyun.com/repository/gradle-plugin" target="_blank" rel="noopener">https://maven.aliyun.com/repository/gradle-plugin</a></td>
+</tr>
+</tbody></table>
+<p><strong>拿来就用</strong></p>
+<pre class=" language-groovy"><code class="language-groovy">buildscript <span class="token punctuation">{</span>
+    repositories <span class="token punctuation">{</span>
+      <span class="token comment" spellcheck="true">//central</span>
+      maven <span class="token punctuation">{</span> url <span class="token string">'https://maven.aliyun.com/repository/central'</span> <span class="token punctuation">}</span>
+      <span class="token comment" spellcheck="true">//jcenter&amp;public</span>
+      maven <span class="token punctuation">{</span> url <span class="token string">'https://maven.aliyun.com/repository/public'</span> <span class="token punctuation">}</span>
+      <span class="token comment" spellcheck="true">//google</span>
+      maven <span class="token punctuation">{</span> url <span class="token string">'https://maven.aliyun.com/repository/google'</span> <span class="token punctuation">}</span>
+      <span class="token comment" spellcheck="true">//gradle-plugin</span>
+      maven <span class="token punctuation">{</span> url <span class="token string">'https://maven.aliyun.com/repository/gradle-plugin'</span> <span class="token punctuation">}</span>
+      <span class="token function">mavenCentral</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+      maven <span class="token punctuation">{</span> url <span class="token string">"https://jitpack.io"</span> <span class="token punctuation">}</span>
+      <span class="token function">google</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+      <span class="token function">jcenter</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 id="2-3-制品私有仓库"><a href="#2-3-制品私有仓库" class="headerlink" title="2.3 制品私有仓库"></a>2.3 制品私有仓库</h3><ul>
+<li><p>云效 Packages 为您自动创建了两个 Maven 仓库，一个 release 库和一个 snapshot 库。</p>
+<ul>
+<li><p>Maven Release 库用于存储功能趋于稳定、当前更新停止，可以用于发行的版本。</p>
+</li>
+<li><p>Maven Snapchat 库用于存储不稳定、尚处于开发中的版本，即快照版本。</p>
+</li>
+<li><p>您的制品文件具体推送到哪个库，根据您项目目录的build.gradle文件中version字段中是否配置了-SNAPSHOT。</p>
+</li>
+</ul>
+</li>
+<li><p>进入仓库后，可以通过仓库指南完成 仓库凭证设置、制品文件的上传和下载、私有库迁移。</p>
+</li>
+<li><p>包列表下展示仓库下所有二进制包文件，支持通过 Group Id 和 Artifacts Id 进行包文件搜索。</p>
+</li>
+<li><p>点击包文件展示包文件信息，默认展示最新版本信息，点击可切换版本。</p>
+</li>
+<li><p>默认企业拥有者为仓库拥有者，其他企业成员需要在仓库中设置成员和角色。仓库公开性、成员角色之间的关系如下：</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>仓库角色</td>
+<td>仓库公开性：私有仓库</td>
+<td>仓库公开性：企业内可见</td>
+</tr>
+<tr>
+<td>拥有者</td>
+<td>访问、下载、上传、删除、仓库管理</td>
+<td>访问、下载、上传、删除、仓库管理</td>
+</tr>
+<tr>
+<td>管理员</td>
+<td>访问、下载、上传、删除、仓库管理</td>
+<td>访问、下载、上传、删除、仓库管理</td>
+</tr>
+<tr>
+<td>开发成员</td>
+<td>访问、下载、上传</td>
+<td>访问、下载、上传</td>
+</tr>
+<tr>
+<td>普通成员</td>
+<td>访问、下载</td>
+<td>访问、下载</td>
+</tr>
+<tr>
+<td>非仓库成员</td>
+<td>无</td>
+<td>访问、下载</td>
+</tr>
+</tbody></table>
+<h3 id="2-4-Gradle-推送"><a href="#2-4-Gradle-推送" class="headerlink" title="2.4 Gradle 推送"></a>2.4 Gradle 推送</h3><ol>
+<li>设置仓库凭证</li>
+</ol>
+<pre class=" language-groovy"><code class="language-groovy">apply plugin<span class="token punctuation">:</span> <span class="token string">'maven-publish'</span>
+
+<span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"--------${project.name}：Maven Publish Gradle--------"</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">//release 和 snapshot 的控制开关</span>
+<span class="token keyword">def</span> isUploadToRelease <span class="token operator">=</span> rootProject<span class="token operator">.</span>ext<span class="token operator">.</span>mavenRepo<span class="token punctuation">[</span><span class="token string">'isUploadToRelease'</span><span class="token punctuation">]</span>
+<span class="token comment" spellcheck="true">//远程Maven仓库的URL Release</span>
+<span class="token keyword">def</span> MAVEN_REPO_RELEASE_URL <span class="token operator">=</span> rootProject<span class="token operator">.</span>ext<span class="token operator">.</span>mavenRepo<span class="token punctuation">[</span><span class="token string">'mavenRepoUrlRelease'</span><span class="token punctuation">]</span>
+<span class="token comment" spellcheck="true">//远程Maven仓库的URL snapshots</span>
+<span class="token keyword">def</span> MAVEN_REPO_SNAPSHOTS_URL <span class="token operator">=</span> rootProject<span class="token operator">.</span>ext<span class="token operator">.</span>mavenRepo<span class="token punctuation">[</span><span class="token string">'mavenRepoUrlSnapshots'</span><span class="token punctuation">]</span>
+<span class="token comment" spellcheck="true">//远程Maven仓库用户名</span>
+<span class="token keyword">def</span> USER_NAME <span class="token operator">=</span> rootProject<span class="token operator">.</span>ext<span class="token operator">.</span>mavenRepo<span class="token punctuation">[</span><span class="token string">'userName'</span><span class="token punctuation">]</span>
+<span class="token comment" spellcheck="true">//远程Maven仓库密码</span>
+<span class="token keyword">def</span> PASSWORD <span class="token operator">=</span> rootProject<span class="token operator">.</span>ext<span class="token operator">.</span>mavenRepo<span class="token punctuation">[</span><span class="token string">'password'</span><span class="token punctuation">]</span>
+<span class="token comment" spellcheck="true">// 唯一标识 每个组件都要指定</span>
+<span class="token keyword">def</span> GROUP <span class="token operator">=</span> group<span class="token operator">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">// todo 默认为项目名称</span>
+<span class="token keyword">def</span> ARTIFACT_ID <span class="token operator">=</span> project<span class="token operator">.</span>name
+<span class="token comment" spellcheck="true">// 版本号 每个组件都要指定</span>
+<span class="token keyword">def</span> VERSION <span class="token operator">=</span> version<span class="token operator">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">//远程Maven仓库的URL</span>
+<span class="token keyword">def</span> URL <span class="token operator">=</span> isUploadToRelease <span class="token operator">?</span> MAVEN_REPO_RELEASE_URL <span class="token punctuation">:</span> MAVEN_REPO_SNAPSHOTS_URL
+
+<span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"dependencies_path: $GROUP:$ARTIFACT_ID:$VERSION"</span><span class="token punctuation">)</span>
+<span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"MAVEN_REPO_RELEASE_URL: $MAVEN_REPO_RELEASE_URL"</span><span class="token punctuation">)</span>
+<span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"MAVEN_REPO_SNAPSHOTS_URL: $MAVEN_REPO_SNAPSHOTS_URL"</span><span class="token punctuation">)</span>
+
+
+<span class="token comment" spellcheck="true">//https://docs.gradle.org/7.0/userguide/publishing_maven.html#publishing_maven</span>
+<span class="token comment" spellcheck="true">//https://developer.android.com/studio/build/maven-publish-plugin</span>
+<span class="token comment" spellcheck="true">// Because the components are created only during the afterEvaluate phase, you must</span>
+<span class="token comment" spellcheck="true">// configure your publications using the afterEvaluate() lifecycle method.</span>
+afterEvaluate <span class="token punctuation">{</span>
+    publishing <span class="token punctuation">{</span>
+        publications <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">// Creates a Maven publication called "release".</span>
+            <span class="token function">release</span><span class="token punctuation">(</span>MavenPublication<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">// Applies the component for the release build variant.</span>
+                from components<span class="token operator">.</span>release
+                <span class="token comment" spellcheck="true">// You can then customize attributes of the publication as shown below.</span>
+                groupId <span class="token operator">=</span> GROUP
+                artifactId <span class="token operator">=</span> ARTIFACT_ID
+                version <span class="token operator">=</span> VERSION
+
+            <span class="token punctuation">}</span>
+            <span class="token comment" spellcheck="true">// Creates a Maven publication called “debug”.</span>
+            <span class="token function">debug</span><span class="token punctuation">(</span>MavenPublication<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">// Applies the component for the debug build variant.</span>
+                from components<span class="token operator">.</span>debug
+                groupId <span class="token operator">=</span> GROUP
+                artifactId <span class="token operator">=</span> ARTIFACT_ID <span class="token operator">+</span> <span class="token string">"-debug"</span>
+                version <span class="token operator">=</span> VERSION
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        repositories <span class="token punctuation">{</span>
+            maven <span class="token punctuation">{</span>
+                url <span class="token operator">=</span> URL
+                credentials <span class="token punctuation">{</span>
+                    username USER_NAME
+                    password PASSWORD
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<ol start="2">
+<li>设置仓库下载配置</li>
+</ol>
+<pre class=" language-groovy"><code class="language-groovy">allprojects <span class="token punctuation">{</span>
+    repositories <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//central</span>
+        maven <span class="token punctuation">{</span> url <span class="token string">'https://maven.aliyun.com/repository/central'</span> <span class="token punctuation">}</span>
+        <span class="token comment" spellcheck="true">//jcenter&amp;public</span>
+        maven <span class="token punctuation">{</span> url <span class="token string">'https://maven.aliyun.com/repository/public'</span> <span class="token punctuation">}</span>
+        <span class="token comment" spellcheck="true">//google</span>
+        maven <span class="token punctuation">{</span> url <span class="token string">'https://maven.aliyun.com/repository/google'</span> <span class="token punctuation">}</span>
+        <span class="token comment" spellcheck="true">//gradle-plugin</span>
+        maven <span class="token punctuation">{</span> url <span class="token string">'https://maven.aliyun.com/repository/gradle-plugin'</span> <span class="token punctuation">}</span>
+        <span class="token function">mavenCentral</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        maven <span class="token punctuation">{</span> url <span class="token string">"https://jitpack.io"</span> <span class="token punctuation">}</span>
+        <span class="token function">google</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token function">jcenter</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+        <span class="token comment" spellcheck="true">/**Maven 私服配置*/</span>
+        <span class="token comment" spellcheck="true">// 仓库类型 local dev production</span>
+        <span class="token keyword">def</span> currentMavenRepositoryType <span class="token operator">=</span> rootProject<span class="token operator">.</span>ext<span class="token operator">.</span>mavenRepo<span class="token punctuation">[</span><span class="token string">'currentMavenRepositoryType'</span><span class="token punctuation">]</span>
+        <span class="token keyword">def</span> localMavenRepositoryType <span class="token operator">=</span> rootProject<span class="token operator">.</span>ext<span class="token operator">.</span>mavenRepositoryType<span class="token punctuation">[</span><span class="token string">'local'</span><span class="token punctuation">]</span>
+        maven <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">//区分本地仓库和远程仓库</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>currentMavenRepositoryType <span class="token operator">!=</span> localMavenRepositoryType<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                credentials <span class="token punctuation">{</span>
+                    username rootProject<span class="token operator">.</span>ext<span class="token operator">.</span>mavenRepo<span class="token punctuation">[</span><span class="token string">'userName'</span><span class="token punctuation">]</span>
+                    password rootProject<span class="token operator">.</span>ext<span class="token operator">.</span>mavenRepo<span class="token punctuation">[</span><span class="token string">'password'</span><span class="token punctuation">]</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+            url rootProject<span class="token operator">.</span>ext<span class="token operator">.</span>mavenRepo<span class="token punctuation">[</span><span class="token string">'mavenRepoUrlRelease'</span><span class="token punctuation">]</span>
+        <span class="token punctuation">}</span>
+        maven <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">//区分本地仓库和远程仓库</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>currentMavenRepositoryType <span class="token operator">!=</span> localMavenRepositoryType<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                credentials <span class="token punctuation">{</span>
+                    username rootProject<span class="token operator">.</span>ext<span class="token operator">.</span>mavenRepo<span class="token punctuation">[</span><span class="token string">'userName'</span><span class="token punctuation">]</span>
+                    password rootProject<span class="token operator">.</span>ext<span class="token operator">.</span>mavenRepo<span class="token punctuation">[</span><span class="token string">'password'</span><span class="token punctuation">]</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+            url rootProject<span class="token operator">.</span>ext<span class="token operator">.</span>mavenRepo<span class="token punctuation">[</span><span class="token string">'mavenRepoUrlSnapshots'</span><span class="token punctuation">]</span>
+        <span class="token punctuation">}</span>
+
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 id="2-5-Gradle-拉取"><a href="#2-5-Gradle-拉取" class="headerlink" title="2.5 Gradle 拉取"></a>2.5 Gradle 拉取</h3><ol>
+<li>设置仓库凭证</li>
+</ol>
+<pre class=" language-groovy"><code class="language-groovy">allprojects <span class="token punctuation">{</span>
+    repositories <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//central</span>
+        maven <span class="token punctuation">{</span> url <span class="token string">'https://maven.aliyun.com/repository/central'</span> <span class="token punctuation">}</span>
+        <span class="token comment" spellcheck="true">//jcenter&amp;public</span>
+        maven <span class="token punctuation">{</span> url <span class="token string">'https://maven.aliyun.com/repository/public'</span> <span class="token punctuation">}</span>
+        <span class="token comment" spellcheck="true">//google</span>
+        maven <span class="token punctuation">{</span> url <span class="token string">'https://maven.aliyun.com/repository/google'</span> <span class="token punctuation">}</span>
+        <span class="token comment" spellcheck="true">//gradle-plugin</span>
+        maven <span class="token punctuation">{</span> url <span class="token string">'https://maven.aliyun.com/repository/gradle-plugin'</span> <span class="token punctuation">}</span>
+        <span class="token function">mavenCentral</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        maven <span class="token punctuation">{</span> url <span class="token string">"https://jitpack.io"</span> <span class="token punctuation">}</span>
+        <span class="token function">google</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token function">jcenter</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+        <span class="token comment" spellcheck="true">/**Maven 私服配置*/</span>
+        <span class="token comment" spellcheck="true">// 仓库类型 local dev production</span>
+        <span class="token keyword">def</span> currentMavenRepositoryType <span class="token operator">=</span> rootProject<span class="token operator">.</span>ext<span class="token operator">.</span>mavenRepo<span class="token punctuation">[</span><span class="token string">'currentMavenRepositoryType'</span><span class="token punctuation">]</span>
+        <span class="token keyword">def</span> localMavenRepositoryType <span class="token operator">=</span> rootProject<span class="token operator">.</span>ext<span class="token operator">.</span>mavenRepositoryType<span class="token punctuation">[</span><span class="token string">'local'</span><span class="token punctuation">]</span>
+        maven <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">//区分本地仓库和远程仓库</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>currentMavenRepositoryType <span class="token operator">!=</span> localMavenRepositoryType<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                credentials <span class="token punctuation">{</span>
+                    username rootProject<span class="token operator">.</span>ext<span class="token operator">.</span>mavenRepo<span class="token punctuation">[</span><span class="token string">'userName'</span><span class="token punctuation">]</span>
+                    password rootProject<span class="token operator">.</span>ext<span class="token operator">.</span>mavenRepo<span class="token punctuation">[</span><span class="token string">'password'</span><span class="token punctuation">]</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+            url rootProject<span class="token operator">.</span>ext<span class="token operator">.</span>mavenRepo<span class="token punctuation">[</span><span class="token string">'mavenRepoUrlRelease'</span><span class="token punctuation">]</span>
+        <span class="token punctuation">}</span>
+        maven <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">//区分本地仓库和远程仓库</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>currentMavenRepositoryType <span class="token operator">!=</span> localMavenRepositoryType<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                credentials <span class="token punctuation">{</span>
+                    username rootProject<span class="token operator">.</span>ext<span class="token operator">.</span>mavenRepo<span class="token punctuation">[</span><span class="token string">'userName'</span><span class="token punctuation">]</span>
+                    password rootProject<span class="token operator">.</span>ext<span class="token operator">.</span>mavenRepo<span class="token punctuation">[</span><span class="token string">'password'</span><span class="token punctuation">]</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+            url rootProject<span class="token operator">.</span>ext<span class="token operator">.</span>mavenRepo<span class="token punctuation">[</span><span class="token string">'mavenRepoUrlSnapshots'</span><span class="token punctuation">]</span>
+        <span class="token punctuation">}</span>
+
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<ol start="2">
+<li>配置包信息</li>
+</ol>
+<pre class=" language-groovy"><code class="language-groovy">dependencies <span class="token punctuation">{</span>
+    <span class="token keyword">def</span> currentMavenRepositoryType <span class="token operator">=</span> rootProject<span class="token operator">.</span>ext<span class="token operator">.</span>mavenRepo<span class="token punctuation">[</span><span class="token string">'dependenceTypeIsModule'</span><span class="token punctuation">]</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>currentMavenRepositoryType<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        implementation <span class="token function">project</span><span class="token punctuation">(</span>path<span class="token punctuation">:</span> <span class="token string">':lib-net'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        implementation rootProject<span class="token operator">.</span>ext<span class="token operator">.</span>libNet
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 id="3-Grade依赖管理"><a href="#3-Grade依赖管理" class="headerlink" title="3.Grade依赖管理"></a>3.Grade依赖管理</h2><h3 id="3-1-依赖项类型"><a href="#3-1-依赖项类型" class="headerlink" title="3.1 依赖项类型"></a>3.1 依赖项类型</h3><pre class=" language-groovy"><code class="language-groovy">dependencies <span class="token punctuation">{</span>
+
+    <span class="token comment" spellcheck="true">// 对本地库模块的依赖</span>
+    implementation <span class="token function">project</span><span class="token punctuation">(</span><span class="token string">":mylibrary"</span><span class="token punctuation">)</span>
+
+    <span class="token comment" spellcheck="true">// 对本地二进制文件的依赖</span>
+    implementation <span class="token function">fileTree</span><span class="token punctuation">(</span>dir<span class="token punctuation">:</span> <span class="token string">'libs'</span><span class="token punctuation">,</span> include<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'*.jar'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+      implementation <span class="token function">files</span><span class="token punctuation">(</span><span class="token string">'libs/foo.jar'</span><span class="token punctuation">)</span>
+    implementation <span class="token function">project</span><span class="token punctuation">(</span>path<span class="token punctuation">:</span> <span class="token string">':foo-aar-module'</span><span class="token punctuation">)</span>
+
+    <span class="token comment" spellcheck="true">// 对远程二进制文件的依赖</span>
+    implementation <span class="token string">'com.example.android:app-magic:12.3'</span>
+
+<span class="token punctuation">}</span></code></pre>
+<p><strong>本地库模块依赖</strong></p>
+<p>这里依赖了一个名为“mylibrary”（此名称必须与在您的 settings.gradle 文件中使用 <code>include:</code> 定义的库名称相符）的Android 库模块。在构建您的应用时，构建系统会编译该库模块，并将生成的编译内容打包到 APK 中。</p>
+<p><strong>本地二进制文件依赖</strong></p>
+<p>Gradle 声明了对项目的 <code>module_name/libs/</code> 目录中 JAR 文件的依赖关系（因为 Gradle 会读取 <code>build.gradle</code> 文件的相对路径）。</p>
+<p>也可指定各个jar/aar文件或者通过创建一个aar/jar 模块建立像对本地库模块一样的依赖</p>
+<p><strong>远程二进制文件依赖</strong></p>
+<pre><code>implementation 'com.example.android:app-magic:12.3'</code></pre><p>这实际上是以下代码的简写形式：</p>
+<pre><code>implementation group: 'com.example.android', name: 'app-magic', version: '12.3'</code></pre><p>这声明了对“com.example.android”命名空间组内的 12.3 版“app-magic”库的依赖关系。</p>
+<p>此类远程依赖项要求您声明适当的远程代码库，Gradle 应在其中查找相应的库。如果本地不存在相应的库，Gradle 会从远程站点提取它。</p>
+<h3 id="3-2-依赖项依赖方式配置"><a href="#3-2-依赖项依赖方式配置" class="headerlink" title="3.2 依赖项依赖方式配置"></a>3.2 依赖项依赖方式配置</h3><p>在 <code>dependencies</code> 代码块内，您可以从多种不同的依赖项配置中选择其一,每种依赖项配置都向 Gradle 提供了有关如何使用该依赖项的不同说明。下表介绍了Android 项目中的依赖项使用的各种配置。</p>
+<table>
+<thead>
+<tr>
+<th align="center">新配置</th>
+<th align="center">已弃用配置</th>
+<th align="left">行为描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>implementation</code></td>
+<td align="center"><code>compile</code></td>
+<td align="left">Gradle 会将依赖项添加到编译类路径，并将依赖项打包到构建输出。 当模块配置 <code>implementation</code> 依赖项时，Gradle在编译时<strong>不会将该依赖项传递给其他模块</strong>。也就是说，其他模块只有在运行时才能使用该依赖项。 使用此依赖项配置代替 <code>api</code> 或 <code>compile</code>（已弃用）可以<strong>显著缩短构建时间</strong>，因为这样可以减少构建系统需要重新编译的模块数。例如，如果 <code>implementation</code> 依赖项更改了其 API，Gradle 只会重新编译该依赖项以及直接依赖于它的模块。大多数应用和测试模块都应使用此配置。</td>
+</tr>
+<tr>
+<td align="center"><code>api</code></td>
+<td align="center"><code>compile</code></td>
+<td align="left">Gradle 会将依赖项添加到编译类路径和构建输出。当一个模块包含 <code>api</code> 依赖项时，会让 Gradle <strong>以传递方式将该依赖项导出到其他模块</strong>，以便这些模块在运行时和编译时都可以使用该依赖项。 此配置的行为类似于 <code>compile</code>（现已弃用），但使用它时应格外小心，只能对需要以传递方式导出到其它上游消费者的依赖项时才使用它。这是因为，如果 <code>api</code> 依赖项更改了其外部 API，Gradle 会在编译时重新编译所有有权访问该依赖项的模块。因此，拥有大量的 <code>api</code> 依赖项会显<strong>著增加构建时间</strong>。除非要将依赖项的 API 公开给单独的模块，否则库模块应改用 <code>implementation</code> 依赖项。</td>
+</tr>
+<tr>
+<td align="center"><code>compileOnly</code></td>
+<td align="center"><code>provided</code></td>
+<td align="left">Gradle 只会将依赖项添加到编译类路径也就是说，<strong>不会将其添加到构建输出</strong>。如果您创建 Android 模块时在编译期间需要相应依赖项，但它在运行时可有可无，此配置会很有用。如果您使用此配置，那么您的库模块必须包含一个运行时条件，用于检查是否提供了相应依赖项，然后适当地改变该模块的行为，以使该模块在未提供相应依赖项的情况下仍可正常运行。这样做<strong>不会添加不重要的瞬时依赖项</strong>，因而<strong>有助于减小最终 APK 的大小</strong>。此配置的行为类似于 <code>provided</code>（现已弃用）。<strong>注意</strong>：您不能将 <code>compileOnly</code> 配置与 AAR 依赖项配合使用。</td>
+</tr>
+<tr>
+<td align="center"><code>runtimeOnly</code></td>
+<td align="center"><code>apk</code></td>
+<td align="left">Gradle 只会将依赖项添加到构建输出，以便在运行时使用。也就是说，不会将其添加到编译类路径。此配置的行为类似于 <code>apk</code>（现已弃用）。</td>
+</tr>
+<tr>
+<td align="center"><code>annotationProcessor</code></td>
+<td align="center"><code>compile</code></td>
+<td align="left">如需添加对作为注释处理器的库的依赖关系，您必须使用 <code>annotationProcessor</code> 配置将其添加到注释处理器类路径。这是因为，使用此配置可以<strong>将编译类路径与注释处理器类路径分开，从而提高构建性能</strong>。如果 Gradle 在编译类路径上找到注释处理器，则会禁用<a href="https://docs.gradle.org/current/userguide/java_plugin.html#sec:java_compile_avoidance" target="_blank" rel="noopener">避免编译</a>功能，这样会对构建时间产生负面影响（Gradle 5.0 及更高版本会忽略在编译类路径上找到的注释处理器）。如果 JAR 文件包含以下文件，则 Android Gradle 插件会假定依赖项是注释处理器： <code>META-INF/services/javax.annotation.processing.Processor</code>。如果插件检测到编译类路径上包含注释处理器，则会生成构建错误。</td>
+</tr>
+</tbody></table>
+<h3 id="3-3-依赖项顺序"><a href="#3-3-依赖项顺序" class="headerlink" title="3.3 依赖项顺序"></a>3.3 依赖项顺序</h3><p>依赖项的列出顺序指明了每个库的优先级：第一个库的优先级高于第二个，第二个库的优先级高于第三个，依此类推。在<a href="https://developer.android.com/studio/write/add-resources#resource_merging" target="_blank" rel="noopener">合并资源</a>或<a href="https://developer.android.com/studio/build/manifest-merge" target="_blank" rel="noopener">将清单元素从库中合并</a>到应用中时，此顺序很重要。</p>
+<p>例如，如果您的项目声明以下内容：</p>
+<ul>
+<li>依赖 <code>LIB_A</code> 和 <code>LIB_B</code>（按此顺序）</li>
+<li><code>LIB_A</code> 依赖于 <code>LIB_C</code> 和 <code>LIB_D</code>（按此顺序）</li>
+<li><code>LIB_B</code> 也依赖于 <code>LIB_C</code></li>
+</ul>
+<pre class=" language-groovy"><code class="language-groovy"><span class="token comment" spellcheck="true">//app</span>
+dependencies <span class="token punctuation">{</span>
+    <span class="token function">implementation</span><span class="token punctuation">(</span><span class="token string">'LIB_A'</span><span class="token punctuation">)</span>
+    <span class="token function">implementation</span><span class="token punctuation">(</span><span class="token string">'LIB_B'</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true">//LIB_A</span>
+dependencies <span class="token punctuation">{</span>
+    <span class="token function">implementation</span><span class="token punctuation">(</span><span class="token string">'LIB_C'</span><span class="token punctuation">)</span>
+    <span class="token function">implementation</span><span class="token punctuation">(</span><span class="token string">'LIB_D'</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true">//LIB_B</span>
+dependencies <span class="token punctuation">{</span>
+    <span class="token function">implementation</span><span class="token punctuation">(</span><span class="token string">'LIB_C'</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre>
+<p>![image-20210826160438305](/Users/xuejiewang/Library/Application Support/typora-user-images/image-20210826160438305.png)</p>
+<p>那么，扁平型依赖项顺序将如下所示：</p>
+<ol>
+<li><code>LIB_A</code></li>
+<li><code>LIB_D</code></li>
+<li><code>LIB_B</code></li>
+<li><code>LIB_C</code></li>
+</ol>
+<p>这可以确保 <code>LIB_A</code> 和 <code>LIB_B</code> 都可以替换 <code>LIB_C</code>；并且 <code>LIB_D</code> 的优先级仍高于 <code>LIB_B</code>，因为 <code>LIB_A</code>（依赖前者）的优先级高于 <code>LIB_B</code>。</p>
+<h3 id="3-4-依赖冲突问题"><a href="#3-4-依赖冲突问题" class="headerlink" title="3.4 依赖冲突问题"></a>3.4 依赖冲突问题</h3><p><strong>解决类路径之间的冲突</strong></p>
+<p>当 Gradle 解析编译类路径时，会先解析运行时类路径，然后使用所得结果确定应添加到编译类路径的依赖项版本。换句话说，运行时类路径决定了下游类路径上完全相同的依赖项所需的版本号。</p>
+<p>应用的运行时类路径还决定了 Gradle 需要对应用的测试 APK 的运行时类路径中的匹配依赖项使用的版本号。图 1 说明了类路径的层次结构。</p>
+<p><img src="https://developer.android.com/studio/images/build/classpath_sync-2x.png" alt="img"></p>
+<p>例如，当应用使用 <code>implementation</code> <a href="https://developer.android.com/studio/build/dependencies#dependency_configurations" target="_blank" rel="noopener">依赖项配置</a>加入某个依赖项的一个版本，而库模块使用 <code>runtimeOnly</code> 配置加入该依赖项的另一个版本时，就可能会发生多个类路径中出现同一依赖项的不同版本的冲突。</p>
+<p>在解析对运行时和编译时类路径的依赖关系时，Android Gradle 插件 3.3.0 及更高版本会尝试自动解决某些下游版本冲突。例如，如果运行时类路径包含库 A 版本 2.0，而编译类路径包含库 A 版本 1.0，则插件会自动将对编译类路径的依赖关系更新为库 A 版本 2.0，以避免错误。</p>
+<p>不过，如果运行时类路径包含库 A 版本 1.0，而编译类路径包含库 A 版本 2.0，插件不会将对编译类路径的依赖关系降级为库 A 版本 1.0，您仍会收到一条与以下内容类似的错误：</p>
+<pre><code>Conflict with dependency 'com.example.library:some-lib:2.0' in project 'my-library'.
+Resolved versions for runtime classpath (1.0) and compile classpath (2.0) differ.</code></pre><p>如需解决此问题，请执行以下某项操作：</p>
+<ul>
+<li>将所需版本的依赖项作为 <code>api</code> 依赖项添加到库模块。也就是说，只有库模块声明相应依赖项，但应用模块也能以传递方式访问其 API。 - 或者，您也可以同时在两个模块中声明相应依赖项，但应确保每个模块使用的版本相同。不妨考虑<a href="https://developer.android.com/studio/build/gradle-tips#configure-project-wide-properties" target="_blank" rel="noopener">配置项目全局属性</a>，以确保每个依赖项的版本在整个项目中保持一致。</li>
+</ul>
+<p><strong>排除传递依赖项</strong></p>
+<p>随着应用的范围不断扩大，它可能会包含许多依赖项，包括直接依赖项和传递依赖项（应用中导入的库所依赖的库）。如需排除不再需要的传递依赖项，您可以使用 <code>exclude</code> 关键字，如下所示：</p>
+<pre><code>dependencies {
+    implementation('some-library') {
+        exclude group: 'com.example.imgtools', module: 'native'
+    }
+}</code></pre><p>如果在configuration中定义一个exclude,那么所有依赖的transitive dependency (指定的)都会被去除。定义exclude时候，或只指定group, 或只指定module名字，或二者都指定。</p>
+<p>下面是一些使用exclude的典型场合：</p>
+<ul>
+<li>有licensing问题</li>
+<li>从远程仓库上无法获取到依赖</li>
+<li>runtime时候用不到</li>
+<li>有版本冲突</li>
+</ul>
+<p><strong>强制使用当前版本</strong></p>
+<pre><code>implementation('com.squareup.okhttp:okhttp-mt:2.5.0') {
+    force = true
+}</code></pre><p>如上，我们在依赖okhttp的时候很可能发生冲突，就比如依赖的依赖中也包含了okhttp，这种场合下，就会产生版本冲突的问题，加上force = true表明的意思就是即使在有依赖库版本冲突的情况下坚持使用被标注的这个依赖库版本。</p>
+<p><strong>间接依赖 transitive</strong></p>
+<p>transitive dependencies 被称为依赖的依赖，称为“间接依赖”比较合适。</p>
+<pre><code>implementation('com.meituan.android.terminus:library:6.6.1.16@aar') {
+    transitive = true
+}</code></pre><p>在后面加上@aar，意指你只是下载该aar包，而并不下载该aar包所依赖的其他库，那如果想在使用@aar的前提下还能下载其依赖库，则需要添加transitive=true的条件。</p>
+<h2 id="4-参考资料"><a href="#4-参考资料" class="headerlink" title="4.参考资料"></a>4.参考资料</h2><ul>
+<li><a href="https://developer.aliyun.com/mvn/guide" target="_blank" rel="noopener">阿里云 | 云效 Maven</a> </li>
+<li><a href="https://thoughts.aliyun.com/sharespace/5e8c436d546fd9001aee824a/docs/5e8c436d546fd9001aee8244?spm=a2c4g.11186623.2.2.5db21b3frHmIbF" target="_blank" rel="noopener">阿里云 | 云效制品仓库 Package 官方文档</a></li>
+<li><a href="https://packages.aliyun.com/maven" target="_blank" rel="noopener">阿里云 | 云效制品仓库 Package 地址</a></li>
+<li><a href="https://developer.android.com/studio/build/maven-publish-plugin" target="_blank" rel="noopener">Android 开发者 | Android Maven Publish docs</a></li>
+<li><a href="https://docs.gradle.org/current/userguide/publishing_maven.html" target="_blank" rel="noopener">Gradle 用户指南 | Gradle Maven Publish official page</a></li>
+<li><a href="http://maven.apache.org/what-is-maven.html" target="_blank" rel="noopener">What is Maven</a> </li>
+<li><a href="https://www.runoob.com/maven/maven-pom.html" target="_blank" rel="noopener">菜鸟教程 | Maven 教程</a></li>
+<li><a href="https://stackoverflow.com/questions/26874498/publish-an-android-library-to-maven-with-aar-and-source-jar" target="_blank" rel="noopener">Publish an Android library to Maven with aar and source jar</a></li>
+<li><a href="https://developer.android.com/studio/build/dependencies" target="_blank" rel="noopener"> Android 开发者 | 添加构建依赖项 </a></li>
+<li><a href="https://docs.gradle.org/current/userguide/dependency_management.html#dependency_management_in_gradle" target="_blank" rel="noopener">Gradle 用户指南 | Gradle中的依赖管理</a></li>
+</ul>
+
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Jay</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://www.basedev.cn/2021/07/31/android-component-aar/">http://www.basedev.cn/2021/07/31/android-component-aar/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">Jay</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E7%BB%84%E4%BB%B6%E5%8C%96/">
+                                    <span class="chip bg-color">组件化</span>
+                                </a>
+                            
+                                <a href="/tags/Maven/">
+                                    <span class="chip bg-color">Maven</span>
+                                </a>
+                            
+                                <a href="/tags/aar%E5%8C%96/">
+                                    <span class="chip bg-color">aar化</span>
+                                </a>
+                            
+                                <a href="/tags/%E7%BC%96%E8%AF%91%E4%BC%98%E5%8C%96/">
+                                    <span class="chip bg-color">编译优化</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="wechat,qq,qzone,weibo,twitter,facebook,google,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+        <link rel="stylesheet" href="/libs/gitment/gitment-default.css">
+<link rel="stylesheet" href="/css/gitment.css">
+
+<div class="gitment-card card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="gitment-content" class="card-content"></div>
+</div>
+
+<script src="/libs/gitment/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+    id: 'Sat Jul 31 2021 14:16:55 GMT+0800',
+    owner: 'jaydroid1024',
+    repo: 'hexo_blog_repo',
+    oauth: {
+        client_id: '4c4d58f27f5177dff57c',
+        client_secret: 'c9fce45c9250437cb34e3a7755c4135df47aa65b'
+    }
+});
+
+gitment.render('gitment-content');
+</script>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2021/07/31/android-base/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="筑基系列-Android基础知识小抄版（更新中...）">
+                        
+                        <span class="card-title">筑基系列-Android基础知识小抄版（更新中...）</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Android/Java 基础知识小抄版提纲挈领，包括：Java（集合、并发、IO、语言特性）Android（四大组件原理、Handler、布局等）
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-07-31
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Android/" class="post-category">
+                                    Android
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Android/">
+                        <span class="chip bg-color">Android</span>
+                    </a>
+                    
+                    <a href="/tags/Java/">
+                        <span class="chip bg-color">Java</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/07/01/computer-os/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="筑基系列-操作系统基础知识小抄版">
+                        
+                        <span class="card-title">筑基系列-操作系统基础知识小抄版</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            操作系统基础理论提纲挈领，包括进程与线程同步管理、作业管理、存储管理、虚拟内存、Linux、文件管理等
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-07-01
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" class="post-category">
+                                    计算机
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/">
+                        <span class="chip bg-color">计算机基础</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                        <span class="chip bg-color">操作系统</span>
+                    </a>
+                    
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
+                    </a>
+                    
+                    <a href="/tags/%E8%BF%9B%E7%A8%8B/">
+                        <span class="chip bg-color">进程</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%BA%BF%E7%A8%8B/">
+                        <span class="chip bg-color">线程</span>
+                    </a>
+                    
+                    <a href="/tags/%E4%BD%9C%E4%B8%9A%E7%AE%A1%E7%90%86/">
+                        <span class="chip bg-color">作业管理</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/">
+                        <span class="chip bg-color">文件管理</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 王学杰<br />'
+            + '文章作者: Jay<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.3'
+                   list-folded='false'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">2021</span>
+            <a href="/about" target="_blank">Jay</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">89.1k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2021";
+                    var startMonth = "1";
+                    var startDate = "1";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+            <span id="icp"><img src="/medias/icp.png" style="vertical-align: text-bottom;" />
+                <a href="https://beian.miit.gov.cn/" target="_blank">京ICP备2020043565号-1</a>
+            </span>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/jaydroid1024" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:wangxuejie@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1018673209" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1018673209" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?88efcea1b43fcd428172af2f7305f80e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    
+    <script type="text/javascript" color="0,0,255"
+        pointColor="0,0,255" opacity='0.7'
+        zIndex="-1" count="99"
+        src="/libs/background/canvas-nest.js"></script>
+    
+
+    
+
+    
+    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

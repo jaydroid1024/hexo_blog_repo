@@ -1,0 +1,2068 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Jetpack | ViewBinding 详解, 筑基、体系、实践、分享">
+    <meta name="description" content="筑基、体系、实践、分享">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N498NKZS3G"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'G-N498NKZS3G');
+</script>
+
+
+    <title>Jetpack | ViewBinding 详解 | 王学杰</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 4.2.1">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="王学杰" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">王学杰</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>主页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">王学杰</div>
+        <div class="logo-desc">
+            
+            筑基、体系、实践、分享
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			主页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/jaydroid1024" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/jaydroid1024" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">Jetpack | ViewBinding 详解</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Jetpack/">
+                                <span class="chip bg-color">Jetpack</span>
+                            </a>
+                        
+                            <a href="/tags/ViewBinding/">
+                                <span class="chip bg-color">ViewBinding</span>
+                            </a>
+                        
+                            <a href="/tags/VBHelper/">
+                                <span class="chip bg-color">VBHelper</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Jetpack/" class="post-category">
+                                Jetpack
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2021-05-31
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2021-09-08
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    6.4k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    28 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p><img src="https://raw.githubusercontent.com/jaydroid1024/jay_image_repo/main/img/post_banner_jay.png" alt=""></p>
+<h1 id="Jetpack-ViewBinding-详解"><a href="#Jetpack-ViewBinding-详解" class="headerlink" title="Jetpack | ViewBinding 详解"></a>Jetpack | ViewBinding 详解</h1><p>通过 <strong>ViewBinding(视图绑定)</strong> 功能，我们可以更轻松地编写与布局文件交互的代码。在模块中启用视图绑定之后，AGP 会为该模块中的每个 XML 布局文件生成一个绑定类。该绑定类的实例中会直接引用那些在布局中声明了资源 id 的控件。这样一来就减少了很多像 <code>findViewById</code> 这种操作，同时也为控件的安全性保驾护航。</p>
+<p><strong>文章核心点：</strong></p>
+<ul>
+<li>VB 集成与一般使用方式，包括：Activity 、Fragment、Adapter、include、merge、ViewStub</li>
+<li>KT 属性代理与泛型实化类型参数 <code>reified</code> 的介绍</li>
+<li>通过 KT 属性代理简化 VB 创建流程，并封装了一个库 VBHelper</li>
+<li>LayoutInflater 原理与参数解析</li>
+<li>XXXBinding 类的绑定过程</li>
+<li>XXXBinding 类的生成过程</li>
+</ul>
+<p><strong><a href="https://github.com/jaydroid1024/VBHelper" target="_blank" rel="noopener">VBHelper</a></strong>：是我写这篇文章提取的一个库，通过属性代理简化了VB的使用，有想了解的可以提提意见</p>
+<ol>
+<li>在 Activity 中创建 ViewBinding 绑定类</li>
+</ol>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token comment" spellcheck="true">//通过自定义属性代理 + 反射绑定类的 inflate 方法</span>
+<span class="token keyword">private</span> <span class="token keyword">val</span> binding<span class="token operator">:</span> ActivityMainBinding <span class="token keyword">by</span> <span class="token function">vb</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">//通过自定义属性代理 + 传递 inflate 方法引用</span>
+<span class="token keyword">private</span> <span class="token keyword">val</span> binding<span class="token operator">:</span> ActivityMainBinding <span class="token keyword">by</span> <span class="token function">vb</span><span class="token punctuation">(</span>ActivityMainBinding<span class="token operator">::</span>inflate<span class="token punctuation">)</span></code></pre>
+<ol start="2">
+<li>在 Fragment 中创建 ViewBinding 绑定类</li>
+</ol>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token comment" spellcheck="true">//通过自定义属性代理 + 反射绑定类的 inflate 方法</span>
+<span class="token keyword">private</span> <span class="token keyword">val</span> binding<span class="token operator">:</span> FragmentMainBinding <span class="token keyword">by</span> <span class="token function">vb</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">//通过自定义属性代理 + 传递 inflate 方法引用</span>
+<span class="token keyword">private</span> <span class="token keyword">val</span> binding<span class="token operator">:</span> FragmentMainBinding <span class="token keyword">by</span> <span class="token function">vb</span><span class="token punctuation">(</span>FragmentMainBinding<span class="token operator">::</span>inflate<span class="token punctuation">)</span></code></pre>
+<ol start="3">
+<li>在 View 中创建 ViewBinding 绑定类</li>
+</ol>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token comment" spellcheck="true">//通过自定义属性代理 + 反射绑定类的 inflate 三参数方法</span>
+<span class="token keyword">private</span> <span class="token keyword">val</span> binding<span class="token operator">:</span> MyViewBinding <span class="token keyword">by</span> <span class="token function">vb</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">//通过自定义属性代理 + 传递 inflate 三参数方法引用</span>
+<span class="token keyword">private</span> <span class="token keyword">val</span> binding<span class="token operator">:</span> MyViewBinding <span class="token keyword">by</span> <span class="token function">vb</span><span class="token punctuation">(</span>MyViewBinding<span class="token operator">::</span>inflate<span class="token punctuation">)</span></code></pre>
+<ol start="4">
+<li>在 Adapter 中创建包含了绑定类的 BindingViewHolder</li>
+</ol>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token comment" spellcheck="true">//通过自定义属性代理 + 反射绑定类的 inflate 三参数方法</span>
+<span class="token keyword">val</span> holder<span class="token operator">:</span> BindingViewHolder<span class="token operator">&lt;</span>LayoutItemTextBinding<span class="token operator">></span> <span class="token keyword">by</span> <span class="token function">vh</span><span class="token punctuation">(</span>parent<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">//通过自定义属性代理 + 传递绑定类的 inflate 三参数方法引用</span>
+<span class="token keyword">val</span> holder<span class="token operator">:</span> BindingViewHolder<span class="token operator">&lt;</span>LayoutItemTextBinding<span class="token operator">></span> <span class="token keyword">by</span> <span class="token function">vh</span><span class="token punctuation">(</span>parent<span class="token punctuation">,</span> LayoutItemTextBinding<span class="token operator">::</span>inflate<span class="token punctuation">)</span></code></pre>
+<h2 id="1-VB-概述"><a href="#1-VB-概述" class="headerlink" title="1.VB 概述"></a>1.VB 概述</h2><ul>
+<li><p>视图绑定在 Android Studio 3.6 Canary 11 及更高版本中可用。</p>
+</li>
+<li><p>开启自动生成绑定类：模块 <code>build.gradle</code> 文件中的 <code>android</code> 闭包下，两种方式</p>
+<ul>
+<li><code>viewBinding {enabled = true}</code> 默认值为false, Android Studio 3.6 Canary 11 及更高版本中可用。</li>
+<li><code>buildFeatures {viewBinding = true}</code> 默认值为false,  Android Studio 4.0 及更高版本中可用</li>
+</ul>
+</li>
+<li><p>忽略自动生成绑定类：请将 <code>tools:viewBindingIgnore="true"</code> 属性添加到相应布局文件的根视图中</p>
+</li>
+<li><p>生成绑定类的名称：将 XML 文件的名称转换为驼峰式大小写，并在末尾添加“Binding”一词。<br>LayoutInflater.Factory</p>
+<ul>
+<li>result_profile.xml ====&gt;ResultProfileBinding</li>
+<li>每个绑定类还包含一个 <code>getRoot()</code> 方法，用于为相应布局文件的根视图提供直接引用。</li>
+</ul>
+</li>
+<li><p>与使用 findViewById 相比</p>
+<ul>
+<li><strong>Null 安全</strong>：绑定类的创建是通过解析布局文件在编译时生成，布局文件添加了id的控件才会生成对应的引用，因此不会发生绑定类中存在而布局中没有对应控件的情况，如果布局引用了错误的类型也会在编译时暴露错误。</li>
+<li><strong>类型安全</strong>：布局中声明的控件是确定类型的。这意味着不存在发生类转换异常的风险。</li>
+</ul>
+</li>
+<li><p>与使用 DataBinding 对比</p>
+<ul>
+<li><p>视图绑定和<a href="https://developer.android.com/topic/libraries/data-binding?hl=zh-cn" target="_blank" rel="noopener">数据绑定</a>均会生成可用于直接引用视图的绑定类。但是，视图绑定旨在处理更简单的用例。</p>
+</li>
+<li><p><strong>更快的编译速度</strong>：视图绑定不需要处理注解信息，因此编译时间更短。</p>
+</li>
+<li><p><strong>易于使用</strong>：视图绑定不需要在 XML 布局文件中标记，只要在模块中启用视图绑定后，它会自动应用于该模块的所有布局。</p>
+</li>
+<li><p>如果项目中使用了数据绑定最好在项目中<strong>同时使用视图绑定和数据绑定</strong>。这样可以在需要高级功能的布局中使用数据绑定，而在不需要高级功能的布局中使用视图绑定。如果只是取代 <code>findViewById()</code> 调用，请考虑改用视图绑定。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-VB-一般使用"><a href="#2-VB-一般使用" class="headerlink" title="2. VB 一般使用"></a>2. VB 一般使用</h2><h3 id="2-1-Activity"><a href="#2-1-Activity" class="headerlink" title="2.1 Activity"></a>2.1 Activity</h3><pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">private</span> <span class="token keyword">lateinit</span> <span class="token keyword">var</span> binding<span class="token operator">:</span> ActivityMainBinding
+
+<span class="token keyword">override</span> <span class="token keyword">fun</span> <span class="token function">onCreate</span><span class="token punctuation">(</span>savedInstanceState<span class="token operator">:</span> Bundle<span class="token operator">?</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onCreate</span><span class="token punctuation">(</span>savedInstanceState<span class="token punctuation">)</span>
+    binding <span class="token operator">=</span> ActivityMainBinding<span class="token punctuation">.</span><span class="token function">inflate</span><span class="token punctuation">(</span>layoutInflater<span class="token punctuation">)</span>
+    <span class="token function">setContentView</span><span class="token punctuation">(</span>binding<span class="token punctuation">.</span>root<span class="token punctuation">)</span>
+    <span class="token function">setSupportActionBar</span><span class="token punctuation">(</span>binding<span class="token punctuation">.</span>toolbar<span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 id="2-2-Fragment"><a href="#2-2-Fragment" class="headerlink" title="2.2 Fragment"></a>2.2 Fragment</h3><pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">private</span> <span class="token keyword">var</span> _binding<span class="token operator">:</span> FragmentFirstBinding<span class="token operator">?</span> <span class="token operator">=</span> <span class="token keyword">null</span>
+<span class="token comment" spellcheck="true">// This property is only valid between onCreateView and onDestroyView.</span>
+<span class="token keyword">private</span> <span class="token keyword">val</span> binding <span class="token keyword">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span> _binding<span class="token operator">!!</span>
+
+<span class="token keyword">override</span> <span class="token keyword">fun</span> <span class="token function">onCreateView</span><span class="token punctuation">(</span>inflater<span class="token operator">:</span> LayoutInflater<span class="token punctuation">,</span> container<span class="token operator">:</span> ViewGroup<span class="token operator">?</span><span class="token punctuation">,</span> savedInstanceState<span class="token operator">:</span> Bundle<span class="token operator">?</span><span class="token punctuation">)</span><span class="token operator">:</span> View <span class="token punctuation">{</span>
+    firstViewModel <span class="token operator">=</span> <span class="token function">ViewModelProvider</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>FirstViewModel<span class="token operator">::</span><span class="token keyword">class</span><span class="token punctuation">.</span>java<span class="token punctuation">)</span>
+    _binding <span class="token operator">=</span> FragmentFirstBinding<span class="token punctuation">.</span><span class="token function">inflate</span><span class="token punctuation">(</span>inflater<span class="token punctuation">,</span> container<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span>
+    binding<span class="token punctuation">.</span>rvList<span class="token punctuation">.</span>layoutManager <span class="token operator">=</span> <span class="token function">LinearLayoutManager</span><span class="token punctuation">(</span><span class="token function">requireContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> binding<span class="token punctuation">.</span>root
+<span class="token punctuation">}</span></code></pre>
+<h3 id="2-3-Adapter"><a href="#2-3-Adapter" class="headerlink" title="2.3 Adapter"></a>2.3 Adapter</h3><pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">override</span> <span class="token keyword">fun</span> <span class="token function">onCreateViewHolder</span><span class="token punctuation">(</span>parent<span class="token operator">:</span> ViewGroup<span class="token punctuation">,</span> viewType<span class="token operator">:</span> Int<span class="token punctuation">)</span><span class="token operator">:</span> TextHolder <span class="token punctuation">{</span>
+    <span class="token keyword">val</span> itemBinding <span class="token operator">=</span> LayoutItemTextBinding<span class="token punctuation">.</span><span class="token function">inflate</span><span class="token punctuation">(</span>LayoutInflater<span class="token punctuation">.</span><span class="token function">from</span><span class="token punctuation">(</span>parent<span class="token punctuation">.</span>context<span class="token punctuation">)</span><span class="token punctuation">,</span> parent<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true">//绑定类交给Holder</span>
+    <span class="token keyword">return</span> <span class="token function">TextHolder</span><span class="token punctuation">(</span>itemBinding<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">override</span> <span class="token keyword">fun</span> <span class="token function">onBindViewHolder</span><span class="token punctuation">(</span>holder<span class="token operator">:</span> TextHolder<span class="token punctuation">,</span> position<span class="token operator">:</span> Int<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">val</span> item<span class="token operator">:</span> String <span class="token operator">=</span> list<span class="token punctuation">[</span>position<span class="token punctuation">]</span>
+    <span class="token comment" spellcheck="true">//数据交给Holder</span>
+    holder<span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token function">TextHolder</span><span class="token punctuation">(</span><span class="token keyword">val</span> itemBinding<span class="token operator">:</span> LayoutItemTextBinding<span class="token punctuation">)</span> <span class="token operator">:</span> RecyclerView<span class="token punctuation">.</span><span class="token function">ViewHolder</span><span class="token punctuation">(</span>itemBinding<span class="token punctuation">.</span>root<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">fun</span> <span class="token function">bind</span><span class="token punctuation">(</span>name<span class="token operator">:</span> String<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        itemBinding<span class="token punctuation">.</span>tvName<span class="token punctuation">.</span>text <span class="token operator">=</span> name
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 id="2-4-include"><a href="#2-4-include" class="headerlink" title="2.4 include"></a>2.4 include</h3><pre class=" language-kotlin"><code class="language-kotlin">binding<span class="token punctuation">.</span>includeLayout<span class="token punctuation">.</span>tvInfoInclude<span class="token punctuation">.</span>text <span class="token operator">=</span> <span class="token string">"tvInfoInclude:<span class="token interpolation variable">$item</span>"</span>
+<span class="token comment" spellcheck="true">// todo  include 方式有时候无法识别到真实的绑定类类型只能识别它是个View类型但是编译不会报错, 这种情况清理缓存可能会好 ，或者也可以强制类型转换或者自己bind</span>
+<span class="token keyword">val</span> tvInfoInclude<span class="token operator">:</span> LayoutInfoBinding <span class="token operator">=</span> binding<span class="token punctuation">.</span>includeLayout <span class="token keyword">as</span> LayoutInfoBinding
+<span class="token keyword">val</span> tvInfoInclude <span class="token operator">=</span> LayoutInfoBinding<span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span>binding<span class="token punctuation">.</span>root<span class="token punctuation">)</span>
+tvInfoInclude<span class="token punctuation">.</span>tvInfoInclude<span class="token punctuation">.</span>text <span class="token operator">=</span> <span class="token string">"tvInfoInclude:<span class="token interpolation variable">$item</span>"</span></code></pre>
+<h3 id="2-5-merge"><a href="#2-5-merge" class="headerlink" title="2.5 merge"></a>2.5 merge</h3><pre class=" language-kotlin"><code class="language-kotlin"><span class="token comment" spellcheck="true">//include+merge 只能手动调用绑定类的bind方法</span>
+<span class="token keyword">val</span> layoutInfoMergeBinding <span class="token operator">=</span> LayoutInfoMergeBinding<span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span>binding<span class="token punctuation">.</span>root<span class="token punctuation">)</span>
+<span class="token keyword">val</span> tvInfoMerge <span class="token operator">=</span> layoutInfoMergeBinding<span class="token punctuation">.</span>tvInfoMerge
+tvInfoMerge<span class="token punctuation">.</span>text <span class="token operator">=</span> <span class="token string">"tvInfoMerge:<span class="token interpolation variable">$item</span>"</span></code></pre>
+<h3 id="2-6-ViewStub"><a href="#2-6-ViewStub" class="headerlink" title="2.6 ViewStub"></a>2.6 ViewStub</h3><pre class=" language-kotlin"><code class="language-kotlin"><span class="token comment" spellcheck="true">//ViewStub 只能手动调用绑定类的bind方法</span>
+binding<span class="token punctuation">.</span>layoutViewStub<span class="token punctuation">.</span><span class="token function">setOnInflateListener</span> <span class="token punctuation">{</span> _<span class="token punctuation">,</span> inflateId <span class="token operator">-></span>
+    <span class="token keyword">val</span> layoutInfoViewStubBinding <span class="token operator">=</span> LayoutInfoViewStubBinding<span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span>inflateId<span class="token punctuation">)</span>
+    <span class="token keyword">val</span> tvInfoViewStub <span class="token operator">=</span> layoutInfoViewStubBinding<span class="token punctuation">.</span>tvInfoViewStub
+    tvInfoViewStub<span class="token punctuation">.</span>text <span class="token operator">=</span> <span class="token string">"tvInfoViewStub:<span class="token interpolation variable">$item</span>"</span>
+<span class="token punctuation">}</span>
+binding<span class="token punctuation">.</span>layoutViewStub<span class="token punctuation">.</span><span class="token function">inflate</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p>详细的测试代码参考：<a href="https://github.com/jaydroid1024/VBHelper" target="_blank" rel="noopener"><strong>Github | VBHelper</strong></a></p>
+<h2 id="3-VB-与-Kotlin-by"><a href="#3-VB-与-Kotlin-by" class="headerlink" title="3. VB 与 Kotlin by"></a>3. VB 与 Kotlin by</h2><p>采用 Kotlin 属性代理简化 VB 使用的三方库</p>
+<ul>
+<li><strong><a href="https://github.com/androidbroadcast/ViewBindingPropertyDelegate" target="_blank" rel="noopener">ViewBindingPropertyDelegate</a></strong></li>
+<li><strong><a href="https://github.com/DylanCaiCoding/ViewBindingKTX" target="_blank" rel="noopener">ViewBindingKTX</a></strong></li>
+<li><strong><a href="https://github.com/jaydroid1024/VBHelper" target="_blank" rel="noopener">VBHelper</a></strong>：这个是我写这篇文章提取的一个库，借鉴了上面两个的实现，精简了一些代码</li>
+</ul>
+<h3 id="3-1-KT-属性代理：by-lazy"><a href="#3-1-KT-属性代理：by-lazy" class="headerlink" title="3.1 KT 属性代理：by lazy"></a>3.1 KT 属性代理：<code>by</code> <code>lazy</code></h3><ul>
+<li><p>by关键字实际上就是一个属性代理运算符重载的符号，任何一个具备属性代理规则的类，都可以使用by关键字对属性进行代理。</p>
+</li>
+<li><p><code>by</code>关键字后面带有一个代理对象，这个代理类不一定要实现特定的接口，但是需要包含下面这两个方法的签名（val 只需要 getValue ），它就能作为一个代理属性来使用。</p>
+</li>
+<li><pre class=" language-kotlin"><code class="language-kotlin"><span class="token comment" spellcheck="true">//这个是扩展的实现方式，lazy就是采用的这种</span>
+operator <span class="token keyword">fun</span> MyDelegate<span class="token punctuation">.</span><span class="token function">getValue</span><span class="token punctuation">(</span>thisRef<span class="token operator">:</span> Any<span class="token operator">?</span><span class="token punctuation">,</span> property<span class="token operator">:</span> KProperty<span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">></span><span class="token punctuation">)</span><span class="token operator">:</span> String <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>value
+
+<span class="token keyword">class</span> MyDelegate <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> value<span class="token operator">:</span> String <span class="token operator">=</span> <span class="token string">"YYY"</span>
+    <span class="token comment" spellcheck="true">//todo 代理类里面必须提供 getValue 方法，或者扩展这个方法也可</span>
+    operator <span class="token keyword">fun</span> <span class="token function">getValue</span><span class="token punctuation">(</span>thisRef<span class="token operator">:</span> Any<span class="token punctuation">,</span> property<span class="token operator">:</span> KProperty<span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">></span><span class="token punctuation">)</span><span class="token operator">:</span> String <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> value
+    <span class="token punctuation">}</span>
+    operator <span class="token keyword">fun</span> <span class="token function">setValue</span><span class="token punctuation">(</span>thisRef<span class="token operator">:</span> Any<span class="token punctuation">,</span> property<span class="token operator">:</span> KProperty<span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">></span><span class="token punctuation">,</span> s<span class="token operator">:</span> String<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        value <span class="token operator">=</span> s
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+</li>
+<li><p>lazy  是Kotlin 内部对对属性代理的一个最佳实践，lazy 返回一个实现了 Lazy 接口的代理类，默认是 <code>SynchronizedLazyImpl</code>，</p>
+</li>
+<li><p>Lazy<t> 有个扩展方法，符合属性代理的规则</t></p>
+</li>
+<li><pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">public</span> <span class="token keyword">inline</span> operator <span class="token keyword">fun</span> <span class="token operator">&lt;</span>T<span class="token operator">></span> Lazy<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">.</span><span class="token function">getValue</span><span class="token punctuation">(</span>thisRef<span class="token operator">:</span> Any<span class="token operator">?</span><span class="token punctuation">,</span> property<span class="token operator">:</span> KProperty<span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">></span><span class="token punctuation">)</span><span class="token operator">:</span> T <span class="token operator">=</span> value</code></pre>
+</li>
+</ul>
+<h3 id="3-2-KT-内联函数-inline-与泛型实化类型参数-reified"><a href="#3-2-KT-内联函数-inline-与泛型实化类型参数-reified" class="headerlink" title="3.2 KT 内联函数 inline 与泛型实化类型参数 reified"></a>3.2 KT 内联函数 <code>inline</code> 与泛型实化类型参数 <code>reified</code></h3><p><a href="https://www.kotlincn.net/docs/reference/inline-functions.html#%E5%85%B7%E4%BD%93%E5%8C%96%E7%9A%84%E7%B1%BB%E5%9E%8B%E5%8F%82%E6%95%B0" target="_blank" rel="noopener">官方文档</a></p>
+<p><a href="https://github.com/JetBrains/kotlin/blob/master/spec-docs/reified-type-parameters.md" target="_blank" rel="noopener">reified-type-parameters</a></p>
+<p>Kotlin和Java同样存在泛型类型擦除的问题，但是 Kotlin 通过 inline 内联函数使得泛型类的类型实参在运行时能够保留，这样的操作 Kotlin 中把它称为实化，对应需要使用 reified 关键字。</p>
+<ul>
+<li><p>满足实化类型参数函数的必要条件</p>
+<ul>
+<li>必须是 inline 内联函数，使用 inline 关键字修饰</li>
+<li>泛型类定义泛型形参时必须使用 reified 关键字修饰</li>
+</ul>
+</li>
+<li><p>带实化类型参数的函数基本定义</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token comment" spellcheck="true">//类型形参T是泛型函数isInstanceOf的实化类型参数</span>
+<span class="token keyword">inline</span> <span class="token keyword">fun</span> <span class="token operator">&lt;</span><span class="token keyword">reified</span> T<span class="token operator">></span> <span class="token function">isInstanceOf</span><span class="token punctuation">(</span>value<span class="token operator">:</span> Any<span class="token punctuation">)</span><span class="token operator">:</span> Boolean <span class="token operator">=</span> value <span class="token keyword">is</span> T </code></pre>
+</li>
+</ul>
+<h3 id="3-3-通过-lazy-属性代理-inflate方法引用"><a href="#3-3-通过-lazy-属性代理-inflate方法引用" class="headerlink" title="3.3 通过 lazy 属性代理 + inflate方法引用"></a>3.3 通过 lazy 属性代理 + inflate方法引用</h3><pre class=" language-kotlin"><code class="language-kotlin"><span class="token comment" spellcheck="true">//通过 lazy 属性代理 + inflate方法引用</span>
+<span class="token keyword">fun</span> <span class="token operator">&lt;</span>VB <span class="token operator">:</span> ViewBinding<span class="token operator">></span> ComponentActivity<span class="token punctuation">.</span><span class="token function">binding1</span><span class="token punctuation">(</span>inflate<span class="token operator">:</span> <span class="token punctuation">(</span>LayoutInflater<span class="token punctuation">)</span> <span class="token operator">-></span> VB<span class="token punctuation">)</span> <span class="token operator">=</span>
+    lazy <span class="token punctuation">{</span>
+        <span class="token function">inflate</span><span class="token punctuation">(</span>layoutInflater<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">also</span> <span class="token punctuation">{</span>
+            <span class="token function">setContentView</span><span class="token punctuation">(</span>it<span class="token punctuation">.</span>root<span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span></code></pre>
+<h3 id="3-4-通过-lazy-属性代理-反射"><a href="#3-4-通过-lazy-属性代理-反射" class="headerlink" title="3.4 通过 lazy 属性代理 + 反射"></a>3.4 通过 lazy 属性代理 + 反射</h3><pre class=" language-kotlin"><code class="language-kotlin"><span class="token comment" spellcheck="true">//通过 lazy 属性代理 + 反射</span>
+<span class="token comment" spellcheck="true">//reified 实化类型参数，作用是将泛型替换为真实的类型用于反射等</span>
+<span class="token keyword">inline</span> <span class="token keyword">fun</span> <span class="token operator">&lt;</span><span class="token keyword">reified</span> VB <span class="token operator">:</span> ViewBinding<span class="token operator">></span> ComponentActivity<span class="token punctuation">.</span><span class="token function">binding3</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span>
+    lazy <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//经过内联后VB是可以确切知道具体类型的，所以这里可以反射获取具体的 ViewBinding</span>
+        <span class="token keyword">val</span> viewBinding<span class="token operator">:</span> VB <span class="token operator">=</span> VB<span class="token operator">::</span><span class="token keyword">class</span><span class="token punctuation">.</span>java<span class="token punctuation">.</span><span class="token function">getMethod</span><span class="token punctuation">(</span><span class="token string">"inflate"</span><span class="token punctuation">,</span> LayoutInflater<span class="token operator">::</span><span class="token keyword">class</span><span class="token punctuation">.</span>java<span class="token punctuation">)</span>
+            <span class="token punctuation">.</span><span class="token function">invoke</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">,</span> layoutInflater<span class="token punctuation">)</span> <span class="token keyword">as</span> VB
+        viewBinding<span class="token punctuation">.</span><span class="token function">also</span> <span class="token punctuation">{</span>
+            <span class="token function">setContentView</span><span class="token punctuation">(</span>it<span class="token punctuation">.</span>root<span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span></code></pre>
+<h3 id="3-5-通过自定义属性代理-inflate方法引用"><a href="#3-5-通过自定义属性代理-inflate方法引用" class="headerlink" title="3.5 通过自定义属性代理 + inflate方法引用"></a>3.5 通过自定义属性代理 + inflate方法引用</h3><pre class=" language-kotlin"><code class="language-kotlin"><span class="token comment" spellcheck="true">//通过自定义属性代理 + inflate方法引用</span>
+<span class="token keyword">fun</span> <span class="token operator">&lt;</span>VB <span class="token operator">:</span> ViewBinding<span class="token operator">></span> ComponentActivity<span class="token punctuation">.</span><span class="token function">binding2</span><span class="token punctuation">(</span>inflate<span class="token operator">:</span> <span class="token punctuation">(</span>LayoutInflater<span class="token punctuation">)</span> <span class="token operator">-></span> VB<span class="token punctuation">)</span> <span class="token operator">=</span>
+    ReadOnlyProperty<span class="token operator">&lt;</span>ComponentActivity<span class="token punctuation">,</span> VB<span class="token operator">></span> <span class="token punctuation">{</span> thisRef<span class="token punctuation">,</span> property <span class="token operator">-></span>
+        <span class="token function">inflate</span><span class="token punctuation">(</span>layoutInflater<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">also</span> <span class="token punctuation">{</span>
+            <span class="token function">setContentView</span><span class="token punctuation">(</span>it<span class="token punctuation">.</span>root<span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span></code></pre>
+<h3 id="3-6-通过自定义属性代理-反射"><a href="#3-6-通过自定义属性代理-反射" class="headerlink" title="3.6 通过自定义属性代理+ 反射"></a>3.6 通过自定义属性代理+ 反射</h3><pre class=" language-kotlin"><code class="language-kotlin"><span class="token comment" spellcheck="true">//通过自定义属性代理+ 反射</span>
+<span class="token comment" spellcheck="true">//reified 实化类型参数，作用是将泛型替换为真实的类型用于反射等</span>
+<span class="token keyword">inline</span> <span class="token keyword">fun</span> <span class="token operator">&lt;</span><span class="token keyword">reified</span> VB <span class="token operator">:</span> ViewBinding<span class="token operator">></span> ComponentActivity<span class="token punctuation">.</span><span class="token function">binding4</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span>
+    ReadOnlyProperty<span class="token operator">&lt;</span>ComponentActivity<span class="token punctuation">,</span> VB<span class="token operator">></span> <span class="token punctuation">{</span> thisRef<span class="token punctuation">,</span> property <span class="token operator">-></span>
+        <span class="token comment" spellcheck="true">//经过内联后VB是可以确切知道具体类型的，所以这里可以反射获取具体的 ViewBinding</span>
+        <span class="token keyword">val</span> viewBinding<span class="token operator">:</span> VB <span class="token operator">=</span> VB<span class="token operator">::</span><span class="token keyword">class</span><span class="token punctuation">.</span>java<span class="token punctuation">.</span><span class="token function">getMethod</span><span class="token punctuation">(</span><span class="token string">"inflate"</span><span class="token punctuation">,</span> LayoutInflater<span class="token operator">::</span><span class="token keyword">class</span><span class="token punctuation">.</span>java<span class="token punctuation">)</span>
+            <span class="token punctuation">.</span><span class="token function">invoke</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">,</span> layoutInflater<span class="token punctuation">)</span> <span class="token keyword">as</span> VB
+        viewBinding<span class="token punctuation">.</span><span class="token function">also</span> <span class="token punctuation">{</span>
+            <span class="token function">setContentView</span><span class="token punctuation">(</span>it<span class="token punctuation">.</span>root<span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span></code></pre>
+<p>四种方式的使用</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token comment" spellcheck="true">//通过 lazy 属性代理 + inflate方法引用</span>
+<span class="token keyword">private</span> <span class="token keyword">val</span> binding1 <span class="token keyword">by</span> <span class="token function">binding1</span><span class="token punctuation">(</span>ActivityMainBinding<span class="token operator">::</span>inflate<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">//通过自定义属性代理 + inflate方法引用</span>
+<span class="token keyword">private</span> <span class="token keyword">val</span> binding2 <span class="token keyword">by</span> <span class="token function">binding2</span><span class="token punctuation">(</span>ActivityMainBinding<span class="token operator">::</span>inflate<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">//通过 lazy 属性代理 + 反射</span>
+<span class="token keyword">private</span> <span class="token keyword">val</span> binding3<span class="token operator">:</span> ActivityMainBinding <span class="token keyword">by</span> <span class="token function">binding3</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">//通过自定义属性代理+ 反射</span>
+<span class="token keyword">private</span> <span class="token keyword">val</span> binding4<span class="token operator">:</span> ActivityMainBinding <span class="token keyword">by</span> <span class="token function">binding4</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p>其它 Fragment、View、Adapter 等绑定类的生成方式可以根据上面的方式灵活调整，也可参考：<a href="https://github.com/jaydroid1024/VBHelper" target="_blank" rel="noopener"><strong>Github | VBHelper</strong></a></p>
+<p><strong>注意的地方：</strong></p>
+<ul>
+<li>反射的方式我这里都是通过绑定类的 inflate 方法，也可以反射 bind 方法，就是入参不同可以根据具体情况灵活调整。</li>
+<li>merge 标签作为根视图生成的绑定类的inflate 方法只有一个两参数的 其它情况都是一参和三参同时生成，反射时需要兼容一下，VBHelper 没有兼容这一点有需要的可以处理一下，具体做法就是 try-cache 分别处理。</li>
+</ul>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@NonNull</span>
+<span class="token keyword">public</span> <span class="token keyword">static</span> LayoutInfoMergeBinding <span class="token function">inflate</span><span class="token punctuation">(</span><span class="token annotation punctuation">@NonNull</span> LayoutInflater inflater<span class="token punctuation">,</span>
+    <span class="token annotation punctuation">@NonNull</span> ViewGroup parent<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>parent <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">NullPointerException</span><span class="token punctuation">(</span><span class="token string">"parent"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  inflater<span class="token punctuation">.</span><span class="token function">inflate</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>layout<span class="token punctuation">.</span>layout_info_merge<span class="token punctuation">,</span> parent<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token function">bind</span><span class="token punctuation">(</span>parent<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 id="4-VB-原理解析"><a href="#4-VB-原理解析" class="headerlink" title="4. VB 原理解析"></a>4. VB 原理解析</h2><h3 id="4-1-LayoutInflater-原理与参数解析"><a href="#4-1-LayoutInflater-原理与参数解析" class="headerlink" title="4.1 LayoutInflater 原理与参数解析"></a>4.1 LayoutInflater 原理与参数解析</h3><p><a href="https://juejin.cn/post/6844903919286485000" target="_blank" rel="noopener">参考：反思|Android LayoutInflater机制的设计与实现</a></p>
+<h4 id="获取-LayoutInflater-三种方式"><a href="#获取-LayoutInflater-三种方式" class="headerlink" title="获取 LayoutInflater 三种方式"></a>获取 LayoutInflater 三种方式</h4><pre class=" language-kotlin"><code class="language-kotlin"><span class="token comment" spellcheck="true">//获取 LayoutInflater</span>
+<span class="token comment" spellcheck="true">//1、通过 LayoutInflater 的静态方法 from 获取，内部调用的是第二种</span>
+<span class="token keyword">val</span> layoutInflater1<span class="token operator">:</span> LayoutInflater <span class="token operator">=</span> LayoutInflater<span class="token punctuation">.</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">//2、通过系统服务 getSystemService 方法获取</span>
+<span class="token keyword">val</span> layoutInflater2<span class="token operator">:</span> LayoutInflater <span class="token operator">=</span>
+    <span class="token function">getSystemService</span><span class="token punctuation">(</span>Context<span class="token punctuation">.</span>LAYOUT_INFLATER_SERVICE<span class="token punctuation">)</span> <span class="token keyword">as</span> LayoutInflater
+<span class="token comment" spellcheck="true">//3、如果是在 Activity 或 Fragment 可直接获取到实例</span>
+<span class="token keyword">val</span> layoutInflater3<span class="token operator">:</span> LayoutInflater <span class="token operator">=</span> layoutInflater <span class="token comment" spellcheck="true">//相当于调用 getLayoutInflater()</span>
+
+<span class="token comment" spellcheck="true">//三种方式在 Activity 范围内是单例</span>
+Log<span class="token punctuation">.</span><span class="token function">d</span><span class="token punctuation">(</span><span class="token string">"Jay"</span><span class="token punctuation">,</span> <span class="token string">"layoutInflater1:<span class="token interpolation"><span class="token delimiter variable">${</span>layoutInflater1<span class="token punctuation">.</span><span class="token function">hashCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token delimiter variable">}</span></span>"</span><span class="token punctuation">)</span>
+Log<span class="token punctuation">.</span><span class="token function">d</span><span class="token punctuation">(</span><span class="token string">"Jay"</span><span class="token punctuation">,</span> <span class="token string">"layoutInflater2:<span class="token interpolation"><span class="token delimiter variable">${</span>layoutInflater2<span class="token punctuation">.</span><span class="token function">hashCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token delimiter variable">}</span></span>"</span><span class="token punctuation">)</span>
+Log<span class="token punctuation">.</span><span class="token function">d</span><span class="token punctuation">(</span><span class="token string">"Jay"</span><span class="token punctuation">,</span> <span class="token string">"layoutInflater3:<span class="token interpolation"><span class="token delimiter variable">${</span>layoutInflater3<span class="token punctuation">.</span><span class="token function">hashCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token delimiter variable">}</span></span>"</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">//2021-09-06 23:41:52.925 6353-6353/com.jay.vbhelper D/Jay: layoutInflater1:31503528</span>
+<span class="token comment" spellcheck="true">//2021-09-06 23:41:52.925 6353-6353/com.jay.vbhelper D/Jay: layoutInflater2:31503528</span>
+<span class="token comment" spellcheck="true">//2021-09-06 23:41:52.925 6353-6353/com.jay.vbhelper D/Jay: layoutInflater3:31503528</span></code></pre>
+<p>无论哪种方式获取最终都会走到 ContextThemeWrapper 类中 getSystemService</p>
+<h4 id="PhoneLayoutInflater-创建流程"><a href="#PhoneLayoutInflater-创建流程" class="headerlink" title="PhoneLayoutInflater 创建流程"></a>PhoneLayoutInflater 创建流程</h4><p>获取 LayoutInflater 三种方式最终会调到 ContextThemeWrapper#getSystemService</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token comment" spellcheck="true">//class ContextThemeWrapper extends ContextWrapper</span>
+<span class="token annotation builtin">@Override</span>
+<span class="token keyword">public</span> Object <span class="token function">getSystemService</span><span class="token punctuation">(</span>String name<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>LAYOUT_INFLATER_SERVICE<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>mInflater <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            mInflater <span class="token operator">=</span> LayoutInflater<span class="token punctuation">.</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token function">getBaseContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">cloneInContext</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> mInflater<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token function">getBaseContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getSystemService</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>cloneInContext 是 LayoutInflater 接口的方法，LayoutInflater 唯一实现类是 PhoneLayoutInflater</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token comment" spellcheck="true">//class PhoneLayoutInflater extends LayoutInflater</span>
+<span class="token keyword">public</span> LayoutInflater <span class="token function">cloneInContext</span><span class="token punctuation">(</span>Context newContext<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> new <span class="token function">PhoneLayoutInflater</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> newContext<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h4 id="布局填充流程"><a href="#布局填充流程" class="headerlink" title="布局填充流程"></a>布局填充流程</h4><p>方法签名</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token number">1</span><span class="token punctuation">.</span>public View <span class="token function">inflate</span><span class="token punctuation">(</span>XmlPullParser parser<span class="token punctuation">,</span> <span class="token annotation builtin">@Nullable</span> ViewGroup root<span class="token punctuation">)</span>
+<span class="token number">2</span><span class="token punctuation">.</span>public View <span class="token function">inflate</span><span class="token punctuation">(</span><span class="token annotation builtin">@LayoutRes</span> int resource<span class="token punctuation">,</span> <span class="token annotation builtin">@Nullable</span> ViewGroup root<span class="token punctuation">)</span>
+<span class="token number">3</span><span class="token punctuation">.</span>public View <span class="token function">inflate</span><span class="token punctuation">(</span><span class="token annotation builtin">@LayoutRes</span> int resource<span class="token punctuation">,</span> <span class="token annotation builtin">@Nullable</span> ViewGroup root<span class="token punctuation">,</span> boolean attachToRoot<span class="token punctuation">)</span>
+<span class="token number">4</span><span class="token punctuation">.</span>public View <span class="token function">inflate</span><span class="token punctuation">(</span>XmlPullParser parser<span class="token punctuation">,</span> <span class="token annotation builtin">@Nullable</span> ViewGroup root<span class="token punctuation">,</span> boolean attachToRoot<span class="token punctuation">)</span></code></pre>
+<p>四个 inflate 的重载方法最终都会调用到第四个，下面是四个方法的使用</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token comment" spellcheck="true">//调用 LayoutInflater.inflate 的四个方法重载</span>
+<span class="token comment" spellcheck="true">//如果传入的 root 为 null ，此时会将 Xml 布局生成的根 View 对象直接返回</span>
+<span class="token keyword">val</span> view1_1 <span class="token operator">=</span> layoutInflater3<span class="token punctuation">.</span><span class="token function">inflate</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>layout<span class="token punctuation">.</span>layout_view<span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">//这种方式加载的布局不需要再次addView(),否则：Caused by: java.lang.IllegalStateException: The specified child already has a parent. You must call removeView() on the child's parent first.</span>
+<span class="token comment" spellcheck="true">//如果传入的 root 不为 null 且 attachToRoot 为 true，此时会将 Xml 布局生成的根 View 通过 addView 方法携带布局参数添加到 root 中</span>
+<span class="token comment" spellcheck="true">//如果 root 参数不为空 和 view2_1 一样</span>
+<span class="token keyword">val</span> view1_2 <span class="token operator">=</span> layoutInflater3<span class="token punctuation">.</span><span class="token function">inflate</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>layout<span class="token punctuation">.</span>layout_view<span class="token punctuation">,</span> binding<span class="token punctuation">.</span>clContainer<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">//第一个参数代表所要加载的布局，第二个参数是ViewGroup，这个参数需要与第3个参数配合使用，attachToRoot如果为true就把布局添加到ViewGroup中；若为false则只采用ViewGroup的LayoutParams作为测量的依据却不直接添加到ViewGroup中。</span>
+<span class="token keyword">val</span> view2_1 <span class="token operator">=</span> layoutInflater3<span class="token punctuation">.</span><span class="token function">inflate</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>layout<span class="token punctuation">.</span>layout_view<span class="token punctuation">,</span> binding<span class="token punctuation">.</span>clContainer<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">//如果传入的 root 不为 null 且 attachToRoot 为 false，此时会给 Xml 布局生成的根 View 设置布局参数</span>
+<span class="token keyword">val</span> view2_2 <span class="token operator">=</span> layoutInflater3<span class="token punctuation">.</span><span class="token function">inflate</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>layout<span class="token punctuation">.</span>layout_view<span class="token punctuation">,</span> binding<span class="token punctuation">.</span>clContainer<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span>
+<span class="token keyword">val</span> parser<span class="token operator">:</span> XmlResourceParser <span class="token operator">=</span> resources<span class="token punctuation">.</span><span class="token function">getLayout</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>layout<span class="token punctuation">.</span>layout_view<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">//这两个重载方法不常用</span>
+<span class="token keyword">val</span> view3 <span class="token operator">=</span> layoutInflater3<span class="token punctuation">.</span><span class="token function">inflate</span><span class="token punctuation">(</span>parser<span class="token punctuation">,</span> binding<span class="token punctuation">.</span>clContainer<span class="token punctuation">)</span>
+<span class="token keyword">val</span> view4 <span class="token operator">=</span> layoutInflater3<span class="token punctuation">.</span><span class="token function">inflate</span><span class="token punctuation">(</span>parser<span class="token punctuation">,</span> binding<span class="token punctuation">.</span>clContainer<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span>
+binding<span class="token punctuation">.</span>clContainer<span class="token punctuation">.</span><span class="token function">addView</span><span class="token punctuation">(</span>view1_1<span class="token punctuation">)</span></code></pre>
+<p>无论是 Activity 中 setContentView 加载内容还是 DecorView 加载屏幕根视图都是通过 LayoutInflater 加载。</p>
+<p>inflate 方法，详细的加载过程会单独整理一篇文章</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> View <span class="token function">inflate</span><span class="token punctuation">(</span>XmlPullParser parser<span class="token punctuation">,</span> <span class="token annotation punctuation">@Nullable</span> ViewGroup root<span class="token punctuation">,</span> <span class="token keyword">boolean</span> attachToRoot<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">synchronized</span> <span class="token punctuation">(</span>mConstructorArgs<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        Trace<span class="token punctuation">.</span><span class="token function">traceBegin</span><span class="token punctuation">(</span>Trace<span class="token punctuation">.</span>TRACE_TAG_VIEW<span class="token punctuation">,</span> <span class="token string">"inflate"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">final</span> Context inflaterContext <span class="token operator">=</span> mContext<span class="token punctuation">;</span>
+        <span class="token keyword">final</span> AttributeSet attrs <span class="token operator">=</span> Xml<span class="token punctuation">.</span><span class="token function">asAttributeSet</span><span class="token punctuation">(</span>parser<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Context lastContext <span class="token operator">=</span> <span class="token punctuation">(</span>Context<span class="token punctuation">)</span> mConstructorArgs<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        mConstructorArgs<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> inflaterContext<span class="token punctuation">;</span>
+        View result <span class="token operator">=</span> root<span class="token punctuation">;</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+            <span class="token function">advanceToRootNode</span><span class="token punctuation">(</span>parser<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">final</span> String name <span class="token operator">=</span> parser<span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>TAG_MERGE<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>root <span class="token operator">==</span> null <span class="token operator">||</span> <span class="token operator">!</span>attachToRoot<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">InflateException</span><span class="token punctuation">(</span><span class="token string">"&lt;merge /> can be used only with a valid "</span><span class="token operator">+</span> <span class="token string">"ViewGroup root and attachToRoot=true"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+                                <span class="token comment" spellcheck="true">//merge 根视图单独处理</span>
+                <span class="token function">rInflate</span><span class="token punctuation">(</span>parser<span class="token punctuation">,</span> root<span class="token punctuation">,</span> inflaterContext<span class="token punctuation">,</span> attrs<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">//Temp 是在 xml 中找到的根视图</span>
+                <span class="token keyword">final</span> View temp <span class="token operator">=</span> <span class="token function">createViewFromTag</span><span class="token punctuation">(</span>root<span class="token punctuation">,</span> name<span class="token punctuation">,</span> inflaterContext<span class="token punctuation">,</span> attrs<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+                ViewGroup<span class="token punctuation">.</span>LayoutParams params <span class="token operator">=</span> null<span class="token punctuation">;</span>
+
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>root <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+                    <span class="token comment" spellcheck="true">// 创建与根匹配的布局参数（如果提供）</span>
+                    params <span class="token operator">=</span> root<span class="token punctuation">.</span><span class="token function">generateLayoutParams</span><span class="token punctuation">(</span>attrs<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>attachToRoot<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                        <span class="token comment" spellcheck="true">// 如果我们不附加，请为 temp 设置根布局的布局参数</span>
+                        temp<span class="token punctuation">.</span><span class="token function">setLayoutParams</span><span class="token punctuation">(</span>params<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
+                <span class="token punctuation">}</span>
+                <span class="token comment" spellcheck="true">// 将所有处于临时状态的孩子都根据其上下文进行布局填充。</span>
+                <span class="token function">rInflateChildren</span><span class="token punctuation">(</span>parser<span class="token punctuation">,</span> temp<span class="token punctuation">,</span> attrs<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token comment" spellcheck="true">// 将所有视图添加到 root</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>root <span class="token operator">!=</span> null <span class="token operator">&amp;&amp;</span> attachToRoot<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    root<span class="token punctuation">.</span><span class="token function">addView</span><span class="token punctuation">(</span>temp<span class="token punctuation">,</span> params<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+                <span class="token comment" spellcheck="true">// 返回传入的 root 还是在 xml 中找到的顶视图。</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>root <span class="token operator">==</span> null <span class="token operator">||</span> <span class="token operator">!</span>attachToRoot<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    result <span class="token operator">=</span> temp<span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span> 
+        <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p><strong>LayoutInflater 参数说明</strong></p>
+<p><code>layoutResID：</code>代表所要加载的布局资源id，</p>
+<p><code>root：</code>是ViewGroup类型，这个参数需要与第3个参数配合使用，</p>
+<p><code>attachToRoot：</code>如果为<code>true</code>就把布局添加到 <code>root</code> 中；若为<code>false</code>则只采用<code>ViewGroup</code>的<code>LayoutParams</code>作为测量的依据却不直接添加到<code>ViewGroup</code>中。</p>
+<p><code>parser：</code>包含布局层次结构描述的 XML dom 节点。</p>
+<p><strong>LayoutInflater.Factory 接口的扩展功能</strong></p>
+<p><code>LayoutInflater</code>设计了一个<code>LayoutInflater.Factory</code>接口，该接口设计得非常巧妙：在<code>xml</code>解析过程中，开发者可以通过配置该接口对<code>View</code>的创建过程进行拦截：<strong>通过new的方式创建控件以避免大量地使用反射</strong>,<code>Factory</code>接口的意义是在<code>xml</code>解析过程中，开发者可以通过配置该接口对<code>View</code>的创建过程进行拦截</p>
+<h4 id="LayoutInflater-总结"><a href="#LayoutInflater-总结" class="headerlink" title="LayoutInflater 总结"></a>LayoutInflater 总结</h4><p>获取 LayoutInflater实例最终都会走到 ContextThemeWrapper 类中 getSystemService 构建一个局部单例的 <strong>PhoneLayoutInflater</strong> 实例。</p>
+<p>LayoutInflater 布局填充有四个重载方法，最终都会调用到同一个方法，再根据传递的参数做不同的加载处理</p>
+<h3 id="4-2-ActivityMainBinding-类的绑定过程"><a href="#4-2-ActivityMainBinding-类的绑定过程" class="headerlink" title="4.2 ActivityMainBinding 类的绑定过程"></a>4.2 ActivityMainBinding 类的绑定过程</h3><h4 id="inflate-过程"><a href="#inflate-过程" class="headerlink" title="inflate 过程"></a>inflate 过程</h4><p>View 类中通过调用apt 自动生成的绑定类的inflate方法或者 bind 方法获取绑定类</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token comment" spellcheck="true">//CustomView</span>
+<span class="token keyword">val</span> layoutInflater<span class="token operator">:</span> LayoutInflater <span class="token operator">=</span> LayoutInflater<span class="token punctuation">.</span><span class="token function">from</span><span class="token punctuation">(</span>context<span class="token punctuation">)</span>
+<span class="token keyword">val</span> binding <span class="token operator">=</span> LayoutViewBinding<span class="token punctuation">.</span><span class="token function">inflate</span><span class="token punctuation">(</span>layoutInflater<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">//SecondFragment</span>
+<span class="token keyword">override</span> <span class="token keyword">fun</span> <span class="token function">onCreateView</span><span class="token punctuation">(</span>inflater<span class="token operator">:</span> LayoutInflater<span class="token punctuation">,</span> container<span class="token operator">:</span> ViewGroup<span class="token operator">?</span><span class="token punctuation">,</span> savedIS<span class="token operator">:</span> Bundle<span class="token operator">?</span><span class="token punctuation">)</span><span class="token operator">:</span> View <span class="token punctuation">{</span>
+    _binding <span class="token operator">=</span> FragmentSecondBinding<span class="token punctuation">.</span><span class="token function">inflate</span><span class="token punctuation">(</span>inflater<span class="token punctuation">,</span> container<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> binding<span class="token punctuation">.</span>root
+<span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true">//include+merge 只能手动调用绑定类的bind方法</span>
+<span class="token keyword">val</span> layoutInfoMergeBinding <span class="token operator">=</span> LayoutInfoMergeBinding<span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span>binding<span class="token punctuation">.</span>root<span class="token punctuation">)</span></code></pre>
+<p>绑定类的 inflate 方法，通过传入的 LayoutInflater 将 layout 填充为 View</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token comment" spellcheck="true">//class FragmentSecondBinding implements ViewBinding</span>
+<span class="token annotation builtin">@NonNull</span>
+<span class="token keyword">public</span> static FragmentSecondBinding <span class="token function">inflate</span><span class="token punctuation">(</span><span class="token annotation builtin">@NonNull</span> LayoutInflater inflater<span class="token punctuation">,</span>
+    <span class="token annotation builtin">@Nullable</span> ViewGroup parent<span class="token punctuation">,</span> boolean attachToParent<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  View root <span class="token operator">=</span> inflater<span class="token punctuation">.</span><span class="token function">inflate</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>layout<span class="token punctuation">.</span>fragment_second<span class="token punctuation">,</span> parent<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">//这里的 attachToParent 参数为 true 时不知为何不传入 LayoutInflater 来 addView 而是自己单独做了判断</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>attachToParent<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    parent<span class="token punctuation">.</span><span class="token function">addView</span><span class="token punctuation">(</span>root<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> <span class="token function">bind</span><span class="token punctuation">(</span>root<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h4 id="bind-过程"><a href="#bind-过程" class="headerlink" title="bind 过程"></a>bind 过程</h4><p>从 inflate 过程填充的视图中(或者是从外部传入的 View)实例化所有控件并构建绑定类</p>
+<pre class=" language-kotlin"><code class="language-kotlin">  <span class="token annotation builtin">@NonNull</span>
+  <span class="token keyword">public</span> static FragmentSecondBinding <span class="token function">bind</span><span class="token punctuation">(</span><span class="token annotation builtin">@NonNull</span> View rootView<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">//此方法的主体是以您不会编写的方式生成的。这样做是为了优化已编译的字节码的大小和性能。</span>
+    int id<span class="token punctuation">;</span>
+    missingId<span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token comment" spellcheck="true">//根布局中的普通控件</span>
+      id <span class="token operator">=</span> R<span class="token punctuation">.</span>id<span class="token punctuation">.</span>button_second<span class="token punctuation">;</span>
+      Button buttonSecond <span class="token operator">=</span> ViewBindings<span class="token punctuation">.</span><span class="token function">findChildViewById</span><span class="token punctuation">(</span>rootView<span class="token punctuation">,</span> id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>buttonSecond <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">break</span> missingId<span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+      <span class="token comment" spellcheck="true">//根布局中的 include 标签</span>
+      id <span class="token operator">=</span> R<span class="token punctuation">.</span>id<span class="token punctuation">.</span>include_layout<span class="token punctuation">;</span>
+      View includeLayout <span class="token operator">=</span> ViewBindings<span class="token punctuation">.</span><span class="token function">findChildViewById</span><span class="token punctuation">(</span>rootView<span class="token punctuation">,</span> id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>includeLayout <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">break</span> missingId<span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+      LayoutInfoBinding binding_includeLayout <span class="token operator">=</span> LayoutInfoBinding<span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span>includeLayout<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">//ViewStub标签</span>
+      id <span class="token operator">=</span> R<span class="token punctuation">.</span>id<span class="token punctuation">.</span>layout_view_stub<span class="token punctuation">;</span>
+      ViewStub layoutViewStub <span class="token operator">=</span> ViewBindings<span class="token punctuation">.</span><span class="token function">findChildViewById</span><span class="token punctuation">(</span>rootView<span class="token punctuation">,</span> id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>layoutViewStub <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">break</span> missingId<span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+            <span class="token comment" spellcheck="true">//自定义 View</span>
+      id <span class="token operator">=</span> R<span class="token punctuation">.</span>id<span class="token punctuation">.</span>name<span class="token punctuation">;</span>
+      CustomView name <span class="token operator">=</span> ViewBindings<span class="token punctuation">.</span><span class="token function">findChildViewById</span><span class="token punctuation">(</span>rootView<span class="token punctuation">,</span> id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>name <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">break</span> missingId<span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+
+             <span class="token comment" spellcheck="true">//include+merge 没有生成对应的类型，只能手动调用绑定类的bind方法</span>
+
+      <span class="token comment" spellcheck="true">//构建绑定类，并将所有控件赋值给类属性</span>
+      <span class="token keyword">return</span> new <span class="token function">FragmentSecondBinding</span><span class="token punctuation">(</span><span class="token punctuation">(</span>ConstraintLayout<span class="token punctuation">)</span> rootView<span class="token punctuation">,</span> buttonSecond<span class="token punctuation">,</span> flSecond<span class="token punctuation">,</span>
+          binding_includeLayout<span class="token punctuation">,</span> layoutViewStub<span class="token punctuation">,</span> llInfo<span class="token punctuation">,</span> name<span class="token punctuation">,</span> textviewSecond<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">// 如果有任何一个控件在 findChildViewById 过程中没有被找到就会抛NPE异常</span>
+    String missingId <span class="token operator">=</span> rootView<span class="token punctuation">.</span><span class="token function">getResources</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getResourceName</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">throw</span> new <span class="token function">NullPointerException</span><span class="token punctuation">(</span><span class="token string">"Missing required view with ID: "</span><span class="token punctuation">.</span><span class="token function">concat</span><span class="token punctuation">(</span>missingId<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>遍历根视图匹配布局文件中的id并通过findViewById方法返回View实例</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token comment" spellcheck="true">//ViewBindings</span>
+<span class="token comment" spellcheck="true">/**
+ Like `findViewById` but skips the view itself.
+ */</span>
+<span class="token annotation builtin">@Nullable</span>
+<span class="token keyword">public</span> static <span class="token operator">&lt;</span>T extends View<span class="token operator">></span> T <span class="token function">findChildViewById</span><span class="token punctuation">(</span>View rootView<span class="token punctuation">,</span> <span class="token annotation builtin">@IdRes</span> int id<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span>rootView instanceof ViewGroup<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">final</span> ViewGroup rootViewGroup <span class="token operator">=</span> <span class="token punctuation">(</span>ViewGroup<span class="token punctuation">)</span> rootView<span class="token punctuation">;</span>
+    <span class="token keyword">final</span> int childCount <span class="token operator">=</span> rootViewGroup<span class="token punctuation">.</span><span class="token function">getChildCount</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>int i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> childCount<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">final</span> T view <span class="token operator">=</span> rootViewGroup<span class="token punctuation">.</span><span class="token function">getChildAt</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">findViewById</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>view <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> view<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h4 id="绑定过程总结"><a href="#绑定过程总结" class="headerlink" title="绑定过程总结"></a>绑定过程总结</h4><p>DataBinding 借助 AGP 会为所有布局文件自动生成绑定类</p>
+<p>绑定类的 inflate 方法通过传入的布局填充器 LayoutInflater 以及自动收集的根布局 id 加载出根布局 rootView 然后传给 bind 方法实例化控件</p>
+<p>绑定类的 bind 方法通过传入的根布局以及自动收集的控件 id 实例化所有控件 并构建绑定类</p>
+<h3 id="4-3-ActivityMainBinding-类的生成过程"><a href="#4-3-ActivityMainBinding-类的生成过程" class="headerlink" title="4.3 ActivityMainBinding 类的生成过程"></a>4.3 ActivityMainBinding 类的生成过程</h3><p><a href="https://juejin.cn/post/6844904106268557326" target="_blank" rel="noopener">参考：ViewBinding 的本质</a></p>
+<p><a href="https://mvnrepository.com/artifact/androidx.databinding/databinding-compiler-common" target="_blank" rel="noopener">DataBinding Compiler Common</a></p>
+<p>依赖源码方便查看</p>
+<pre class=" language-groovy"><code class="language-groovy"><span class="token comment" spellcheck="true">//todo 依赖 databinding-compiler 方便查看 ViewBinding 类的生成过程</span>
+<span class="token comment" spellcheck="true">// https://mvnrepository.com/artifact/androidx.databinding/databinding-compiler-common</span>
+implementation group<span class="token punctuation">:</span> <span class="token string">'androidx.databinding'</span><span class="token punctuation">,</span> name<span class="token punctuation">:</span> <span class="token string">'databinding-compiler-common'</span><span class="token punctuation">,</span> version<span class="token punctuation">:</span> <span class="token string">'7.0.1'</span>
+<span class="token comment" spellcheck="true">// https://mvnrepository.com/artifact/com.android.tools.build/gradle</span>
+implementation group<span class="token punctuation">:</span> <span class="token string">'com.android.tools.build'</span><span class="token punctuation">,</span> name<span class="token punctuation">:</span> <span class="token string">'gradle'</span><span class="token punctuation">,</span> version<span class="token punctuation">:</span> <span class="token string">'7.0.1'</span></code></pre>
+<p>ViewBinding 是属于 dataBinding 库里面的一个小功能,对于解析布局文件生成绑定类的逻辑是通用的，</p>
+<h4 id="阶段一：解析xml布局文件"><a href="#阶段一：解析xml布局文件" class="headerlink" title="阶段一：解析xml布局文件"></a>阶段一：解析xml布局文件</h4><p><strong>LayoutXmlProcessor</strong>：处理布局 XML，剥离绑定属性和元素，并将信息写入带注解的类文件以供注释处理器使用</p>
+<p><strong>processResources</strong>：假装这个方法就是布局文件改动后调用的入口方法（应该是由AGP 触发，暂时未找到）</p>
+<pre class=" language-java"><code class="language-java">
+android<span class="token punctuation">.</span>databinding<span class="token punctuation">.</span>tool<span class="token punctuation">.</span>LayoutXmlProcessor
+
+<span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">processResources</span><span class="token punctuation">(</span>ResourceInput input<span class="token punctuation">,</span> <span class="token keyword">boolean</span> isViewBindingEnabled<span class="token punctuation">,</span> <span class="token keyword">boolean</span> isDataBindingEnabled<span class="token punctuation">)</span>
+        <span class="token keyword">throws</span> ParserConfigurationException<span class="token punctuation">,</span> SAXException<span class="token punctuation">,</span> XPathExpressionException<span class="token punctuation">,</span>
+        IOException <span class="token punctuation">{</span>
+    ProcessFileCallback callback <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ProcessFileCallback</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">//省略回调代码</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">//布局文件的改动输入源支持增量构建</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>input<span class="token punctuation">.</span><span class="token function">isIncremental</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">processIncrementalInputFiles</span><span class="token punctuation">(</span>input<span class="token punctuation">,</span> callback<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        <span class="token function">processAllInputFiles</span><span class="token punctuation">(</span>input<span class="token punctuation">,</span> callback<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>processIncrementalInputFiles 处理增量输入（Added、Removed、Changed）</p>
+<p>processAllInputFiles 处理全部输入</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//遍历文件</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span>File firstLevel <span class="token operator">:</span> input<span class="token punctuation">.</span><span class="token function">getRootInputFolder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">listFiles</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">//处理 layout_xx 目录下面的 xxx.xml 文件</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>LAYOUT_FOLDER_FILTER<span class="token punctuation">.</span><span class="token function">accept</span><span class="token punctuation">(</span>firstLevel<span class="token punctuation">,</span> firstLevel<span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    callback<span class="token punctuation">.</span><span class="token function">processLayoutFolder</span><span class="token punctuation">(</span>firstLevel<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//noinspection ConstantConditions</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>File xmlFile <span class="token operator">:</span> firstLevel<span class="token punctuation">.</span><span class="token function">listFiles</span><span class="token punctuation">(</span>XML_FILE_FILTER<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        callback<span class="token punctuation">.</span><span class="token function">processLayoutFile</span><span class="token punctuation">(</span>xmlFile<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>ProcessFileCallback 扫描文件后的回调</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">processLayoutFile</span><span class="token punctuation">(</span>File file<span class="token punctuation">)</span>
+        <span class="token keyword">throws</span> ParserConfigurationException<span class="token punctuation">,</span> SAXException<span class="token punctuation">,</span> XPathExpressionException<span class="token punctuation">,</span>
+        IOException <span class="token punctuation">{</span>
+          <span class="token comment" spellcheck="true">//处理单个文件，</span>
+    <span class="token function">processSingleFile</span><span class="token punctuation">(</span>RelativizableFile<span class="token punctuation">.</span><span class="token function">fromAbsoluteFile</span><span class="token punctuation">(</span>file<span class="token punctuation">,</span> null<span class="token punctuation">)</span><span class="token punctuation">,</span>
+            <span class="token function">convertToOutFile</span><span class="token punctuation">(</span>file<span class="token punctuation">)</span><span class="token punctuation">,</span> isViewBindingEnabled<span class="token punctuation">,</span> isDataBindingEnabled<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>processSingleFile </p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">processSingleFile</span><span class="token punctuation">(</span><span class="token annotation punctuation">@NonNull</span> RelativizableFile input<span class="token punctuation">,</span> <span class="token annotation punctuation">@NonNull</span> File output<span class="token punctuation">,</span>
+        <span class="token keyword">boolean</span> isViewBindingEnabled<span class="token punctuation">,</span> <span class="token keyword">boolean</span> isDataBindingEnabled<span class="token punctuation">)</span>
+        <span class="token keyword">throws</span> ParserConfigurationException<span class="token punctuation">,</span> SAXException<span class="token punctuation">,</span> XPathExpressionException<span class="token punctuation">,</span>
+        IOException <span class="token punctuation">{</span>
+          <span class="token comment" spellcheck="true">//解析xml文件 封账布局文件扫描类</span>
+    <span class="token keyword">final</span> ResourceBundle<span class="token punctuation">.</span>LayoutFileBundle bindingLayout <span class="token operator">=</span> LayoutFileParser
+            <span class="token punctuation">.</span><span class="token function">parseXml</span><span class="token punctuation">(</span>input<span class="token punctuation">,</span> output<span class="token punctuation">,</span> mResourceBundle<span class="token punctuation">.</span><span class="token function">getAppPackage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> mOriginalFileLookup<span class="token punctuation">,</span>
+                    isViewBindingEnabled<span class="token punctuation">,</span> isDataBindingEnabled<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>bindingLayout <span class="token operator">==</span> null
+            <span class="token operator">||</span> <span class="token punctuation">(</span>bindingLayout<span class="token punctuation">.</span><span class="token function">isBindingData</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> bindingLayout<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+          <span class="token comment" spellcheck="true">//添加到map缓存起来</span>
+    mResourceBundle<span class="token punctuation">.</span><span class="token function">addLayoutBundle</span><span class="token punctuation">(</span>bindingLayout<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p><strong>LayoutFileParser</strong>：获取 XML 文件列表并创建可以持久化或转换为 LayoutBinder 的ResourceBundle列表</p>
+<p>android.databinding.tool.store public final class LayoutFileParser</p>
+<p>parseXml:路径、编码、校验等</p>
+<p>parseOriginalXml :将布局文件解析为描述类</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">private</span> <span class="token keyword">static</span> ResourceBundle<span class="token punctuation">.</span>LayoutFileBundle <span class="token function">parseOriginalXml</span><span class="token punctuation">(</span>
+        <span class="token annotation punctuation">@NonNull</span> <span class="token keyword">final</span> RelativizableFile originalFile<span class="token punctuation">,</span> <span class="token annotation punctuation">@NonNull</span> <span class="token keyword">final</span> String pkg<span class="token punctuation">,</span>
+        <span class="token annotation punctuation">@NonNull</span> <span class="token keyword">final</span> String encoding<span class="token punctuation">,</span> <span class="token keyword">boolean</span> isViewBindingEnabled<span class="token punctuation">,</span>
+        <span class="token keyword">boolean</span> isDataBindingEnabled<span class="token punctuation">)</span>
+        <span class="token keyword">throws</span> IOException <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">//layout 标签判断databinding</span>
+XMLParser<span class="token punctuation">.</span>ElementContext root <span class="token operator">=</span> expr<span class="token punctuation">.</span><span class="token function">element</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">boolean</span> isBindingData <span class="token operator">=</span> <span class="token string">"layout"</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>elmName<span class="token punctuation">.</span><span class="token function">getText</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//dataBinding</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>isBindingData<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>isDataBindingEnabled<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        L<span class="token punctuation">.</span><span class="token function">e</span><span class="token punctuation">(</span>ErrorMessages<span class="token punctuation">.</span>FOUND_LAYOUT_BUT_NOT_ENABLED<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> null<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    data <span class="token operator">=</span> <span class="token function">getDataNode</span><span class="token punctuation">(</span>root<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    rootView <span class="token operator">=</span> <span class="token function">getViewNode</span><span class="token punctuation">(</span>original<span class="token punctuation">,</span> root<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>isViewBindingEnabled<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">//viewBindingIgnore 根布局添加这个属性为true可以跳过生成绑定类的过程</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token string">"true"</span><span class="token punctuation">.</span><span class="token function">equalsIgnoreCase</span><span class="token punctuation">(</span><span class="token function">attributeMap</span><span class="token punctuation">(</span>root<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"tools:viewBindingIgnore"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        L<span class="token punctuation">.</span><span class="token function">d</span><span class="token punctuation">(</span><span class="token string">"Ignoring %s for view binding"</span><span class="token punctuation">,</span> originalFile<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> null<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    data <span class="token operator">=</span> null<span class="token punctuation">;</span>
+    rootView <span class="token operator">=</span> root<span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> null<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">//dataBinding &lt;include> 元素不支持作为 &lt;merge> 元素的直接子元素</span>
+<span class="token keyword">boolean</span> isMerge <span class="token operator">=</span> <span class="token string">"merge"</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>rootView<span class="token punctuation">.</span>elmName<span class="token punctuation">.</span><span class="token function">getText</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>isBindingData <span class="token operator">&amp;&amp;</span> isMerge <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span><span class="token function">filter</span><span class="token punctuation">(</span>rootView<span class="token punctuation">,</span> <span class="token string">"include"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token comment" spellcheck="true">//public static final String INCLUDE_INSIDE_MERGE = "&lt;include> elements are not supported as direct children of &lt;merge> elements";</span>
+    L<span class="token punctuation">.</span><span class="token function">e</span><span class="token punctuation">(</span>ErrorMessages<span class="token punctuation">.</span>INCLUDE_INSIDE_MERGE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> null<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+String rootViewType <span class="token operator">=</span> <span class="token function">getViewName</span><span class="token punctuation">(</span>rootView<span class="token punctuation">)</span><span class="token punctuation">;</span>
+String rootViewId <span class="token operator">=</span> <span class="token function">attributeMap</span><span class="token punctuation">(</span>rootView<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"android:id"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//构建布局描述的封装类</span>
+ResourceBundle<span class="token punctuation">.</span>LayoutFileBundle bundle <span class="token operator">=</span>
+    <span class="token keyword">new</span> <span class="token class-name">ResourceBundle<span class="token punctuation">.</span>LayoutFileBundle</span><span class="token punctuation">(</span>
+        originalFile<span class="token punctuation">,</span> xmlNoExtension<span class="token punctuation">,</span> original<span class="token punctuation">.</span><span class="token function">getParentFile</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> pkg<span class="token punctuation">,</span>
+        isMerge<span class="token punctuation">,</span> isBindingData<span class="token punctuation">,</span> rootViewType<span class="token punctuation">,</span> rootViewId<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">final</span> String newTag <span class="token operator">=</span> original<span class="token punctuation">.</span><span class="token function">getParentFile</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">'/'</span> <span class="token operator">+</span> xmlNoExtension<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//data 数据只有 databinding 才会有的元素，viewBinding 是不会去解析的</span>
+<span class="token function">parseData</span><span class="token punctuation">(</span>original<span class="token punctuation">,</span> data<span class="token punctuation">,</span> bundle<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//解析表达式，这里面会循环遍历元素，解析 view 的 id、tag、include、fragment 等等 xml 相关的元素，并且还有 databinding 相关的 @={ 的表达式，最后将结果缓存起来</span>
+<span class="token function">parseExpressions</span><span class="token punctuation">(</span>newTag<span class="token punctuation">,</span> rootView<span class="token punctuation">,</span> isMerge<span class="token punctuation">,</span> bundle<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h4 id="阶段二：输出描述文件"><a href="#阶段二：输出描述文件" class="headerlink" title="阶段二：输出描述文件"></a>阶段二：输出描述文件</h4><p><strong>LayoutXmlProcessor</strong></p>
+<p><strong>writeLayoutInfoFiles</strong>：这个方法的执行点可以在AGP里面找到，task 为：<strong>com.android.build.gradle.tasks.MergeResources</strong></p>
+<p><strong>MergeResources</strong></p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Override</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">doTaskAction</span><span class="token punctuation">(</span><span class="token annotation punctuation">@NonNull</span> InputChanges changedInputs<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+    SingleFileProcessor dataBindingLayoutProcessor <span class="token operator">=</span> <span class="token function">maybeCreateLayoutProcessor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>dataBindingLayoutProcessor <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        dataBindingLayoutProcessor<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">}</span></code></pre>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//maybeCreateLayoutProcessor</span>
+<span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">SingleFileProcessor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> LayoutXmlProcessor <span class="token function">getProcessor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> processor<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">processSingleFile</span><span class="token punctuation">(</span>
+            <span class="token annotation punctuation">@NonNull</span> File inputFile<span class="token punctuation">,</span>
+            <span class="token annotation punctuation">@NonNull</span> File outputFile<span class="token punctuation">,</span>
+            <span class="token annotation punctuation">@Nullable</span> Boolean inputFileIsFromDependency<span class="token punctuation">)</span>
+            <span class="token keyword">throws</span> Exception <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token function">getProcessor</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+               <span class="token punctuation">.</span><span class="token function">processSingleFile</span><span class="token punctuation">(</span>
+                        normalizedInputFile<span class="token punctuation">,</span>
+                        outputFile<span class="token punctuation">,</span>
+                        <span class="token function">getViewBindingEnabled</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                        <span class="token function">getDataBindingEnabled</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> JAXBException <span class="token punctuation">{</span>
+        <span class="token function">getProcessor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">writeLayoutInfoFiles</span><span class="token punctuation">(</span><span class="token function">getDataBindingLayoutInfoOutFolder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getAsFile</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">//输出路径可以从这里查看</span>
+artifacts<span class="token punctuation">.</span><span class="token function">setInitialProvider</span><span class="token punctuation">(</span>taskProvider<span class="token punctuation">,</span> MergeResources<span class="token operator">:</span><span class="token operator">:</span>getDataBindingLayoutInfoOutFolder<span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">withName</span><span class="token punctuation">(</span><span class="token string">"out"</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span> mergeType <span class="token operator">==</span> MERGE<span class="token operator">?</span> DATA_BINDING_LAYOUT_INFO_TYPE_MERGE<span class="token punctuation">.</span>INSTANCE
+                        <span class="token operator">:</span> DATA_BINDING_LAYOUT_INFO_TYPE_PACKAGE<span class="token punctuation">.</span>INSTANCE<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p><strong>writeLayoutInfoFiles</strong></p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">writeLayoutInfoFiles</span><span class="token punctuation">(</span>File xmlOutDir<span class="token punctuation">,</span> JavaFileWriter writer<span class="token punctuation">)</span> <span class="token keyword">throws</span> JAXBException <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">//遍历之前收集到的所有 LayoutFileBundle，写入 xmlOutDir 路径</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>ResourceBundle<span class="token punctuation">.</span>LayoutFileBundle layout <span class="token operator">:</span> mResourceBundle
+            <span class="token punctuation">.</span><span class="token function">getAllLayoutFileBundlesInSource</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">writeXmlFile</span><span class="token punctuation">(</span>writer<span class="token punctuation">,</span> xmlOutDir<span class="token punctuation">,</span> layout<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>writeXmlFile</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">private</span> void <span class="token function">writeXmlFile</span><span class="token punctuation">(</span>JavaFileWriter writer<span class="token punctuation">,</span> File xmlOutDir<span class="token punctuation">,</span>
+        ResourceBundle<span class="token punctuation">.</span>LayoutFileBundle layout<span class="token punctuation">)</span>
+        throws JAXBException <span class="token punctuation">{</span>
+    String filename <span class="token operator">=</span> <span class="token function">generateExportFileName</span><span class="token punctuation">(</span>layout<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//  fileName + '-' + dirName + ".xml";</span>
+          <span class="token comment" spellcheck="true">//遍历之前收集到的所有 LayoutFileBundle，写入 xmlOutDir 路径</span>
+    writer<span class="token punctuation">.</span><span class="token function">writeToFile</span><span class="token punctuation">(</span>new <span class="token function">File</span><span class="token punctuation">(</span>xmlOutDir<span class="token punctuation">,</span> filename<span class="token punctuation">)</span><span class="token punctuation">,</span> layout<span class="token punctuation">.</span><span class="token function">toXML</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>描述文件的生成路径为：app/build/intermediates/data_binding_layout_info_type_merge/debug/out</p>
+<pre class=" language-xml"><code class="language-xml">//fragment_second-layout.xml
+
+<span class="token prolog">&lt;?xml version="1.0" encoding="utf-8" standalone="yes"?></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Layout</span> <span class="token attr-name">directory</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>layout<span class="token punctuation">"</span></span> <span class="token attr-name">filePath</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>app/src/main/res/layout/fragment_second.xml<span class="token punctuation">"</span></span>
+    <span class="token attr-name">isBindingData</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>false<span class="token punctuation">"</span></span> <span class="token attr-name">isMerge</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>false<span class="token punctuation">"</span></span> <span class="token attr-name">layout</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>fragment_second<span class="token punctuation">"</span></span>
+    <span class="token attr-name">modulePackage</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>com.jay.vbhelper<span class="token punctuation">"</span></span> <span class="token attr-name">rootNodeType</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>androidx.constraintlayout.widget.ConstraintLayout<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Targets</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Target</span> <span class="token attr-name">tag</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>layout/fragment_second_0<span class="token punctuation">"</span></span>
+            <span class="token attr-name">view</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>androidx.constraintlayout.widget.ConstraintLayout<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Expressions</span> <span class="token punctuation">/></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>location</span> <span class="token attr-name">endLine</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>78<span class="token punctuation">"</span></span> <span class="token attr-name">endOffset</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>51<span class="token punctuation">"</span></span> <span class="token attr-name">startLine</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>1<span class="token punctuation">"</span></span> <span class="token attr-name">startOffset</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>0<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Target</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Target</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@+id/ll_info<span class="token punctuation">"</span></span> <span class="token attr-name">tag</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>binding_1<span class="token punctuation">"</span></span>
+            <span class="token attr-name">view</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>androidx.appcompat.widget.LinearLayoutCompat<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Expressions</span> <span class="token punctuation">/></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>location</span> <span class="token attr-name">endLine</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>51<span class="token punctuation">"</span></span> <span class="token attr-name">endOffset</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>50<span class="token punctuation">"</span></span> <span class="token attr-name">startLine</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>9<span class="token punctuation">"</span></span> <span class="token attr-name">startOffset</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>4<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Target</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Target</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@+id/include_layout<span class="token punctuation">"</span></span> <span class="token attr-name">include</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>layout_info<span class="token punctuation">"</span></span> <span class="token attr-name">tag</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>binding_1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Expressions</span> <span class="token punctuation">/></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>location</span> <span class="token attr-name">endLine</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>31<span class="token punctuation">"</span></span> <span class="token attr-name">endOffset</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>42<span class="token punctuation">"</span></span> <span class="token attr-name">startLine</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>29<span class="token punctuation">"</span></span> <span class="token attr-name">startOffset</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>8<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Target</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Target</span> <span class="token attr-name">include</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>layout_info_merge<span class="token punctuation">"</span></span> <span class="token attr-name">tag</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>binding_1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Expressions</span> <span class="token punctuation">/></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>location</span> <span class="token attr-name">endLine</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>35<span class="token punctuation">"</span></span> <span class="token attr-name">endOffset</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>53<span class="token punctuation">"</span></span> <span class="token attr-name">startLine</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>35<span class="token punctuation">"</span></span> <span class="token attr-name">startOffset</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>8<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Target</span><span class="token punctuation">></span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Targets</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Layout</span><span class="token punctuation">></span></span></code></pre>
+<h4 id="阶段三：输出绑定类"><a href="#阶段三：输出绑定类" class="headerlink" title="阶段三：输出绑定类"></a>阶段三：输出绑定类</h4><p>AGP Task DataBindingGenBaseClassesTask 触发</p>
+<p>com.android.build.gradle.internal.tasks.databinding.DataBindingGenBaseClassesTask</p>
+<p>DataBindingGenBaseClassesTask</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token annotation builtin">@TaskAction</span>
+<span class="token keyword">fun</span> <span class="token function">writeBaseClasses</span><span class="token punctuation">(</span>inputs<span class="token operator">:</span> IncrementalTaskInputs<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// TODO extend NewIncrementalTask when moved to new API so that we can remove the manual call to recordTaskAction</span>
+    <span class="token function">recordTaskAction</span><span class="token punctuation">(</span>analyticsService<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// TODO figure out why worker execution makes the task flake.</span>
+        <span class="token comment" spellcheck="true">// Some files cannot be accessed even though they show up when directory listing is</span>
+        <span class="token comment" spellcheck="true">// invoked.</span>
+        <span class="token comment" spellcheck="true">// b/69652332</span>
+        <span class="token keyword">val</span> args <span class="token operator">=</span> <span class="token function">buildInputArgs</span><span class="token punctuation">(</span>inputs<span class="token punctuation">)</span>
+        <span class="token function">CodeGenerator</span><span class="token punctuation">(</span>
+            args<span class="token punctuation">,</span>
+            sourceOutFolder<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>asFile<span class="token punctuation">,</span>
+            Logger<span class="token punctuation">.</span><span class="token function">getLogger</span><span class="token punctuation">(</span>DataBindingGenBaseClassesTask<span class="token operator">::</span><span class="token keyword">class</span><span class="token punctuation">.</span>java<span class="token punctuation">)</span><span class="token punctuation">,</span>
+            encodeErrors<span class="token punctuation">,</span>
+            <span class="token function">collectResources</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">//触发生成流程</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">//绑定类生成器</span>
+<span class="token keyword">class</span> CodeGenerator <span class="token annotation builtin">@Inject</span> <span class="token keyword">constructor</span><span class="token punctuation">(</span>
+    <span class="token keyword">val</span> args<span class="token operator">:</span> LayoutInfoInput<span class="token punctuation">.</span>Args<span class="token punctuation">,</span>
+    <span class="token keyword">private</span> <span class="token keyword">val</span> sourceOutFolder<span class="token operator">:</span> File<span class="token punctuation">,</span>
+    <span class="token keyword">private</span> <span class="token keyword">val</span> logger<span class="token operator">:</span> Logger<span class="token punctuation">,</span>
+    <span class="token keyword">private</span> <span class="token keyword">val</span> encodeErrors<span class="token operator">:</span> Boolean<span class="token punctuation">,</span>
+    <span class="token keyword">private</span> <span class="token keyword">val</span> symbolTables<span class="token operator">:</span> List<span class="token operator">&lt;</span>SymbolTable<span class="token operator">></span><span class="token operator">?</span> <span class="token operator">=</span> <span class="token keyword">null</span>
+<span class="token punctuation">)</span> <span class="token operator">:</span> Runnable<span class="token punctuation">,</span> Serializable <span class="token punctuation">{</span>
+    <span class="token keyword">override</span> <span class="token keyword">fun</span> <span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+            <span class="token function">initLogger</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token function">BaseDataBinder</span><span class="token punctuation">(</span><span class="token function">LayoutInfoInput</span><span class="token punctuation">(</span>args<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>symbolTables <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token keyword">this</span><span class="token operator">::</span>getRPackage <span class="token keyword">else</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+          <span class="token comment" spellcheck="true">//生成逻辑</span>
+                <span class="token punctuation">.</span><span class="token function">generateAll</span><span class="token punctuation">(</span>DataBindingBuilder<span class="token punctuation">.</span><span class="token function">GradleFileWriter</span><span class="token punctuation">(</span>sourceOutFolder<span class="token punctuation">.</span>absolutePath<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span>
+            <span class="token function">clearLogger</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token operator">..</span><span class="token punctuation">.</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">//sourceOutFolder路径信息</span>
+creationConfig<span class="token punctuation">.</span>artifacts<span class="token punctuation">.</span><span class="token function">setInitialProvider</span><span class="token punctuation">(</span>
+    taskProvider<span class="token punctuation">,</span>
+    DataBindingGenBaseClassesTask<span class="token operator">::</span>sourceOutFolder
+<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">withName</span><span class="token punctuation">(</span><span class="token string">"out"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span>InternalArtifactType<span class="token punctuation">.</span>DATA_BINDING_BASE_CLASS_SOURCE_OUT<span class="token punctuation">)</span></code></pre>
+<p>BaseDataBinder</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Suppress</span><span class="token punctuation">(</span><span class="token string">"unused"</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">// used by tools</span>
+<span class="token keyword">class</span> <span class="token class-name">BaseDataBinder</span><span class="token punctuation">(</span>val input <span class="token operator">:</span> LayoutInfoInput<span class="token punctuation">,</span> val getRPackage<span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>String<span class="token punctuation">,</span> String<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token punctuation">(</span>String<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">?</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> val resourceBundle <span class="token operator">:</span> ResourceBundle <span class="token operator">=</span> <span class="token function">ResourceBundle</span><span class="token punctuation">(</span>
+            input<span class="token punctuation">.</span>packageName<span class="token punctuation">,</span> input<span class="token punctuation">.</span>args<span class="token punctuation">.</span>useAndroidX<span class="token punctuation">)</span>
+      <span class="token comment" spellcheck="true">//</span>
+    init <span class="token punctuation">{</span>
+        input<span class="token punctuation">.</span>filesToConsider <span class="token punctuation">.</span>forEach <span class="token punctuation">{</span>
+                    it<span class="token punctuation">.</span><span class="token function">inputStream</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>use <span class="token punctuation">{</span>
+                     <span class="token comment" spellcheck="true">// 又将上面收集的 layout，将 xml 转成 LayoutFileBundle</span>
+                        val bundle <span class="token operator">=</span> LayoutFileBundle<span class="token punctuation">.</span><span class="token function">fromXML</span><span class="token punctuation">(</span>it<span class="token punctuation">)</span>
+                        resourceBundle<span class="token punctuation">.</span><span class="token function">addLayoutBundle</span><span class="token punctuation">(</span>bundle<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span>
+                    <span class="token punctuation">}</span>
+                <span class="token punctuation">}</span>
+        resourceBundle<span class="token punctuation">.</span><span class="token function">addDependencyLayouts</span><span class="token punctuation">(</span>input<span class="token punctuation">.</span>existingBindingClasses<span class="token punctuation">)</span>
+        resourceBundle<span class="token punctuation">.</span><span class="token function">validateAndRegisterErrors</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+
+
+
+    <span class="token annotation punctuation">@Suppress</span><span class="token punctuation">(</span><span class="token string">"unused"</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">// used by android gradle plugin</span>
+    fun <span class="token function">generateAll</span><span class="token punctuation">(</span>writer <span class="token operator">:</span> JavaFileWriter<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">// 拿到所有的 LayoutFileBundle，并根据文件名进行分组排序</span>
+        val layoutBindings <span class="token operator">=</span> resourceBundle<span class="token punctuation">.</span>allLayoutFileBundlesInSource
+            <span class="token punctuation">.</span><span class="token function">groupBy</span><span class="token punctuation">(</span>LayoutFileBundle<span class="token operator">:</span><span class="token operator">:</span>getFileName<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toSortedMap</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+        layoutBindings<span class="token punctuation">.</span>forEach <span class="token punctuation">{</span> layoutName<span class="token punctuation">,</span> variations <span class="token operator">-</span><span class="token operator">></span>
+            <span class="token comment" spellcheck="true">// 将 LayoutFileBundle 信息包装成 BaseLayoutModel</span>
+            val layoutModel <span class="token operator">=</span> <span class="token function">BaseLayoutModel</span><span class="token punctuation">(</span>variations<span class="token punctuation">,</span> getRPackage<span class="token punctuation">)</span>
+            val javaFile<span class="token operator">:</span> JavaFile
+            val classInfo<span class="token operator">:</span> GenClassInfoLog<span class="token punctuation">.</span>GenClass
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>variations<span class="token punctuation">.</span><span class="token function">first</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>isBindingData<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                val binderWriter <span class="token operator">=</span> <span class="token function">BaseLayoutBinderWriter</span><span class="token punctuation">(</span>layoutModel<span class="token punctuation">,</span> libTypes<span class="token punctuation">)</span>
+                javaFile <span class="token operator">=</span> binderWriter<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                classInfo <span class="token operator">=</span> binderWriter<span class="token punctuation">.</span><span class="token function">generateClassInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+              <span class="token comment" spellcheck="true">//不是DataBinding，按照 ViewBinding 处理</span>
+              <span class="token comment" spellcheck="true">//toViewBinder 是 BaseLayoutModel 的拓展函数，他会将 LayoutFileBundle 包装成 ViewBinder 类返回 </span>
+                val viewBinder <span class="token operator">=</span> layoutModel<span class="token punctuation">.</span><span class="token function">toViewBinder</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+              <span class="token comment" spellcheck="true">//toJavaFile 是 ViewBinder 的拓展函数，通过Javapoet生成Java文件</span>
+                javaFile <span class="token operator">=</span> viewBinder<span class="token punctuation">.</span><span class="token function">toJavaFile</span><span class="token punctuation">(</span>useLegacyAnnotations <span class="token operator">=</span> <span class="token operator">!</span>useAndroidX<span class="token punctuation">)</span>
+                classInfo <span class="token operator">=</span> viewBinder<span class="token punctuation">.</span><span class="token function">generatedClassInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token punctuation">}</span>
+            writer<span class="token punctuation">.</span><span class="token function">writeToFile</span><span class="token punctuation">(</span>javaFile<span class="token punctuation">)</span>
+            myLog<span class="token punctuation">.</span>classInfoLog<span class="token punctuation">.</span><span class="token function">addMapping</span><span class="token punctuation">(</span>layoutName<span class="token punctuation">,</span> classInfo<span class="token punctuation">)</span>
+            variations<span class="token punctuation">.</span>forEach <span class="token punctuation">{</span>
+                it<span class="token punctuation">.</span>bindingTargetBundles<span class="token punctuation">.</span>forEach <span class="token punctuation">{</span> bundle <span class="token operator">-</span><span class="token operator">></span>
+                    <span class="token keyword">if</span> <span class="token punctuation">(</span>bundle<span class="token punctuation">.</span>isBinder<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                        myLog<span class="token punctuation">.</span><span class="token function">addDependency</span><span class="token punctuation">(</span>layoutName<span class="token punctuation">,</span> bundle<span class="token punctuation">.</span>includedLayout<span class="token punctuation">)</span>
+                    <span class="token punctuation">}</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        input<span class="token punctuation">.</span><span class="token function">saveLog</span><span class="token punctuation">(</span>myLog<span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true">// data binding will eat some errors to be able to report them later on. This is a good</span>
+        <span class="token comment" spellcheck="true">// time to report them after the processing is done.</span>
+        Scope<span class="token punctuation">.</span><span class="token function">assertNoError</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>通过Javapoet 生成绑定类</p>
+<pre class=" language-kotlin"><code class="language-kotlin">
+<span class="token keyword">fun</span> ViewBinder<span class="token punctuation">.</span><span class="token function">toJavaFile</span><span class="token punctuation">(</span>useLegacyAnnotations<span class="token operator">:</span> Boolean <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">)</span> <span class="token operator">=</span>
+    <span class="token function">JavaFileGenerator</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> useLegacyAnnotations<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">fun</span> <span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token function">javaFile</span><span class="token punctuation">(</span>binder<span class="token punctuation">.</span>generatedTypeName<span class="token punctuation">.</span><span class="token function">packageName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">typeSpec</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">addFileComment</span><span class="token punctuation">(</span><span class="token string">"Generated by view binder compiler. Do not edit!"</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">private</span> <span class="token keyword">fun</span> <span class="token function">typeSpec</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token function">classSpec</span><span class="token punctuation">(</span>binder<span class="token punctuation">.</span>generatedTypeName<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token function">addModifiers</span><span class="token punctuation">(</span>PUBLIC<span class="token punctuation">,</span> FINAL<span class="token punctuation">)</span>
+    <span class="token function">addSuperinterface</span><span class="token punctuation">(</span>ClassName<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>viewBindingPackage<span class="token punctuation">,</span> <span class="token string">"ViewBinding"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+    <span class="token comment" spellcheck="true">// TODO elide the separate root field if the root tag has an ID (and isn't a binder)</span>
+    <span class="token function">addField</span><span class="token punctuation">(</span><span class="token function">rootViewField</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token function">addFields</span><span class="token punctuation">(</span><span class="token function">bindingFields</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+    <span class="token function">addMethod</span><span class="token punctuation">(</span><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token function">addMethod</span><span class="token punctuation">(</span><span class="token function">rootViewGetter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true">//如果跟标签是 merge  是生成的两参数的infate 参数</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>binder<span class="token punctuation">.</span>rootNode <span class="token keyword">is</span> RootNode<span class="token punctuation">.</span>Merge<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">addMethod</span><span class="token punctuation">(</span><span class="token function">mergeInflate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      <span class="token comment" spellcheck="true">//其它情况都是同时生成一参数和三参数的inflate方法</span>
+        <span class="token function">addMethod</span><span class="token punctuation">(</span><span class="token function">oneParamInflate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token function">addMethod</span><span class="token punctuation">(</span><span class="token function">threeParamInflate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token function">addMethod</span><span class="token punctuation">(</span><span class="token function">bind</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre>
+<h4 id="生成过程总结"><a href="#生成过程总结" class="headerlink" title="生成过程总结"></a>生成过程总结</h4><p>实时更新生成：布局文件改动(新加/更新/删除)后AS或AGP或立即更新绑定类，这个过程还没找到对应的源码</p>
+<p>编译更新生成：AGP 不同的任务触发</p>
+<ul>
+<li>解析xml布局文件：LayoutXmlProcessor#processResources 方法应该是改动布局文件的输入口，暂时没找到对应的Task，收集过程支持增量更新。处理 layout_xx 目录下面的 xxx.xml 文件，解析xml文件的过程区分 DataBinding 和 ViewBinding ，最后的产物是 ResourceBundle.LayoutFileBundle 以及 HashMap&lt;String, List<layoutfilebundle>&gt; mLayoutBundles</layoutfilebundle></li>
+<li>输出描述文件：有AGP中的 <strong>MergeResources</strong>Task 触发 , 遍历之前收集到的所有 LayoutFileBundle，写入 xmlOutDir 路径, 这个xml文件中描述了布局的 文件路径、包名、布局名、控件id、控件行号等信息</li>
+<li>输出绑定类：AGP <strong>DataBindingGenBaseClassesTask</strong>触发，将上个过程生成的布局描述xml文件再解析成 LayoutFileBundle 类信息，然后再次包装这些信息，最后通过Javapoet 生成绑定类</li>
+</ul>
+<h4 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h4><ul>
+<li><p>布局文件更新后触发扫描和处理布局文件的操作也就是调用 processResources 方法的地方</p>
+<ul>
+<li>猜测AGP 和 AS 都有参与</li>
+</ul>
+</li>
+<li><p>为什么点击 ActivityMainBinding 会跳转到对应的布局文件</p>
+<ul>
+<li>这个猜测应该和编译相关，生成词法分析器和解析器代码</li>
+</ul>
+</li>
+<li><p>为什么添加了新的布局文件还没有编译就获取到绑定类，但是在data_binding_base_class_source_out路径下没有这个绑定类只有编译才会看到</p>
+<ul>
+<li><p>应该也有AS的份</p>
+</li>
+<li><p><a href="https://android.googlesource.com/platform/tools/adt/idea/+/refs/heads/mirror-goog-studio-master-dev/android-lang-databinding/" target="_blank" rel="noopener">AS 中关于 DataBind 的一个库：Generate lexer and parser code</a></p>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Jay</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://www.basedev.cn/2021/05/31/jetpack-viewbinding/">http://www.basedev.cn/2021/05/31/jetpack-viewbinding/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">Jay</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/Jetpack/">
+                                    <span class="chip bg-color">Jetpack</span>
+                                </a>
+                            
+                                <a href="/tags/ViewBinding/">
+                                    <span class="chip bg-color">ViewBinding</span>
+                                </a>
+                            
+                                <a href="/tags/VBHelper/">
+                                    <span class="chip bg-color">VBHelper</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="wechat,qq,qzone,weibo,twitter,facebook,google,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+        <link rel="stylesheet" href="/libs/gitment/gitment-default.css">
+<link rel="stylesheet" href="/css/gitment.css">
+
+<div class="gitment-card card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="gitment-content" class="card-content"></div>
+</div>
+
+<script src="/libs/gitment/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+    id: 'Mon May 31 2021 14:16:55 GMT+0800',
+    owner: 'jaydroid1024',
+    repo: 'hexo_blog_repo',
+    oauth: {
+        client_id: '4c4d58f27f5177dff57c',
+        client_secret: 'c9fce45c9250437cb34e3a7755c4135df47aa65b'
+    }
+});
+
+gitment.render('gitment-content');
+</script>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2021/05/31/pattern-all/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="实战系列-设计模式总则篇">
+                        
+                        <span class="card-title">实战系列-设计模式总则篇</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            设计模式概述与24种设计模式简要概述，六种创建型模式，五种结构型模式，11中行为型模式
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-05-31
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="post-category">
+                                    设计模式
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+                        <span class="chip bg-color">设计模式</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/07/31/java-jvm/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="筑基系列-JVM基础知识小抄版">
+                        
+                        <span class="card-title">筑基系列-JVM基础知识小抄版</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            JVM 内存结构/HotSpot 虚拟机对象探秘/垃圾收集策略与算法/HotSpot 垃圾收集器/内存分配与回收策略/JVM 性能调优/类文件结构/类加载的时机/类加载的过程/类加载器
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-07-31
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%A1%86%E6%9E%B6/" class="post-category">
+                                    框架
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/JVM/">
+                        <span class="chip bg-color">JVM</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 王学杰<br />'
+            + '文章作者: Jay<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.3'
+                   list-folded='false'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">2021</span>
+            <a href="/about" target="_blank">Jay</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">89.1k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2021";
+                    var startMonth = "1";
+                    var startDate = "1";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+            <span id="icp"><img src="/medias/icp.png" style="vertical-align: text-bottom;" />
+                <a href="https://beian.miit.gov.cn/" target="_blank">京ICP备2020043565号-1</a>
+            </span>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/jaydroid1024" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:wangxuejie@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1018673209" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1018673209" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?88efcea1b43fcd428172af2f7305f80e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    
+    <script type="text/javascript" color="0,0,255"
+        pointColor="0,0,255" opacity='0.7'
+        zIndex="-1" count="99"
+        src="/libs/background/canvas-nest.js"></script>
+    
+
+    
+
+    
+    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
