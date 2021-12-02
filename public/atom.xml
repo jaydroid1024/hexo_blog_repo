@@ -6,7 +6,7 @@
   <link href="http://www.basedev.cn/atom.xml" rel="self"/>
   
   <link href="http://www.basedev.cn/"/>
-  <updated>2021-11-03T17:04:45.700Z</updated>
+  <updated>2021-11-04T16:45:44.746Z</updated>
   <id>http://www.basedev.cn/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://www.basedev.cn/2021/10/31/code-all/"/>
     <id>http://www.basedev.cn/2021/10/31/code-all/</id>
     <published>2021-10-31T06:16:55.000Z</published>
-    <updated>2021-11-03T17:04:45.700Z</updated>
+    <updated>2021-11-04T16:45:44.746Z</updated>
     
     
       
@@ -32,7 +32,11 @@
   &lt;summary&gt; &lt;b&gt; Solution2：两次循环+栈，时间：O(N),空间：O(N) &lt;/b&gt;&lt;/summary&gt;      
    &lt;pre&gt;&lt;code&gt;
     代码
- </summary>
+  &lt;/code&gt;&lt;/pre&gt;
+&lt;/details&gt;
+
+
+&lt;h3</summary>
         
       
     
@@ -331,6 +335,66 @@
     <category term="ViewBinding" scheme="http://www.basedev.cn/tags/ViewBinding/"/>
     
     <category term="VBHelper" scheme="http://www.basedev.cn/tags/VBHelper/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Jetpack | Lifecycle 组件系详解第一篇：Lifecycle</title>
+    <link href="http://www.basedev.cn/2021/05/21/jetpack-lifecycle/"/>
+    <id>http://www.basedev.cn/2021/05/21/jetpack-lifecycle/</id>
+    <published>2021-05-21T06:16:55.000Z</published>
+    <updated>2021-11-21T17:15:03.449Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/jaydroid1024/jay_image_repo/main/img/post_banner_jay.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h1</summary>
+        
+      
+    
+    
+    
+    <category term="Jetpack" scheme="http://www.basedev.cn/categories/Jetpack/"/>
+    
+    
+    <category term="Jetpack" scheme="http://www.basedev.cn/tags/Jetpack/"/>
+    
+    <category term="Lifecycle" scheme="http://www.basedev.cn/tags/Lifecycle/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>EventBus 事件总线框架深入分析</title>
+    <link href="http://www.basedev.cn/2021/01/31/lib-eventbus/"/>
+    <id>http://www.basedev.cn/2021/01/31/lib-eventbus/</id>
+    <published>2021-01-31T06:16:55.000Z</published>
+    <updated>2021-11-19T18:33:41.886Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/jaydroid1024/jay_image_repo/main/img/post_banner_jay.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h1</summary>
+        
+      
+    
+    
+    
+    <category term="框架" scheme="http://www.basedev.cn/categories/%E6%A1%86%E6%9E%B6/"/>
+    
+    
+    <category term="观察者模式" scheme="http://www.basedev.cn/tags/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/"/>
+    
+    <category term="EventBus" scheme="http://www.basedev.cn/tags/EventBus/"/>
+    
+    <category term="事件总线" scheme="http://www.basedev.cn/tags/%E4%BA%8B%E4%BB%B6%E6%80%BB%E7%BA%BF/"/>
+    
+    <category term="框架" scheme="http://www.basedev.cn/tags/%E6%A1%86%E6%9E%B6/"/>
     
   </entry>
   
